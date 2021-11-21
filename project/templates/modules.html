@@ -1,0 +1,54 @@
+<!-- templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Course modules
+</h1>
+
+
+<div class="ui cards centered">
+
+  {% for module in modules %}
+
+  <div class="card">
+    <div class="content">
+      <div class="header">{{module.name}}</div>
+      <div class="description">
+        {{module.description}}
+      </div>
+    </div>
+    <div class="ui bottom attached button">
+      <i class="angle right icon"></i>
+      View goals
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in 2021
+      </span>
+      <span>
+        <i class="user icon"></i>
+        75 members
+      </span>
+
+    </div>
+
+  </div>
+
+  {% endfor %}
+
+
+
+</div>
+
+
+
+    </div>
+  </div>
+  <p></p>
+  <p></p>
+</div>
+
+
+{% endblock %}

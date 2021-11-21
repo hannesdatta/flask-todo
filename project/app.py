@@ -9,6 +9,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+db.create_all()
+
 
 
 #main
@@ -44,11 +46,6 @@ def delete(todo_id):
     return redirect(url_for("home"))
 
 
-#categories
-
-
-
-
-
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)

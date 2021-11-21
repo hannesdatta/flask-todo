@@ -1,0 +1,261 @@
+<!-- templates/profile.html -->
+
+{% extends "base_new.html" %}
+
+{% block content %}
+
+<div class="ui attached stackable menu">
+  <div class="ui container">
+    <a class="item">
+      <i class="home icon"></i> Home
+    </a>
+    <a class="item">
+      <i class="grid layout icon"></i> Browse
+    </a>
+    <a class="item">
+      <i class="mail icon"></i> Messages
+    </a>
+    <div class="ui simple dropdown item">
+      More
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item"><i class="edit icon"></i> Edit Profile</a>
+        <a class="item"><i class="globe icon"></i> Choose Language</a>
+        <a class="item"><i class="settings icon"></i> Account Settings</a>
+      </div>
+    </div>
+    <div class="right item">
+      <div class="ui input"><input type="text" placeholder="Search..."></div>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic segment">
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+
+
+  <div class="ui cards">
+    <div class="card">
+      <div class="content">
+        <div class="header">Online Data Collection & Management</div>
+        <div class="description">
+          Learn how to scrape and use APIs for research.
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="angle right icon"></i>
+        View goals
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          Joined in 2021
+        </span>
+        <span>
+          <i class="user icon"></i>
+          75 members
+        </span>
+
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="header">Veronika Ossi</div>
+        <div class="description">
+          Veronika Ossi is a set designer living in New York who enjoys kittens, music, and partying.
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="add icon"></i>
+        Add Friend
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="header">Module 1</div>
+        <div class="description">
+          Jenny is a student studying Media Management at the New School
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <i class="add icon"></i>
+        Add Friend
+      </div>
+      <div class="extra">
+
+        <div class="ui label">Completed
+        <div class="detail">20%</div>
+          </div>
+
+        <div class="ui label">Questions
+        <div class="detail">5</div>
+
+      </div>
+
+
+    </div>
+
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+<div class="ui raised very padded text container segment">
+  <h2 class="ui header">Dogs Roles with Humans</h2>
+  <p></p>
+  <p></p>
+</div>
+
+
+<h1 class="title">
+  Welcome, {{ name }}!
+</h1>
+
+
+
+
+
+<div class="ui segment">
+    <p class="ui big header">ID AND TITLE</p>
+
+    <span class="ui gray label">Not Complete</span>
+    <span class="ui green label">Completed</span>
+
+    <a class="ui toggle button nonactive" href="/update/">Voted</a>
+    <a class="ui toggle button active" href="/update/">Mark as done</a>
+    <!--
+      <div class="ui bottom attached purple progress">
+      <div class="bar"></div>
+    </div>
+    -->
+
+</div>
+
+
+
+  <div class="ui right rail">
+    <div class="ui segment">
+
+
+      <div class="ui feed">
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/elliot.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a class="user">
+                Elliot Fu
+              </a> added you as a friend
+              <div class="date">
+                1 Hour Ago
+              </div>
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 4 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/helen.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a>Helen Troy</a> added <a>2 new illustrations</a>
+              <div class="date">
+                4 days ago
+              </div>
+            </div>
+            <div class="extra images">
+              <a><img src="/images/wireframe/image.png"></a>
+              <a><img src="/images/wireframe/image.png"></a>
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 1 Like
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/jenny.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a class="user">
+                Jenny Hess
+              </a> added you as a friend
+              <div class="date">
+                2 Days Ago
+              </div>
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 8 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/joe.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a>Joe Henderson</a> posted on his page
+              <div class="date">
+                3 days ago
+              </div>
+            </div>
+            <div class="extra text">
+              Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all over again. Even if we don't run extra laps that day, we surely will come back for more of the same another day soon.
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 5 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/justen.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a>Justen Kitsune</a> added <a>2 new photos</a> of you
+              <div class="date">
+                4 days ago
+              </div>
+            </div>
+            <div class="extra images">
+              <a><img src="/images/wireframe/image.png"></a>
+              <a><img src="/images/wireframe/image.png"></a>
+            </div>
+            <div class="meta">
+              <a class="like">
+                <i class="like icon"></i> 41 Likes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <p></p>
+  <p></p>
+</div>
+
+{% endblock %}
