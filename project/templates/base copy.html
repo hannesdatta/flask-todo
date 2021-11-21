@@ -36,6 +36,15 @@
 
             <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
             <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+            {% if todo.complete == False %}
+            <a class="ui toggle button nonactive" href="/update/{{ todo.id }}">Voted</a>
+            {% else %}
+            <a class="ui toggle button active" href="/update/{{ todo.id }}">Mark as done</a>
+            {% endif %}
+            <div class="ui bottom attached purple progress">
+    <div class="bar"></div>
+  </div>
+
         </div>
         {% endfor %}
     </div>

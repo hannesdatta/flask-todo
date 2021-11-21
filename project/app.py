@@ -9,17 +9,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    complete = db.Column(db.Boolean)
+
+
+#main
 
 
 @app.route("/")
 def home():
     todo_list = Todo.query.all()
     return render_template("base.html", todo_list=todo_list)
-
 
 @app.route("/add", methods=["POST"])
 def add():
@@ -45,6 +43,12 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("home"))
 
+
+#categories
+
+
+
+
+
 if __name__ == "__main__":
-    db.create_all()
     app.run(debug=True)

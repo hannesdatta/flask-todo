@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body>
+
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header">To Do App</h1>
+
+        <form class="ui form" action="/add_category" method="post">
+            <div class="field">
+                <label>Category Title</label>
+                <input type="text" name="title" placeholder="Enter Category..."><br>
+            </div>
+            <button class="ui blue button" type="submit">Add</button>
+        </form>
+
+        <hr>
+
+
+
+          <div class="ui divided items">
+
+            {% for todo in todo_list %}
+
+            <div class="item">
+              <div class="content">
+                <a class="header" href="/">{{ todo.title }}</a>
+                <div class="meta">
+                  <span class="cinema">Union Square 14</span>
+                </div>
+                <div class="description">
+                  <p></p>
+                </div>
+                <div class="extra">
+
+                  <div class="ui label">Completed
+                  <div class="detail">20%</div>
+                    </div>
+
+                  <div class="ui label">Questions
+                  <div class="detail">5</div>
+
+                </div>
+
+
+              </div>
+
+              </div>
+            </div>
+
+            {% endfor %}
+
+    </div>
+</body>
+
+</html>
