@@ -3,6 +3,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<div class="ui breadcrumb ">
+  <a class="section">Home</a>
+  <div class="divider"> / </div>
+  <a class="active section">{{course.name}}</a>
+  <div class="divider"> / </div>
+  <div class="section">T-Shirt</div>
+</div>
+
+
+
 <h1 class="title">
   Course modules
 </h1>
@@ -19,10 +31,10 @@
         {{module.description}}
       </div>
     </div>
-    <div class="ui bottom attached button">
+    <a class="ui bottom attached button" href="/todo/{{module.id}}">
       <i class="angle right icon"></i>
       View goals
-    </div>
+    </a>
     <div class="extra content">
       <span class="right floated">
         Joined in 2021

@@ -1,0 +1,44 @@
+<!-- templates/profile.html -->
+
+{% extends "base2.html" %}
+
+{% block content %}
+
+<div class="ui raised very padded text container segment">
+  <h1 class="ui header">{{ name }}, let us know how you're doing...</h1>
+  Task description
+  <p></p>
+  <div class="ui vertical labeled icon buttons">
+    <button class="ui button ">
+      <i class="play icon"></i>
+      Start
+    </button>
+    <button class="ui button ">
+      <i class="pause icon"></i>
+      Pause
+    </button>
+    <button class="ui button">
+      <i class="stop icon"></i>
+      Stop
+    </button>
+    <button class="ui button">
+      <i class="check icon"></i>
+      Mark as done
+    </button>
+  </div>
+
+  <div class="ui card">
+      <div class="content">
+        <div class="ui placeholder">
+          <div class="rectangular image"></div>
+        </div>
+      </div>
+    </div>
+
+  <p></p>
+</div>
+
+<iframe src="https://giphy.com/embed/l0Iyl55kTeh71nTXy" width="480" height="320" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/quizizz-l0Iyl55kTeh71nTXy">via GIPHY</a></p>
+
+
+{% endblock %}
