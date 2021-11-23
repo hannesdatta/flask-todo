@@ -27,43 +27,14 @@ def index():
 @main.route('/modules/<course_id>')
 @login_required
 def get_modules(course_id):
-    #modules = Module.query.filter(Module.courses.any(id=course_id)).all()
-    #modules = Module.query.filter(Module.courses.any(id=course_id)).all()
-    #modules = Module.query.filter(Module.courses.users.any(id=1)).all()
-
     modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
     course = Course.query.filter(Course.id==course_id).first()
-    #modules = Module.query.filter(Module.courses.any(id=course_id)).all()
-
-#     User.query.filter(User.id==current_user.id) #session.query(Course).filter(Course.id.in_([1])).all()
-#
 #
 #     rs = db.session.query(User).from_statement(
 # ...  text("SELECT * FROM users where name=:name")).params(name='ed').a
 #
 #     rs = db.session.execute('SELECT * FROM modules m, courses_modules cm, courses_users cu WHERE m.id = cm.module_id AND cm.course_id = cu.course_id AND cu.user_id = ' + str(current_user.id))
 
-    #
-    # for row in rs:
-    #     print(row)
-
-
-
-    #print(modules.compile(compile_kwargs={"literal_binds": True}))
-
-    # serialized_labels = [
-    #   serialize(Module)
-    #   for label in session.query(LabelsData).filter(LabelsData.deleted == False)
-    # ]
-    # your_json = dumps(serialized_labels)
-
-    #mport json
-    #print(json.dumps(modules.json))
-
-    # modules = Module.query.filter(and_(Module.courses.any(id=course_id),
-    #                               Module.users.any(id=current_user.id))).all()
-    #modules=Module.query.filter().all() #any(id=course_id))).all()
-    # print(len(modules))
     return render_template("modules.html", modules = modules, course = course)
 
 @main.route('/updatepage')
@@ -83,7 +54,6 @@ def todo(module_id):
 
     course = Course.query.filter(Course.modules.any(id=module_id)).first()
 
-
     tasks = db.session.query(Task, Checked).filter(Task.modules.any(id=module_id)).join(Checked, Checked.task_id == Task.id, isouter=True).filter(
                      or_(
                          Checked.user_id.in_([current_user.id]),
@@ -92,14 +62,27 @@ def todo(module_id):
 
     return render_template('todo.html', tasks=tasks, module=module, course = course)
 
-def out():
-    tasks = db.session.query(Task, Checked, subq).filter(Task.modules.any(id=module_id)).join(subq, subq.c.task_id == Task.id, isouter=True).all()
-    subq = db.session.query(Checked).filter(Checked.user_id == current_user.id).subquery()
-
-@main.route('/courses2')
+@main.route("/todo-update/<int:module_id>/<int:todo_id>")
 @login_required
-def courses2():
-    return render_template('courses2.html')
+def update_task(module_id, todo_id):
+    # check whether task checked exists in database
+    task_check = Checked.query.filter(and_(Checked.user_id==current_user.id,
+                                           Checked.module_id == module_id,
+                                           Checked.task_id == todo_id))
+
+    # task does not yet exist in checked table
+    count = task_check.count()
+    if (count==0):
+        new_update = Checked(user_id=current_user.id, module_id=module_id, task_id = todo_id, complete = 1)
+        db.session.add(new_update)
+        db.session.commit()
+
+    if (count==1):
+        task_check.first().complete = not task_check.first().complete
+        db.session.commit()
+
+    return redirect(url_for("main.todo", module_id=module_id))
+
 
 @main.route('/reset')
 def reset_db():
@@ -196,20 +179,4 @@ def reset_db():
 
     db.session.commit()
 
-
-
     return('done')
-
-
-# @main.route("/categories")
-# def modules():
-#     #category_list = Categories.query.all()
-#     return render_template("profile.html", name=current_user.name, category_list=category_list)
-#
-# @main.route("/add_category", methods=["POST"])
-# def add_category():#
-#     title = request.form.get("title")
-#     #new_todo = Categories(name=title,)
-#     db.session.add(new_todo)
-#     db.session.commit()
-#     return redirect(url_for("main.categories"))

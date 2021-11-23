@@ -39,7 +39,7 @@ class User(UserMixin, db.Model):
     nickname = db.Column(db.String(100))
     type = db.Column(db.String(10))
     courses = relationship("Course", secondary = 'courses_users', back_populates = "users")
-
+    checked = relationship("Checked", backref = 'checked', lazy = 'dynamic')
 
 class Module(db.Model):
     __tablename__ = 'modules'

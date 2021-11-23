@@ -26,15 +26,15 @@
       <div class="header">{{task.Task.name}}</div>
       <div class="description">{{task.Task.description}}</div>
           <p><p><p>
-      <a class="ui label">
+      <!--<a class="ui label">
   <i class="mail icon"></i> 23
-</a>
+</a>-->
     </div>
 
   {% if task.Checked.complete == True %}
-  <span class="ui green label">Completed</span>
+  <a class="ui green label" href = /todo-update/{{module.id}}/{{task.Task.id}}>Completed</a>
   {% else %}
-  <span class="ui gray label">Not completed</span>
+  <a class="ui gray label" href = /todo-update/{{module.id}}/{{task.Task.id}}>Not completed</a>
   {% endif %}
 </div>
 
