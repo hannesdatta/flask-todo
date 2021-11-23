@@ -36,6 +36,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
+    nickname = db.Column(db.String(100))
     type = db.Column(db.String(10))
     courses = relationship("Course", secondary = 'courses_users', back_populates = "users")
 
@@ -55,7 +56,7 @@ class Task(db.Model):
     name = db.Column(db.String(100))
     description = db.Column(db.String(100))
     modules = relationship("Module", secondary = 'modules_tasks', back_populates = "tasks")
-    
+
 class Checked(db.Model):
     __tablename__ = 'checked'
     user_id = db.Column(ForeignKey('users.id'), primary_key=True)

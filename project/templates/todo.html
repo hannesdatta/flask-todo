@@ -4,12 +4,14 @@
 
 {% block content %}
 
+
 <div class="ui breadcrumb ">
-  <a class="section">Home</a>
+  <a class="section" href = "/">Home</a>
   <div class="divider"> / </div>
-  <a class="active section">Other name</a>
+  <a class="section" href = "/modules/{{course.id}}">{{course.name}}</a>
   <div class="divider"> / </div>
-  <div class="section">{{module.title}}</div>
+  <a class="active section">{{module.name}}</a>
+
 </div>
 
 

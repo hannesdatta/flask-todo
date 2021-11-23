@@ -20,7 +20,7 @@ def index():
     if current_user.is_authenticated:
          courses = Course.query.filter(Course.users.any(id=current_user.id)).all()
          #courses = Course.query.filter_by(User.id==current_user.id).all()
-         return render_template('courses.html', courses=courses, name=current_user.name)
+         return render_template('courses.html', courses=courses, user=current_user)
     else:
          return render_template("index.html")
 
@@ -79,15 +79,18 @@ def profile():
 @login_required
 def todo(module_id):
 
-    module = Module.query.filter(Module.id==module_id)
-    
+    module = Module.query.filter(Module.id==module_id).first()
+
+    course = Course.query.filter(Course.modules.any(id=module_id)).first()
+
+
     tasks = db.session.query(Task, Checked).filter(Task.modules.any(id=module_id)).join(Checked, Checked.task_id == Task.id, isouter=True).filter(
                      or_(
                          Checked.user_id.in_([current_user.id]),
                          Checked.user_id == None
                      )).all()
 
-    return render_template('todo.html', tasks=tasks, module=module)
+    return render_template('todo.html', tasks=tasks, module=module, course = course)
 
 def out():
     tasks = db.session.query(Task, Checked, subq).filter(Task.modules.any(id=module_id)).join(subq, subq.c.task_id == Task.id, isouter=True).all()
@@ -121,6 +124,7 @@ def reset_db():
                     email='laura@datta-online.com',
                     name='Laura Datta',
                     password=generate_password_hash('test', method='sha256'),
+                    nickname = "Laura",
                     type = 'student')
     # add the new user to the database
     db.session.add(new_user)
