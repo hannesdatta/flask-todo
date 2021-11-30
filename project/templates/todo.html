@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 <div class="ui breadcrumb ">
   <a class="section" href = "/">Home</a>
   <div class="divider"> / </div>
@@ -15,37 +14,42 @@
 </div>
 
 
-<div class="ui celled list">
+<div class="ui divided list">
 
-{% for task in tasks %}
-
-
+  {% for task in tasks %}
 
   <div class="item">
     <div class="content">
       <div class="header">{{task.Task.name}}</div>
-      <div class="description">{{task.Task.description}}</div>
-          <p><p><p>
-      <!--<a class="ui label">
-  <i class="mail icon"></i> 23
-</a>-->
+      <div class="description">
+      {{task.Task.description}}
+      </div>
+
+      {% if task.Checked.complete == True %}
+      <a class="ui label small active" href = /todo-update/{{module.id}}/{{task.Task.id}}>Need more explanation</a>
+      {% else %}
+      <a class="ui label small" href = /todo-update/{{module.id}}/{{task.Task.id}}>Need more explanation</a>
+      {% endif %}
+
+      {% if task.Checked.complete == True %}
+      <a class="ui label small active" href = /todo-update/{{module.id}}/{{task.Task.id}}>Need more practice</a>
+      {% else %}
+      <a class="ui label small" href = /todo-update/{{module.id}}/{{task.Task.id}}>Need more practice</a>
+      {% endif %}
+
+        {% if task.Checked.complete == True %}
+        <a class="ui green label small" href = /todo-update/{{module.id}}/{{task.Task.id}}>Completed</a>
+        {% else %}
+        <a class="ui dark red label small" href = /todo-update/{{module.id}}/{{task.Task.id}}>Not completed</a>
+        {% endif %}
+
+
+
     </div>
 
-  {% if task.Checked.complete == True %}
-  <a class="ui green label" href = /todo-update/{{module.id}}/{{task.Task.id}}>Completed</a>
-  {% else %}
-  <a class="ui gray label" href = /todo-update/{{module.id}}/{{task.Task.id}}>Not completed</a>
-  {% endif %}
-</div>
-
-
+  </div>
 
   {% endfor %}
 
-
-<!--<button class="ui button active">Following</button>
--->
-
 </div>
-
 {% endblock %}
