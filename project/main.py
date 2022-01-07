@@ -138,6 +138,15 @@ def reset_db():
 
     # Add fake users
     new_user = User(id=2,
+                    email='ralph@tilburguniversity.edu',
+                    name='Ralph Delsing',
+                    password=generate_password_hash('cool', method='sha256'),
+                    nickname = "Ralph",
+                    type = 'student')
+    # add the new user to the database
+
+
+    new_user = User(id=2,
                     email='laura@datta-online.com',
                     name='Laura Datta',
                     password=generate_password_hash('test', method='sha256'),
