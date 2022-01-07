@@ -18,43 +18,33 @@
 </head>
 
 <body>
-    <section class="hero is-primary is-fullheight">
 
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
+  <div class="ui container">
 
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
-                                Home
-                            </a>
-                            {% if not current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Login
-                            </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Sign Up
-                            </a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                                Logout
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+<div class="ui secondary small menu">
 
-        <div class="hero-body">
+  <div class="item">
+  <a href="{{ url_for('main.index') }}" class="item"><img src="/static/logo.png"></a>
+  </div>
+
+  <div class="right menu">
+  {% if current_user.is_authenticated %}
+  <a href="{{ url_for('main.profile') }}" class="item">Me</a>
+  <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
+  {% endif %}
+  </div>
+</div>
+
+
+<div class="ui divider"></div>
+
+
             <div class="container has-text-centered">
                {% block content %}
                {% endblock %}
             </div>
-        </div>
-    </section>
+</div>
+
 </body>
 
 </html>

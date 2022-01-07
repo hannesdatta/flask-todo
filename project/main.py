@@ -1,9 +1,9 @@
 # main.py
 
-from flask import Blueprint, render_template
-from flask_login import login_required, current_user
+from flask import Blueprint, render_template, flash
+from flask_login import login_required, current_user, login_user, logout_user
 from flask import Flask, render_template, request, redirect, url_for
-from .models import Module, Task, Course, Modules_Tasks, Checked
+from .models import Module, Task, Course, Modules_Tasks, Checked, User
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import and_, or_, not_
@@ -23,6 +23,39 @@ def index():
          return render_template('courses.html', courses=courses, user=current_user)
     else:
          return render_template("index.html")
+
+@main.route('/', methods=['POST'])
+def main_login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
+
+    user = User.query.filter_by(email=email).first()
+
+    # check if user actually exists
+    # take the user supplied password, hash it, and compare it to the hashed password in database
+    if not user or not check_password_hash(user.password, password):
+        flash('Please check your login details and try again.')
+        return redirect(url_for('main.index')) # if user doesn't exist or password is wrong, reload the page
+
+    # if the above check passes, then we know the user has the right credentials
+    login_user(user, remember=remember)
+    return redirect(url_for('main.index'))
+    #return redirect(url_for('main.courses'))
+
+@main.route('/comments')
+@login_required
+def get_comments():
+    #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
+    #course = Course.query.filter(Course.id==course_id).first()
+#
+#     rs = db.session.query(User).from_statement(
+# ...  text("SELECT * FROM users where name=:name")).params(name='ed').a
+#
+#     rs = db.session.execute('SELECT * FROM modules m, courses_modules cm, courses_users cu WHERE m.id = cm.module_id AND cm.course_id = cu.course_id AND cu.user_id = ' + str(current_user.id))
+
+    return render_template("comments.html")
+
 
 @main.route('/modules/<course_id>')
 @login_required
@@ -44,7 +77,8 @@ def updatepage():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html', name=current_user.name,
+    user=current_user)
 
 @main.route('/todo/<module_id>')
 @login_required

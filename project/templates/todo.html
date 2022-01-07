@@ -1,6 +1,6 @@
 <!-- templates/profile.html -->
 
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 
 </div>
@@ -8,7 +8,8 @@
 
 {% block content %}
 
-<div class="ui breadcrumb ">
+
+<div class="ui breadcrumb tiny">
   <a class="section" href = "/">Home</a>
   <div class="divider"> / </div>
   <a class="section" href = "/modules/{{course.id}}">{{course.name}}</a>
@@ -18,53 +19,64 @@
 </div>
 
 
-  <table class="ui compact celled definition table">
-    <thead>
-      <tr>
-        <th></th>
-        <th class="ten wide">Task</th>
-        <th>Class progress</th>
-        <th>Discussions</th>
-        <th>Feedback</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
+<div class="ui segments">
 
-      {% for task in tasks %}
+ <div class="ui segment">
+    <p>Category Label</p>
+  </div>
+  <div class="ui bottom attached active progress" >
+   <div class="bar"></div>
+ </div>
 
-    <tr>
-        <td>1</td>
-        <td><div class="content">
-              {{task.Task.name}}
-              <div class="description">{{task.Task.description}}
-            </div></td>
-        <td><div class="ui progress">
-    <div class="bar">
-      <div class="progress"></div>
-    </div>
-    <div class="label">Uploading Files</div>
-  </div></td>
-        <td></td>
-        <td></td>
-        <td class="collapsing">
-            {% if task.Checked.complete == True %}
-            <a class="ui label small active green" href = /todo-update/{{module.id}}/{{task.Task.id}}>Completed</a>
-            {% else %}
-            <a class="ui label small" href = /todo-update/{{module.id}}/{{task.Task.id}}>Not completed</a>
-            {% endif %}
+{% for task in tasks %}
+
+  <div class="ui secondary segment">
+    <p>{{task.Task.name}}</p>
+    <p><small>{{task.Task.description}}</small></p>
+
+      <div class="ui compact menu tiny">
+      <a class="item">
+        <i class="icon mail"></i> Need<br>explanation
+        <div class="floating ui label">22</div>
+      </a>
+      <a class="item">
+        <i class="icon users"></i> Need<br>examples
+        <div class="floating ui label">22</div>
+      </a>
+
+      <a class="item">
+        <i class="icon users"></i> Need<br>practice
+        <div class="floating ui label">22</div>
+      </a>
+
+      {% if task.Checked.complete == True %}
+      <a href = /todo-update/{{module.id}}/{{task.Task.id}} class="item active green">
+        <i class="icon check circle"></i> Completed
+        <div class="floating ui green label">22</div>
+      </a>
+      {% else %}
+      <a href = /todo-update/{{module.id}}/{{task.Task.id}} class="item">
+        <i class="icon check circle"></i> Mark as<br>completed
+        <div class="floating ui green label">22</div>
+      </a>
+      {% endif %}
+
+      <a href='/comments' class="item">
+        <i class="icon chat"></i> Join<br>conversation
+        <div class="floating ui label">22</div>
+      </a>
 
 
 
-        </td>
+      </div>
 
-      </tr>
+  </div>
+
+
       {% endfor %}
 
+</div>
 
-    </tbody>
-
-  </table>
 
 
 {% endblock %}

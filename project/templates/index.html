@@ -1,16 +1,51 @@
 <!-- templates/index.html -->
 
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block content %}
-<h1 class="title">
-  Pulse
-</h1>
-<h2 class="subtitle">
-  Staying on track with your course work.
-</h2>
 
-<a href=/login>Login</a>
+<br><br><br>
+
+<h1 class="title">
+  Use Pulse to stay on track with your course work.
+</h1>
+
+<br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %}
+
+<form method="POST" action="/" class="ui compact placeholder segment">
+    <div class="column">
+      <div class="ui form">
+        <div class="field">
+          <label>Email address</label>
+          <div class="ui left icon input">
+            <input type="text" name="email" placeholder="@tilburguniversity.edu">
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="ui left icon input">
+            <input type="password" name="password">
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        <div class="ui checkbox">
+  <input type="checkbox" name="remember" checked="checked">
+  <label>Remember me</label>
+</div>
+<p></p>
+        <button class="ui blue submit button">Email me my<br>Magic Login Link!</button>
+      </div>
+    </div>
+
+</form>
 
 
 {% endblock %}

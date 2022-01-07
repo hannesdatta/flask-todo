@@ -1,18 +1,20 @@
 <!-- templates/profile.html -->
 
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block content %}
 
-
-
+<div class="ui breadcrumb tiny">
+  <a class="section" href = "/">Home</a>
+</div>
 
 
 <h1 class="title">
   Welcome, {{ user.nickname }}!
 </h1>
+<br>
 
-<div class="ui cards centered">
+<div class="ui cards">
 
   {% for course in courses %}
 

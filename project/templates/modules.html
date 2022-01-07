@@ -1,11 +1,11 @@
 <!-- templates/profile.html -->
 
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block content %}
 
 
-<div class="ui breadcrumb ">
+<div class="ui breadcrumb tiny">
   <a class="section" href = "/">Home</a>
   <div class="divider"> / </div>
   <a class="active section">{{course.name}}</a>
@@ -15,7 +15,7 @@
 <p><p>
 
 
-<div class="ui cards centered">
+<div class="ui cards">
 
   {% for module in modules %}
 

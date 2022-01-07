@@ -1,59 +1,46 @@
 <!-- templates/profile.html -->
 
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome, {{ name }}!
-</h1>
 
-
-<div style="margin-top: 50px;" class="ui container">
-    <h1 class="ui center aligned header">To Do App</h1>
-
-    <form class="ui form" action="/add_category" method="post">
-        <div class="field">
-            <label>Category Title</label>
-            <input type="text" name="title" placeholder="Enter Category..."><br>
-        </div>
-        <button class="ui blue button" type="submit">Add</button>
-    </form>
-
-    <hr>
-
-
-<div class="ui divided items">
-
-  {% for category in category_list %}
-
-  <div class="item">
-    <div class="content">
-      <a class="header" href="/">{{ category.name }}</a>
-      <div class="meta">
-        <span class="cinema">Union Square 14</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-
-        <div class="ui label">Completed
-        <div class="detail">20%</div>
-          </div>
-
-        <div class="ui label">Questions
-        <div class="detail">5</div>
-
-      </div>
-
-
-    </div>
-
-    </div>
-  </div>
-
-  {% endfor %}
-
+<div class="ui breadcrumb tiny">
+  <a class="section" href = "/">Home</a>
+  
 </div>
+
+<p><p>
+
+
+<h1 class="title">
+  Hi, {{ user.nickname }}!
+
+</h1>
+<b>Change how you interact with Pulse.</b>
+<br>
+
+<br>
+<br>
+
+This is who we think you are:
+<div class="ui input disabled">
+  <input type="text" placeholder="Your actual name (we won't share it!)">
+</div>
+
+<br>
+
+
+Which nickname would you like to use?
+<div class="ui input">
+  <input type="text" placeholder="Nickname">
+</div>
+
+<br>
+
+<div class="ui slider checkbox">
+  <input type="checkbox" name="newsletter" checked="checked">
+  <label>I want to see the progress of others students</label>
+</div>
+<br>
 
 {% endblock %}
