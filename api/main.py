@@ -232,6 +232,10 @@ def OLDuser_getmodules(user_id,module_id):
 @app.get("/user.gettoken/")
 async def user_gettoken(email: str, request: Request):
     user = users.search(where('email') == email)
+    # set next user id
+    max_id=0
+    for u in users.all():
+        if (u['id']>max_id): max_id=u['id']
 
     token = str(math.ceil(random()*1E6))+'researchcloud'
     hashed_token = generate_password_hash(token, method = 'sha256')[7:]
@@ -255,10 +259,12 @@ async def user_gettoken(email: str, request: Request):
         print('new user')
         users.insert({'email': email,
                       'expiry': expiry,
-                      'token': hashed_token})
+                      'token': hashed_token,
+                      'id': max_id+1})
 
         return({'token': hashed_token,
                 'new': 'True',
+                'id': max_id+1,
                 'success': 'True'})
 
 @app.get("/user.checktoken/{token}")
@@ -266,7 +272,7 @@ def user_checktoken(token):
     token = users.search(where('token') == token)
     print(token)
     now = datetime.utcnow()
-
+    print(len(token))
     if (len(token)>0):
         #remember = False
         remember = True

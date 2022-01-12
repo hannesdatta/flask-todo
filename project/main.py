@@ -61,7 +61,7 @@ def main_login_post():
 
     # get users from APIs
     import re
-    regex = r'[@]tilburguniversity[.]edu$'
+    regex = r'[@]tilburguniversity[.]edu$|[@]datta[-]online[.]com$'
 
     # is user authorized to use service?
     if len(re.findall(regex, email))<1:
