@@ -14,6 +14,16 @@
 </h1>
 <br>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div class="ui warning message">
+  {{ messages[0] }}
+</div>
+
+{% endif %}
+{% endwith %}
+
 <div class="ui cards">
 
   {% for course in courses %}
@@ -25,17 +35,21 @@
         {{course.description}}
       </div>
     </div>
+    {% if course.has_modules %}
     <a class="ui bottom attached button" href="/modules/{{course.id}}">
-      <i class="angle right icon"></i>
+    {% else %}
+    <a class="ui bottom attached button disabled" href="/modules/{{course.id}}">
+    {% endif %}
+        <i class="angle right icon"></i>
       View goals
     </a>
     <div class="extra content">
       <span class="right floated">
-        Joined in 2021
+        Joined in 2022
       </span>
       <span>
         <i class="user icon"></i>
-        75 members
+        40 students
       </span>
 
     </div>

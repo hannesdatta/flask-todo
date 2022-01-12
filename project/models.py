@@ -1,6 +1,5 @@
 # models.py
 
-from flask_login import UserMixin
 from . import db
 from sqlalchemy import Table, Column, Integer, ForeignKey, DateTime
 from sqlalchemy.orm import relationship

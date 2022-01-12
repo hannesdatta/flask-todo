@@ -13,14 +13,15 @@
 <br>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
-    <div class="notification is-danger">
-        {{ messages[0] }}
-    </div>
+
+<div class="ui warning message">
+  {{ messages[0] }}
+</div>
+
 {% endif %}
 {% endwith %}
 
 <form method="POST" action="/" class="ui compact placeholder segment">
-    <div class="column">
       <div class="ui form">
         <div class="field">
           <label>Email address</label>
@@ -29,23 +30,12 @@
             <i class="user icon"></i>
           </div>
         </div>
-        <div class="field">
-          <label>Password</label>
-          <div class="ui left icon input">
-            <input type="password" name="password">
-            <i class="lock icon"></i>
-          </div>
-        </div>
         <div class="ui checkbox">
-  <input type="checkbox" name="remember" checked="checked">
-  <label>Remember me</label>
-</div>
-<p></p>
-        <button class="ui blue submit button">Email me my<br>Magic Login Link!</button>
+        <input type="checkbox" name="remember" checked="checked">
+        <label>Remember me</label>
       </div>
-    </div>
-
+<p></p>
+        <button class="ui blue submit button">Email a<br>Magic Link!</button>
+      </div>
 </form>
-
-
 {% endblock %}
