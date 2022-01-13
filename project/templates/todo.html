@@ -19,71 +19,32 @@
 </div>
 
 
-<div class="ui segments">
 
 
 {% for category in tasks['items'] %}
- <div class="ui segment">
+ <div class="ui secondary segment">
     <p>{{ category.category_name }}</p>
   </div>
-  <div class="ui bottom attached active progress" >
-   <div class="bar"></div>
- </div>
-
-
 
   {% for task in category['items'] %}
 
-    <div class="ui secondary segment">
-      <p>{{task.name}}</p>
-      <p><small>{{task.description}}</small></p>
+    <div class="ui segment">
+      <div class="ui grid">
+  <div class="fourteen wide column"><a href = "/comments?module_id={{tasks.id}}&task_id={{task.id}}" >{{task.name}}</a></div>
+  <div class="two wide column">
 
-        <div class="ui compact menu tiny">
-        {% if task['stats']['explain'] == True %}
-        <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{tasks.id}}">
-        {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{tasks.id}}">
-        {% endif %}
-          <i class="icon mail"></i> Need<br>explanation
-          <div class="floating ui label">{{task['stats']['stat_explain']}}</div>
-        </a>
+    {% if task['stats']['completed'] == False %}
+      <a href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{tasks.id}}"><small>Mark as complete</a>
+    {% else %}
+      <a href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{tasks.id}}"><small><i class="icon check circle"></i>Completed</a>
+    {% endif %}
 
 
-        {% if task['stats']['example'] == True %}
-        <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=example&status=0&module={{tasks.id}}">
-        {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=example&status=1&module={{tasks.id}}">
-        {% endif %}
-          <i class="icon users"></i> Need<br>example
-          <div class="floating ui label">{{task['stats']['stat_example']}}</div>
-        </a>
+  </div>
+  </div>
 
-        {% if task['stats']['practice'] == True %}
-        <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{tasks.id}}">
-        {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{tasks.id}}">
-        {% endif %}
-          <i class="icon users"></i> Need<br>practice
-          <div class="floating ui label">{{task['stats']['stat_practice']}}</div>
-        </a>
+      <p>{{task.description}}</p>
 
-        <a href='/comments' class="item">
-          <i class="icon chat"></i> Join<br>conversation
-          <div class="floating ui label">{{task['stats']['stat_comments']}}</div>
-        </a>
-
-
-        {% if task['stats']['completed'] == True %}
-        <a class="item active green" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{tasks.id}}">
-        {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{tasks.id}}">
-        {% endif %}
-          <i class="icon check circle"></i> Completed
-          <div class="floating ui green label">{{task['stats']['stat_completed']}}</div>
-        </a>
-
-
-        </div>
 
     </div>
 
@@ -92,8 +53,6 @@
 
 
 {% endfor %}
-
- </div>
 
 
 {% endblock %}

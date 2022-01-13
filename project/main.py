@@ -8,6 +8,7 @@ from sqlalchemy import and_, or_, not_
 from sqlalchemy.sql import text
 import requests
 from .emailtool import send_mail
+from flask import Markup
 
 main = Blueprint('main', __name__)
 
@@ -29,7 +30,11 @@ def index():
              except:
                  1
              course_list.append(c)
-         #
+
+         if current_user.created==current_user.changed:
+            flash(Markup('Uhh... we picked a random nickname for you! Head over to your <a href="/me" class = "alert-link">settings</a> to change it!<br>You can make this message go away by changing your settings once...'))
+            #flash(')
+
          #courses = Course.query.filter_by(User.id==current_user.id).all()
          return render_template('courses.html', courses=course_list, user=current_user)
     else:
@@ -75,10 +80,10 @@ def main_login_post():
 
         if (res.json().get('new')=='False'):
             flash('Boom! Check your email and use your magic login link!<br>'+ link)
-            send_mail(email, "Log in to *Pulse* now!", "Thanks for requesting your MAGIC LINK to log in back to *Pulse*. " + link)
+            #send_mail(email, "Log in to *Pulse* now!", "Thanks for requesting your MAGIC LINK to log in back to *Pulse*. " + link)
         else:
             flash('Amazing that you join! CHeck your email now and use your magic link to log in!<br>'+link)
-            send_mail(email, "Welcome to Pulse!", "Thanks for using PULSE, Tilburg's tool to help you keep on track with your course work. Please use this MAGIC LINK to login now: " + link)
+            #send_mail(email, "Welcome to Pulse!", "Thanks for using PULSE, Tilburg's tool to help you keep on track with your course work. Please use this MAGIC LINK to login now: " + link)
     return redirect(url_for('main.index'))
 
 class AppUser(UserMixin, object):
@@ -116,15 +121,24 @@ def launch(token):
 @main.route('/comments')
 @login_required
 def get_comments():
-    #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
-    #course = Course.query.filter(Course.id==course_id).first()
-#
-#     rs = db.session.query(User).from_statement(
-# ...  text("SELECT * FROM users where name=:name")).params(name='ed').a
-#
-#     rs = db.session.execute('SELECT * FROM modules m, courses_modules cm, courses_users cu WHERE m.id = cm.module_id AND cm.course_id = cu.course_id AND cu.user_id = ' + str(current_user.id))
+    task_id = request.args.get('task_id')
+    module_id = request.args.get('module_id')
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
+    #print(url)
+    res=requests.get(url).json()
+    task = {}
 
-    return render_template("comments.html")
+    for i in res.get('items'):
+        for j in i.get('items'):
+            if j.get('id')==task_id:
+                task = j
+    task['module_id']=res['id']
+    task['module_name']=res['name']
+    task['course_name']=res['course_name']
+    task['course_id']=res['course_id']
+
+
+    return render_template('comments.html', task=task)
 
 
 @main.route('/modules/<course_id>')
@@ -143,7 +157,7 @@ def get_modules(course_id):
 def updatepage():
     return render_template('update.html', name=current_user.name)
 
-@main.route('/profile')
+@main.route('/me')
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name,

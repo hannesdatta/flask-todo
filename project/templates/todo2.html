@@ -1,0 +1,102 @@
+<!-- templates/profile.html -->
+
+{% extends "base2.html" %}
+
+
+</div>
+
+
+{% block content %}
+
+
+<div class="ui breadcrumb tiny">
+  <a class="section" href = "/">Home</a>
+  <div class="divider"> / </div>
+  <a class="section" href = "/modules/{{tasks.course_id}}">{{tasks.course_name}}</a>
+  <div class="divider"> / </div>
+  <a class="active section">{{tasks.name}}</a>
+
+</div>
+
+
+ <div class="ui compact menu">
+   <div class="ui simple dropdown item">
+     Dropdown
+     <i class="dropdown icon"></i>
+     <div class="menu">
+       <div class="item active">Choice 1</div>
+       <div class="item">Choice 2</div>
+       <div class="item">Choice 3</div>
+     </div>
+   </div>
+ </div>
+
+
+<div class="ui segments">
+
+
+{% for category in tasks['items'] %}
+ <div class="ui segment">
+    <p>{{ category.category_name }}</p>
+  </div>
+  <div class="ui bottom attached active progress" >
+   <div class="bar"></div>
+ </div>
+
+
+
+  {% for task in category['items'] %}
+
+    <div class="ui secondary segment">
+      <p>{{task.name}}</p>
+      <p><small>{{task.description}}</small></p>
+
+        <div class="ui compact menu tiny">
+        {% if task['stats']['explain'] == True %}
+        <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{tasks.id}}">
+        {% else %}
+        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{tasks.id}}">
+        {% endif %}
+          <i class="icon mail"></i> Need<br>explanation
+          <div class="floating ui label">{{task['stats']['stat_explain']}}</div>
+        </a>
+
+        {% if task['stats']['practice'] == True %}
+        <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{tasks.id}}">
+        {% else %}
+        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{tasks.id}}">
+        {% endif %}
+          <i class="icon users"></i> Need<br>practice
+          <div class="floating ui label">{{task['stats']['stat_practice']}}</div>
+        </a>
+
+        <a href='/comments' class="item">
+          <i class="icon chat"></i> Join<br>conversation
+          <div class="floating ui label">{{task['stats']['stat_comments']}}</div>
+        </a>
+
+
+        {% if task['stats']['completed'] == True %}
+        <a class="item active green" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{tasks.id}}">
+        {% else %}
+        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{tasks.id}}">
+        {% endif %}
+          <i class="icon check circle"></i> Completed
+          <div class="floating ui green label">{{task['stats']['stat_completed']}}</div>
+        </a>
+
+
+        </div>
+
+    </div>
+
+
+        {% endfor %}
+
+
+{% endfor %}
+
+ </div>
+
+
+{% endblock %}
