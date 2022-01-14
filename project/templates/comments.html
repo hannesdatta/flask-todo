@@ -6,15 +6,56 @@
 
 <div class="ui breadcrumb tiny">
   <a class="section" href = "/">Home</a>
+  <div class="divider"> / </div>
+  <a class="section" href = "/modules/{{task.course_id}}">{{task.course_name}}</a>
+  <div class="divider"> / </div>
+  <a href = "/todo/{{task.module_id}}" class="section">{{task.module_name}}</a>
+  <div class="divider"> / </div>
+  <a class="active section">{{task.name}}</a>
 
 </div>
 
 
-<h1 class="title">
-  Let's talk about...
+<h1>
+{{task.name}}
 </h1>
+<p>{{task.description}}</p>
+
+<div class="ui basic segment right aligned">
+
+    <div class="ui compact menu tiny">
+    {% if task['stats']['explain'] == True %}
+    <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{task.module_id}}">
+    {% else %}
+    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{task.module_id}}">
+    {% endif %}
+      <i class="icon mail"></i> Need<br>explanation
+      <div class="floating ui label">{{task['stats']['stat_explain']}}</div>
+    </a>
+
+    {% if task['stats']['practice'] == True %}
+    <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{task.module_id}}">
+    {% else %}
+    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{task.module_id}}">
+    {% endif %}
+      <i class="icon users"></i> Need<br>practice
+      <div class="floating ui label">{{task['stats']['stat_practice']}}</div>
+    </a>
 
 
+    {% if task['stats']['completed'] == True %}
+    <a class="item active green" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{task.module_id}}">
+    {% else %}
+    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{task.module_id}}">
+    {% endif %}
+      <i class="icon check circle"></i> Completed
+      <div class="floating ui green label">{{task['stats']['stat_completed']}}</div>
+    </a>
+
+
+    </div>
+
+</div>
 
 <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>

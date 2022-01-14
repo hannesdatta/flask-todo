@@ -6,6 +6,13 @@ import math
 from datetime import datetime, timedelta
 from random import random
 from werkzeug.security import generate_password_hash, check_password_hash
+from aux import random_nickname
+import time
+
+
+def get_timestamp():
+    return(math.floor(time.time()))
+
 
 from databases import Database
 database = Database('sqlite:///events.db')
@@ -32,8 +39,7 @@ async def fetch_data():#id: int):
 async def user_settask(user_id: int, task_id: str,
                        type: str,
                        status: int):
-    import time
-    timest = math.floor(time.time())
+    timest = get_timestamp()
 
 
     query = "INSERT INTO events(user_id, task_id, type, timestamp, status) VALUES (:user_id, :task_id, :type, :timestamp, :status)"
@@ -243,6 +249,7 @@ async def user_gettoken(email: str, request: Request):
     now = datetime.utcnow()
     expiry = (now + timedelta(minutes=15)).strftime('%Y-%m-%d %H:%M:%S')
 
+    timestamp = get_timestamp()
 
     if (len(user)>0):
         # user exists, update login token
@@ -258,7 +265,11 @@ async def user_gettoken(email: str, request: Request):
     else:
         print('new user')
         users.insert({'email': email,
+                      'nickname': random_nickname(),
+                      'name': '',
                       'expiry': expiry,
+                      'created': timestamp,
+                      'changed': timestamp,
                       'token': hashed_token,
                       'id': max_id+1})
 

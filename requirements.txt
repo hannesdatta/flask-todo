@@ -27,3 +27,4 @@ Flask-SQLAlchemy==2.5
 fastapi==0.71.00
 uvicorn==0.16.0
 tinydb==4.5.2
+random-username==1.0.2
