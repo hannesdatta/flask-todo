@@ -24,9 +24,9 @@
 
 <form method="POST" action="/saveuser/">
 
-  This is who we think you are:
+  E-mail address (you can't change this)
   <div class="ui input disabled">
-    <input type="text" placeholder="Your actual name (we won't share it!)">
+    <input type="text" placeholder="{{user.email}} ">
   </div>
 
   <br>
@@ -38,14 +38,14 @@
   </div>
 
   <br>
-
+<!--
   <div class="ui slider checkbox">
     <input type="checkbox" name="newsletter" checked="checked">
     <label>I want to see the progress of others students</label>
   </div>
   <br>
   <br>
-
+-->
 
   <button class="ui blue button">Save</button>
 
@@ -54,7 +54,8 @@
   <br>
 
 
-  <button class="ui button">Delete my data</button>
+<!--  <button class="ui button">Delete my data</button>
+  -->
 </form>
 
 {% endblock %}
