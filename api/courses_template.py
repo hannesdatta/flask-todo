@@ -49,7 +49,7 @@ course ={
             },
         {"category_name": "2. Familiarize with Scrum",
         "id": 2,
-        "description": "Scrum is avery flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
+        "description": "Scrum is a very flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
         "items" : [
             {
             "name": "Read the page on using Scrum on TSH.",
@@ -60,7 +60,7 @@ course ={
             {
             "name": "Understand what the benefits are of using the scrum framework.",
             "id": "task_dprep_1_2_1",
-            "description": "Scrum is avery flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
+            "description": "Scrum is a very flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
             "links": ["https://tilburgsciencehub.com/learn/scrum"]
             }]
             },
