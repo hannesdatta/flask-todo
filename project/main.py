@@ -123,22 +123,50 @@ def launch(token):
 def get_comments():
     task_id = request.args.get('task_id')
     module_id = request.args.get('module_id')
+
+    # retrieve stats for all tasks
     url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
-    #print(url)
     res=requests.get(url).json()
     task = {}
 
+    # isolate current task
     for i in res.get('items'):
         for j in i.get('items'):
             if j.get('id')==task_id:
                 task = j
+
+    # pass some meta data to task object
     task['module_id']=res['id']
     task['module_name']=res['name']
     task['course_name']=res['course_name']
     task['course_id']=res['course_id']
 
+    # load comments
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/comments/show/?user_id=' + str(current_user.id) + '&task_id=' + str(task_id)
+    comments=requests.get(url).json()
 
-    return render_template('comments.html', task=task)
+    comment_dic = []
+
+    from datetime import datetime
+
+    for comment in comments:
+        res=comment
+        ts_date=datetime.utcfromtimestamp(res['timestamp']).strftime('%d-%m-%Y')
+        ts_time=datetime.utcfromtimestamp(res['timestamp']).strftime('%H:%M')
+
+        res['timestamp_printable'] = ts_date + ' at ' + ts_time
+        if (datetime.utcnow().strftime('%d-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Today at ' + ts_time
+        if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Yesterday at ' + ts_time
+        res['show_delete'] = res['user_id']==current_user.id
+
+        url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.info/' + str(res['user_id'])
+        nickname=requests.get(url).json()['nickname']
+        res['nickname'] = nickname
+        comment_dic.append(res)
+    #    return redirect(request.referrer)
+    #session['url'] = url_for('comments')
+
+    return render_template('comments.html', task=task, comments=comment_dic)
 
 
 @main.route('/modules/<course_id>')
@@ -184,5 +212,43 @@ def update_task():
     res=requests.get(url).json()
     #print(res)
 
+    return redirect(request.referrer)
+    #return redirect(url_for("main.todo", module_id=module))
 
-    return redirect(url_for("main.todo", module_id=module))
+
+@main.route('/delete_comment/')
+@login_required
+def del_message():
+    comment_id = request.args.get('comment_id')
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/comments/delete/?comment_id=' + comment_id
+    print(url)
+
+    res = requests.get(url)
+    #print(res.text)
+    return redirect(request.referrer)
+
+
+@main.route('/submit_comment/', methods=['POST'])
+@login_required
+def submit_message():
+
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/comment'
+    import json
+    requests.post(url, data = json.dumps({'text':request.form.get('comment'),
+                                         'user_id': current_user.id,
+                                         'task_id': request.args.get('task_id')
+                                         }))
+
+    return redirect(request.referrer)
+
+@main.route('/saveuser/', methods=['POST'])
+@login_required
+def saveuser():
+
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.setinfo'
+    import json
+    requests.post(url, data = json.dumps({'nickname':request.form.get('nickname'),
+                                         'user_id': current_user.id
+                                         }))
+
+    return redirect(request.referrer)

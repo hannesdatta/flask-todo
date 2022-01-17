@@ -6,7 +6,7 @@ import math
 from datetime import datetime, timedelta
 from random import random
 from werkzeug.security import generate_password_hash, check_password_hash
-from aux import random_nickname
+from name import random_nickname
 import time
 
 
@@ -15,7 +15,7 @@ def get_timestamp():
 
 
 from databases import Database
-database = Database('sqlite:///events.db')
+database = Database('sqlite:///events_comments.db')
 
 app = FastAPI()
 
@@ -53,7 +53,6 @@ async def user_settask(user_id: int, task_id: str,
     await database.execute_many(query=query, values=values)
 
 
-
 @app.get("/insert")
 async def insert():
     import time
@@ -84,13 +83,27 @@ async def insert():
 async def create_data():
     # Create a table.
     query = """CREATE TABLE events (user_id INTEGER NOT NULL,
-                                    task_id VARCHAR(12) NOT NULL,
+                                    task_id VARCHAR(24) NOT NULL,
                                     type VARCHAR(12) NOT NULL,
                                     timestamp INTEGER NOT NULL,
                                     status INT,
                                     PRIMARY KEY(user_id, task_id, type, timestamp))"""
     await database.execute(query=query)
 
+@app.get("/create_comments")
+async def create_data2():
+    # Create a table.
+
+    query = """CREATE TABLE comments (id INTEGER PRIMARY KEY,
+                                    user_id INTEGER NOT NULL,
+                                    task_id VARCHAR(24) NOT NULL,
+                                    timestamp INTEGER NOT NULL,
+                                    parent INTEGER,
+                                    text TEXT)"""
+    query2 = """CREATE INDEX task_index ON comments (task_id);"""
+
+    await database.execute(query=query)
+    await database.execute(query=query2)
 
 @app.get("/")
 def read_root():
@@ -123,6 +136,32 @@ def user_getinfo(user_id):
     else:
         return({'success': False})
 
+
+@app.post("/user.setinfo/")
+async def user_setinfo(request: Request):
+    obj = await request.json()
+
+    user_id = obj.get('user_id')
+
+    user = users.search(where('id') == user_id)
+
+    if (len(user)>0):
+        # exists
+        nickname = obj['nickname']
+
+        print('user exists')
+        users.update({'nickname': nickname,
+                      'changed': get_timestamp()},
+                     where('id') == user_id)
+
+    else:
+        return({'status':999, 'msg': 'user does not exist!'})
+
+    return {'status':200}
+
+
+
+
 @app.get("/user.get_courses/{user_id}")
 def user_getcourses(user_id):
     return(courses.all())
@@ -138,7 +177,60 @@ def user_getmodules(user_id,course_id):
 #    results = await database.fetch_all(query=query)
 #
 #    return  results
+@app.get("/comments/show/")
+async def show_comments(request: Request, task_id: str=None, user_id: int=None):
+    if task_id is None:
+        query = """SELECT * FROM comments"""
+        # WHERE task_id = """""+ task_id + """"""""
+    else:
+        query = "SELECT * FROM comments WHERE task_id = \""+ task_id + "\""
 
+
+    results = await database.fetch_all(query=query)
+    print(type(results))
+
+    def row2dict(row):
+        d = {}
+        for column in row.__table__.columns:
+            d[column.name] = str(getattr(row, column.name))
+
+        return d
+
+    res = []
+    for resu in results:
+        print(type(resu))
+
+        out=dict(resu)
+        out['user_nickname'] = 'hannes'
+        res.append(out)
+
+    return(res)
+
+@app.get("/comments/delete/")
+async def del_comments(request: Request, comment_id: int):
+    query = "DELETE FROM comments WHERE id = " + str(comment_id)
+    results = await database.execute(query=query)
+    return {'status':200}
+
+@app.post("/comment/")
+async def create_item(request: Request):
+    obj = await request.json()
+
+    timest = get_timestamp()
+    user_id = obj.get('user_id')
+    task_id = obj.get('task_id')
+    text = obj.get('text')
+
+    query = "INSERT INTO comments(user_id, task_id, timestamp, text) VALUES (:user_id, :task_id, :timestamp, :text)"
+
+    values = [
+            {"user_id": user_id, "task_id": task_id,
+            'timestamp': timest, "text": text}
+        ]
+
+    await database.execute_many(query=query, values=values)
+
+    return {'status':200}
 
 @app.get("/user.get_tasks/")
 async def user_gettoken(user_id: int, module_id: int, request: Request):
@@ -298,18 +390,3 @@ def user_checktoken(token):
         #user = User.query.filter_by(email=email).first()
         #now = datetime.utcnow()
     return({'success':False})
-
-
-#@app.get("/")
-
-
-#@app.get("/tasks/{module_id}")
-
-
-#@app.get("/tasks/{module_id}/update/{task_id}")
-
-#@app.get("/tasks/{module_id}/conversation/{task_id}")
-
-#@app.get("/tasks/{module_id}/conversation/{task_id}/add")
-
-#def get_tasks

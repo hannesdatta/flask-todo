@@ -12,7 +12,7 @@ course ={
       "order": 1,
       "deadline": "", #"2022-01-31",
       "items": [
-        {"category_name": "Get started installing your computer!",
+        {"category_name": "1. Get started installing your computer!",
          "id": 1,
          "description": "To follow this course and work on your team project later on, it is necessary to have installed the software, so make sure to complete this part right away!",
          "items" : [
@@ -49,7 +49,7 @@ course ={
             },
             {"category_name": "2. Familiarize with Scrum",
             "id": 2,
-            "description": "Scrum is avery flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
+            "description": "Scrum is a very flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
             "items" : [
             {
             "name": "Read the page on using Scrum on TSH.",

@@ -22,37 +22,39 @@
 <br>
 <br>
 
-This is who we think you are:
-<div class="ui input disabled">
-  <input type="text" placeholder="Your actual name (we won't share it!)">
-</div>
+<form method="POST" action="/saveuser/">
 
-<br>
+  This is who we think you are:
+  <div class="ui input disabled">
+    <input type="text" placeholder="Your actual name (we won't share it!)">
+  </div>
 
-
-Which nickname would you like to use?
-<div class="ui input">
-  <input type="text" placeholder="Nickname">
-</div>
-
-<br>
-
-<div class="ui slider checkbox">
-  <input type="checkbox" name="newsletter" checked="checked">
-  <label>I want to see the progress of others students</label>
-</div>
-<br>
-<br>
+  <br>
 
 
-<button class="ui button">Export my data</button>
+  Which nickname would you like to use?
+  <div class="ui input">
+    <input name = 'nickname' type="text" placeholder="{{user.nickname}}">
+  </div>
 
-<br>
+  <br>
 
-<br>
+  <div class="ui slider checkbox">
+    <input type="checkbox" name="newsletter" checked="checked">
+    <label>I want to see the progress of others students</label>
+  </div>
+  <br>
+  <br>
 
 
-<button class="ui button">Delete my data</button>
+  <button class="ui blue button">Save</button>
 
+  <br>
+
+  <br>
+
+
+  <button class="ui button">Delete my data</button>
+</form>
 
 {% endblock %}

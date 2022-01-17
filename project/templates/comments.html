@@ -21,42 +21,69 @@
 </h1>
 <p>{{task.description}}</p>
 
-<div class="ui basic segment right aligned">
-
-    <div class="ui compact menu tiny">
-    {% if task['stats']['explain'] == True %}
-    <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{task.module_id}}">
-    {% else %}
-    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{task.module_id}}">
-    {% endif %}
-      <i class="icon mail"></i> Need<br>explanation
-      <div class="floating ui label">{{task['stats']['stat_explain']}}</div>
-    </a>
-
-    {% if task['stats']['practice'] == True %}
-    <a class="item active" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{task.module_id}}">
-    {% else %}
-    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{task.module_id}}">
-    {% endif %}
-      <i class="icon users"></i> Need<br>practice
-      <div class="floating ui label">{{task['stats']['stat_practice']}}</div>
-    </a>
-
-
-    {% if task['stats']['completed'] == True %}
-    <a class="item active green" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{task.module_id}}">
-    {% else %}
-    <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{task.module_id}}">
-    {% endif %}
-      <i class="icon check circle"></i> Completed
-      <div class="floating ui green label">{{task['stats']['stat_completed']}}</div>
-    </a>
-
-
-    </div>
+<div class="ui link list">
+  {% for link in task['links'] %}
+<a class="item" href="{{link}}">{{link}}</a>
+{% endfor %}
 
 </div>
 
+<div class="ui labels">
+  {% if task['stats']['completed'] == True %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{task.module_id}}" class="ui active label">Completed<div class="detail">{{task['stats']['stat_completed']}}</div></a>
+  {% else %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{task.module_id}}" class="ui label">Completed<div class="detail">{{task['stats']['stat_completed']}}</div></a>
+  {% endif %}
+
+  {% if task['stats']['explain'] == True %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{task.module_id}}" class="ui active label">Need explanation<div class="detail">{{task['stats']['stat_explain']}}</div></a>
+  {% else %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{task.module_id}}" class="ui label">Need explanation<div class="detail">{{task['stats']['stat_explain']}}</div></a>
+  {% endif %}
+
+  {% if task['stats']['practice'] == True %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{task.module_id}}" class="ui active label">Need practice<div class="detail">{{task['stats']['stat_practice']}}</div></a>
+  {% else %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{task.module_id}}" class="ui label">Need practice<div class="detail">{{task['stats']['stat_practice']}}</div></a>
+  {% endif %}
+
+  {% if task['stats']['givehelp'] == True %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=givehelp&status=0&module={{task.module_id}}" class="ui active label">Can help others<div class="detail">{{task['stats']['stat_givehelp']}}</div></a>
+  {% else %}
+  <a href = "/todo-update/?task_id={{task['id']}}&type=givehelp&status=1&module={{task.module_id}}" class="ui label">Can help others<div class="detail">{{task['stats']['stat_givehelp']}}</div></a>
+  {% endif %}
+
+</div>
+
+
+
+<div class="ui comments">
+  <h3 class="ui dividing header">Comments</h3>
+
+  {% for comment in comments %}
+  <div class="comment">
+    <a class="avatar">
+      <img src="/images/avatar/small/matt.jpg">
+    </a>
+    <div class="content">
+      <a class="author">{{comment.nickname}}</a>
+      <div class="metadata">
+        <span class="date">{{comment.timestamp_printable}}</span>
+      </div>
+      <div class="text">
+        {{comment.text}}
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+        {% if comment.show_delete == True %}
+        <a class="delete" href = "/delete_comment/?comment_id={{comment.id}}">Delete</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+<!--
 <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
   <div class="comment">
@@ -124,22 +151,23 @@
       <div class="text">
         Dude, this is awesome. Thanks so much
       </div>
+
       <div class="actions">
         <a class="reply">Reply</a>
       </div>
     </div>
   </div>
-  <form class="ui reply form">
+
+-->
+  <form action="/submit_comment/?task_id={{task.id}}" method="POST" class="ui reply form">
     <div class="field">
-      <textarea></textarea>
+      <textarea name = "comment"></textarea>
     </div>
-    <div class="ui blue labeled submit icon button">
+    <button class="ui blue labeled submit icon button">
       <i class="icon edit"></i> Add Comment
-    </div>
+    </button>
   </form>
 </div>
-
-
 
 
 {% endblock %}
