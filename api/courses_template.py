@@ -1,7 +1,7 @@
 
-course ={
+course_dprep ={
   "name": "Data Preparation and Workflow Management",
-  "description": "Learn how to scrape the web!",
+  "description": "Learn how to efficiently manage empirical research projects!",
   "id": 1,
   "users": [], # leeg laten
   "modules": [
@@ -679,4 +679,430 @@ course ={
 }
 
 
-print(course)
+print(course_dprep)
+
+
+
+course_odcm ={
+  "name": "Online Data Collection and Management",
+  "description": "Learn how to scrape the web!",
+  "id": 1,
+  "users": [], # leeg laten
+  "modules": [
+    {
+      "name": "Week 1",
+      "description": "Getting started with scraping and APIs in Python!",
+      "id": 1,
+      "order": 1,
+      "deadline": "", #"2022-01-31",
+      "items": [
+        {"category_name": "1. Get started installing your computer!",
+         "id": 1,
+         "description": "To follow this course and work on your team project later on, it is necessary to have installed the software, so make sure to complete this part right away!",
+         "items" : [
+            {
+              "name": "Install Anaconda",
+              "id": "task_odcm_1_1_1",
+              "description": "Anaconda is a Python distribution and set you up with everything that you need to work with Python!",
+              "links": ["https://odcm.hannesdatta.com/docs/tutorials/software/anaconda"],
+              "optional": False
+            },
+            {
+              "name": "Familiarize yourself with Jupyter Notebook",
+              "id": "task_odcm_1_1_2",
+              "description": "In this course, we use Jupyter Notebook as it is a great environment to start your coding journey and it can easily combine code with text!",
+              "links": ["https://odcm.hannesdatta.com/docs/tutorials/software/jupyter/"],
+              "optional":  False
+            },
+            {
+              "name": "Verify that you have a premium account at Datacamp (i.e., mailed the library)",
+              "id": "task_odcm_1_1_3",
+              "description": "We use Datacamp in this class, but you need to go through a quite cumbersome onboarding procedure with the University library. Do this soon so you can enjoy premium content without having to pay for it!",
+              "links": ["https://odcm.hannesdatta.com/docs/course/support/datacamp/"],
+              "optional":  False
+            }]
+            },
+        {"category_name": "2. Weblecture on web scraping and APIs",
+        "id": 2,
+        "description": "",
+        "items" : [
+            {
+            "name": "Watch the weblecture explaining what web scraping and APIs are!",
+            "id": "task_odcm_1_2_1",
+            "description": "In this course, you learn both how to scrape data from websites aswell as how to extract data using an API. Make sure to understand the concepts and the differences between these!",
+            "links": ["https://videocollege.uvt.nl/Mediasite/Play/41afff385bd74db2af5fb8507350ea521d"],
+            "optional" : False
+            }]
+            },
+        {"category_name": "3. Python Bootcamp tutorial",
+         "id": 3,
+          "description": "",
+          "items": [
+              {
+              "name": "Follow the Python introduction class on Datacamp",
+              "id": "task_odcm_1_3_1",
+              "description": "This Datacamp course is especially useful if you are completely new to programming and Python and will go over the basics of it!",
+              "links": ["https://learn.datacamp.com/courses/intro-to-python-for-data-science"],
+              "optional" : True
+             },
+             {
+              "name": "Know how to use and work with if-statements",
+              "id": "task_odcm_1_3_2",
+              "description": "Ifelse statements are commonly used when you have certain conditions a specific code should adhere to. You will use if-statements quite often, so make sure you are able to work with these!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+              "optional" : False
+             },
+             {
+              "name": "Understand the use of dictionaries in Python",
+              "id": "task_odcm_1_3_3",
+              "description": "We use dictionaries to access values or items by their unique keys. Each new key:value pair is seperated by commas within the curly brackets",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+              "optional" : False
+             },
+             {
+              "name": "Able to extract a value or item within a dictionary by using the key identifier",
+              "id": "task_odcm_1_3_4",
+              "description": "You can access items within a dictionary by searching for their respective key",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+              "optional" : False
+             },
+             {
+              "name": "Know how to add data to an empty list by using a for-loop",
+              "id": "task_odcm_1_3_5",
+              "description": "For-loops are used to repeat an iteration more than once. In this tutorial, you use a for-loop to modify the prices of items and store them in an empty list",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+              "optional" : False
+             },
+             {
+              "name": "Know what indices are in Python and how to use these in your code to refer to a specific item",
+              "id": "task_odcm_1_3_6",
+              "description": "Indices refer to the place at which a certain item is at within a list, for example. The first item has an index value of 0, the second item has an index value of 1 and so forth",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+              "optional" : False
+             },
+             {
+             "name": "Iterating over dictionaries",
+             "id": "task_odcm_1_3_7",
+             "description": "Know how to iterate over dictionaries in order to extract all the keys, values or both!",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+             "optional" : False
+             },
+             {
+             "name": "Working with functions in Python",
+             "id": "task_odcm_1_3_8",
+             "description": "Understand how to construct a basic function in Python and use parameters test more functionalities",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+             "optional" : False
+             },
+             {
+             "name": "Get familiar with common errors when working with code",
+             "id": "task_odcm_1_3_9",
+             "description": "While programming, you will often come across errors in your script. Being able to understand your errors makes it a lot easier to solve it. Try and Except is a good way to test pieces of code for errors!",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+             "optional" : False
+             },
+             {
+             "name": "Be able to both read and write to csv files",
+             "id": "task_odcm_1_3_10",
+             "description": "The csv package in Python allows you to both read and create csv files. You will most likely use this in your team project, so make sure you know how to do this!",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp.ipynb"],
+             "optional" : False
+             }
+             ]
+            }
+            ]
+  },
+  {
+    "name": "Week 2",
+    "description": "",
+    "id": 2,
+    "order": 1,
+    "deadline": "",
+    "items": [
+      {"category_name": "1. Kick-starting the week",
+       "id": 1,
+       "description": "",
+       "items" : [
+          {
+            "name": "Watch the energizer for this week",
+            "id": "task_odcm_2_1_1",
+            "description": "To get acquainted with this week's course material, watch the energizer!",
+            "links": ["TBA"],
+            "optional" : False
+          }]},
+      {"category_name": "",
+       "id": 2,
+       "description": "",
+       "items" : [
+          {
+            "name": "",
+            "id": "task_odcm_2_2_1",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          }]},
+        {"category_name": "",
+         "id": 3,
+         "description": "",
+         "items" : [
+            {
+              "name": "",
+              "id": "task_odcm_2_3_1",
+              "description": "",
+              "links": [""],
+              "optional" : False
+            }]},
+        {"category_name": "",
+         "id": 4,
+         "description": "",
+         "items" : [
+            {
+              "name": "",
+              "id": "task_odcm_2_4_1",
+              "description": "",
+              "links": [""],
+              "optional" : False
+            }]}],
+
+         "modules": []
+   },
+   {
+     "name": "Week 3",
+     "description": "",
+     "id": 3,
+     "order": 1,
+     "deadline": "",
+     "items": [
+       {"category_name": "1. Kick-starting the week",
+        "id": 1,
+        "description": "",
+        "items" : [
+           {
+             "name": "Watch the energizer for this week",
+             "id": "task_odcm_3_1_1",
+             "description": "To get acquainted with this week's course material, watch the energizer!",
+             "links": ["TBA"],
+             "optional" : False
+           }]},
+       {"category_name": "",
+        "id": 2,
+        "description": "",
+        "items" : [
+           {
+             "name": "",
+             "id": "task_odcm_3_2_1",
+             "description": "",
+             "links": [""],
+             "optional" : False
+           }]},
+         {"category_name": "",
+          "id": 3,
+          "description": "",
+          "items" : [
+             {
+               "name": "",
+               "id": "task_odcm_2_3_1",
+               "description": "",
+               "links": [""],
+               "optional" : False
+             }]},
+         {"category_name": "",
+          "id": 4,
+          "description": "",
+          "items" : [
+             {
+               "name": "",
+               "id": "task_odcm_2_4_1",
+               "description": "",
+               "links": [""],
+               "optional" : False
+             }]}],
+
+         "modules": []
+   },
+   {
+     "name": "Week 4",
+     "description": "",
+     "id": 4,
+     "order": 1,
+     "deadline": "",
+     "items": [
+       {"category_name": "1. Kick-starting the week",
+        "id": 1,
+        "description": "",
+        "items" : [
+           {
+             "name": "Watch the energizer for this week",
+             "id": "task_odcm_4_1_1",
+             "description": "To get acquainted with this week's course material, watch the energizer!",
+             "links": ["TBA"],
+             "optional" : False
+           }]},
+       {"category_name": "",
+        "id": 2,
+        "description": "",
+        "items" : [
+           {
+             "name": "",
+             "id": "task_odcm_4_2_1",
+             "description": "",
+             "links": [""],
+             "optional" : False
+           }]},
+         {"category_name": "",
+          "id": 3,
+          "description": "",
+          "items" : [
+             {
+               "name": "",
+               "id": "task_odcm_4_3_1",
+               "description": "",
+               "links": [""],
+               "optional" : False
+             }]},
+     {"category_name": "",
+      "id": 4,
+      "description": "",
+      "items" : [
+         {
+           "name": "",
+           "id": "task_odcm_4_4_1",
+           "description": "",
+           "links": [""],
+           "optional" : False
+         }]}],
+
+         "modules": []
+   },
+   {
+   "name": "Week 5",
+   "description": "",
+   "id": 5,
+   "order": 1,
+   "deadline": "",
+   "items": [
+     {"category_name": "1. Kick-starting the week",
+      "id": 1,
+      "description": "",
+      "items" : [
+         {
+           "name": "Watch the energizer for this week",
+           "id": "task_odcm_5_1_1",
+           "description": "To get acquainted with this week's course material, watch the energizer!",
+           "links": ["TBA"],
+           "optional" : False
+         }]},
+     {"category_name": "",
+      "id": 2,
+      "description": "",
+      "items" : [
+         {
+           "name": "",
+           "id": "task_odcm_5_2_1",
+           "description": "",
+           "links": [""],
+           "optional" : False
+         }]},
+       {"category_name": "",
+        "id": 3,
+        "description": "",
+        "items" : [
+           {
+             "name": "",
+             "id": "task_odcm_5_3_1",
+             "description": "",
+             "links": [""],
+             "optional" : False
+           }]},
+       {"category_name": "",
+        "id": 4,
+        "description": "",
+        "items" : [
+           {
+             "name": "",
+             "id": "task_odcm_5_4_1",
+             "description": "",
+             "links": [""],
+             "optional" : False
+           }]}],
+
+          "modules": []
+    },
+    {
+    "name": "Week 6-7",
+    "description": "Course and project wrap-up",
+    "id": 6,
+    "order": 1,
+    "deadline": "",
+    "items": [
+      {"category_name": "1. Course evaluation",
+       "id": 1,
+       "description": "",
+       "items" : [
+          {
+            "name": "My programming skills have improved significantly since the start of this course",
+            "id": "task_odcm_6_1_1",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "I enjoyed the format of this course (i.e., external website instead of Canvas to stimulate open education)",
+            "id": "task_odcm_6_1_2",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "I liked the concept of Pulse and it has helped me with keeping track of what must be done each week",
+            "id": "task_odcm_6_1_3",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "",
+            "id": "task_odcm_6_1_4",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          }]},
+      {"category_name": "2. Project evaluation",
+       "id": 2,
+       "description": "",
+       "items" : [
+          {
+            "name": "The project helped me to further improve my (programming) skills",
+            "id": "task_odcm_6_2_1",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "The project aligned well with the other course material",
+            "id": "task_odcm_6_2_2",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "The coaching sessions provided enough feedback to continue working on the project",
+            "id": "task_odcm_6_2_3",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "I enjoyed working on the project",
+            "id": "task_odcm_6_2_4",
+            "description": "",
+            "links": [""],
+            "optional" : False
+          }]}],
+
+           "modules": []
+   }
+ ]
+}
+
+print(course_odcm)
