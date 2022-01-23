@@ -691,7 +691,7 @@ course_odcm ={
   "modules": [
     {
       "name": "Week 1",
-      "description": "Getting started with scraping and APIs in Python!",
+      "description": "Getting started Python!",
       "id": 1,
       "order": 1,
       "deadline": "", #"2022-01-31",
@@ -814,7 +814,7 @@ course_odcm ={
   },
   {
     "name": "Week 2",
-    "description": "",
+    "description": "Learn how to scrape data!",
     "id": 2,
     "order": 1,
     "deadline": "",
@@ -830,37 +830,79 @@ course_odcm ={
             "links": ["TBA"],
             "optional" : False
           }]},
-      {"category_name": "",
+      {"category_name": "2. Reading",
        "id": 2,
        "description": "",
        "items" : [
           {
-            "name": "",
+            "name": "Thoroughly read the Fields of Gold paper",
             "id": "task_odcm_2_2_1",
-            "description": "",
-            "links": [""],
+            "description": "This paper discusses opportunities and challenges of using web data in research projects. You will use the framework presented in this paper for this course, so make sure to fully read and understand the contents!",
+            "links": ["https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3820666"],
             "optional" : False
           }]},
-        {"category_name": "",
+        {"category_name": "3. Tutorial: Web data for dummies - Web scraping",
          "id": 3,
          "description": "",
          "items" : [
             {
-              "name": "",
+              "name": "Understand the definition of web scraping and how this differs from using APIs",
               "id": "task_odcm_2_3_1",
-              "description": "",
-              "links": [""],
+              "description": "We can use web scraping to extract information from a given website, which we can then save or analyze, for example. This way, we do not lose valuable information when a site is updated!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Understand the html structure of the book presented in the tutorial (A Light in the Attic)!",
+              "id": "task_odcm_2_3_2",
+              "description": "Inspect the web page and look at the structure at which the page is setup. You will see that information such as the title and price is surrounded by corresponding tags, which we later on use to extract this data!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Use the requests library to extract the book title or product description!",
+              "id": "task_odcm_2_3_3",
+              "description": "By using the requests library, we load the source code of the website into Python, allowing us to extract our preferred data from the web page!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Simplify your search by using the BeautifulSoup library to get your desired piece of data!",
+              "id": "task_odcm_2_3_4",
+              "description": "As you most likely noticed, the BeautifulSoup library is a much more convenient way to scrape the data. Use the .find() or .get_text() methods and combine these with indices to capture the website's content!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
               "optional" : False
             }]},
-        {"category_name": "",
+        {"category_name": "3. Tutorial: Web data for dummies - API",
          "id": 4,
          "description": "",
          "items" : [
             {
-              "name": "",
+              "name": "Understand the definition of APIs and how this differs from using web scraping",
               "id": "task_odcm_2_4_1",
-              "description": "",
-              "links": [""],
+              "description": "Contrary to web scraping (which you use software for extract data), APIs are designed to extract data from a website and give you access to it. They are, therefore, a more legit way to retrieve data - but are also limited in providing the data",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Understand the structure of a JSON tree and how data is stored within these trees",
+              "id": "task_odcm_2_4_1",
+              "description": "The JSON tree is basically the backend of what the output shows. Lists and dictionaries are used to store the data. Navigate through the tree to get a grasp of how the data is structured and to what parent each piece belongs to!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Print out a random joke from the presented website by following the steps for using an API!",
+              "id": "task_odcm_2_4_1",
+              "description": "By providing Python with a URL and the proper headers, we can extract the data from the website (which is a random joke each time). Tip: Make sure you imported the requests library!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
+              "optional" : False
+            },
+            {
+              "name": "Rather then simply printing out a random joke, try saving multiple ones within an empty list by using a for-loop",
+              "id": "task_odcm_2_4_1",
+              "description": "When collecting data, you most likely want to store it (temporarily). Therefore, try collecting a few jokes within an empty list!",
+              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"],
               "optional" : False
             }]}],
 
@@ -868,7 +910,7 @@ course_odcm ={
    },
    {
      "name": "Week 3",
-     "description": "",
+     "description": "Improving your web scraping skills!",
      "id": 3,
      "order": 1,
      "deadline": "",
@@ -884,37 +926,75 @@ course_odcm ={
              "links": ["TBA"],
              "optional" : False
            }]},
-       {"category_name": "",
+       {"category_name": "2. Finalize your team",
         "id": 2,
         "description": "",
         "items" : [
            {
-             "name": "",
+             "name": "Make sure your found a team to work on the project with and sign up on Canvas",
              "id": "task_odcm_3_2_1",
-             "description": "",
-             "links": [""],
+             "description": "Once your team is complete, you can already start working on the project by brainstorming for ideas!",
+             "links": ["On Canvas, go to people --> Groups to sign up!"],
              "optional" : False
            }]},
-         {"category_name": "",
+         {"category_name": "3. Tutorial: Web scraping 101",
           "id": 3,
           "description": "",
           "items" : [
              {
-               "name": "",
+               "name": "Recall your understanding of how a HTML structure is setup",
                "id": "task_odcm_2_3_1",
-               "description": "",
-               "links": [""],
+               "description": "To receive only our desired information from a website, we refer to tags that belond to a specific class. By doing so, all other tags that are not within this class are excluded from the search result",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
                "optional" : False
-             }]},
-         {"category_name": "",
-          "id": 4,
-          "description": "",
-          "items" : [
+             },
              {
-               "name": "",
-               "id": "task_odcm_2_4_1",
-               "description": "",
-               "links": [""],
+               "name": "Extract the correct link for the second book of the list by combining the base url with the book url",
+               "id": "task_odcm_2_3_1",
+               "description": "Combining these parts allows us to create the full link to refer to the correct book page!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Store the titles and urls of all the books in an empty list by using a for-loop",
+               "id": "task_odcm_2_3_1",
+               "description": "You can easily add new information (such as price of rating) to this empty list by adding it to the source code. The output shows each book title and URL within a dictionary, where all books are seperated by commas",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Collect all the URLs for the first 10 pages of the quotes to scrape website",
+               "id": "task_odcm_2_3_1",
+               "description": "Most likely, you want to extract all the data from a website, rather than just the first page. Here, we iterate over the first 10 pages and collect the respective URLs!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Run and understand the function that extracts all the book titles and URLs",
+               "id": "task_odcm_2_3_1",
+               "description": "Often times, websites get updated with new information (e.g., new books are added). Therefore, we automate our scraper, such that it still works and collects all the data when the website is updated!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Follow the step-by-step guide on how to extract the numbers of stars a book has received",
+               "id": "task_odcm_2_3_1",
+               "description": "Each step narrows down the amount of output is given. Make sure you understand the changes in the output for each change in the source code!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Write the book descriptions to a csv file",
+               "id": "task_odcm_2_3_1",
+               "description": "Once you gathered the data and saved it in a list, you often want to save it to a csv file as well (for example, to conduct further analyses). Therefore, try to write the code to a csv file succesfully and check if you can open it!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Understand the differences between Jupyter Notebook and Spyder or PyCharm",
+               "id": "task_odcm_2_3_1",
+               "description": "Jupyter Notebook is a great for people who are new to programming. As your skills improve, you may prefer an IDE such as Spyder or PyCharm over Notebook! You can run the code in Spyder to see how this differs from Notebook yourself.",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
                "optional" : False
              }]}],
 
@@ -938,39 +1018,63 @@ course_odcm ={
              "links": ["TBA"],
              "optional" : False
            }]},
-       {"category_name": "",
+       {"category_name": "2. Limitations to using web data",
         "id": 2,
         "description": "",
         "items" : [
            {
-             "name": "",
+             "name": "Make a list of issues you may face when scraping data from site or using an API",
              "id": "task_odcm_4_2_1",
-             "description": "",
+             "description": "When extracting data, you may be confronted with all sorts of ethical or legal boundaries. For example, it may not be allowed to store sensitive information of users or there may be a time restriction for storing the data. Be aware of this when working with web data in your team projects or future research!",
              "links": [""],
              "optional" : False
            }]},
-         {"category_name": "",
+         {"category_name": "3. Tutorial: API 101",
           "id": 3,
           "description": "",
           "items" : [
              {
-               "name": "",
+               "name": "Create a function that shows the number of jokes that include a specific search term",
                "id": "task_odcm_4_3_1",
-               "description": "",
-               "links": [""],
+               "description": "This function is the equivalent of searching for that term in the search bar on a website and shows how many jokes include it!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
                "optional" : False
-             }]},
-     {"category_name": "",
-      "id": 4,
-      "description": "",
-      "items" : [
-         {
-           "name": "",
-           "id": "task_odcm_4_4_1",
-           "description": "",
-           "links": [""],
-           "optional" : False
-         }]}],
+             },
+             {
+               "name": "Extend this function by making it loop over all pages!",
+               "id": "task_odcm_4_3_1",
+               "description": "This extension allows you to collect all the jokes on the website without being restricted the current page!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Create a function that extracts the numbers of total and active users of a given subreddit",
+               "id": "task_odcm_4_3_1",
+               "description": "For this task, look how the .json url corresponds to the source code to extract the number of (active) users!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Analyze the reddit activity by using the 'after' attribute to apply pagination",
+               "id": "task_odcm_4_3_1",
+               "description": "Contrary to the sites we have seen thus far, Reddit does not have a 'next' page. Therefore, we use the next key each time to get the next batch of 25 comments and posts!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Write and run a function that extracts all the data (e.g., username, time a post was created etc.) of the first few pages of a subreddit",
+               "id": "task_odcm_4_3_1",
+               "description": "Rather than collecting snippets of the web page, we may want to extract as much information as possible and analyze it at a later instance. This function allows us to do so!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
+               "optional" : False
+             },
+             {
+               "name": "Write the results of this function to a csv file and try opening it to see the results!",
+               "id": "task_odcm_4_3_1",
+               "description": "To save our data, we export the data to a csv file so we can access it later or open it in another software program, for example!",
+               "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"],
+               "optional" : False
+             }]}],
 
          "modules": []
    },
