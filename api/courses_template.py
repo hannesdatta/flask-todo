@@ -1101,40 +1101,36 @@ course_odcm ={
       "description": "",
       "items" : [
          {
-           "name": "Work through part 1 of the tutorial",
+           "name": "Work on part 1 of the tutorial",
            "id": "task_odcm_5_2_1",
            "description": "The first part teaches you how to use an API that requires user authentication, which is useful if you use an API in your team project!",
-           "links": [""],
+           "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apisadvanced/api-advanced.ipynb"],
            "optional" : True
          },
          {
-           "name": "Work through part 2 of the tutorial",
+           "name": "Work on part 2 of the tutorial",
            "id": "task_odcm_5_2_2",
-           "description": "The second part focuses on parsing JSON into CSV format, which is also useful for your team project!",
-           "links": [""],
+           "description": "The second part focuses on parsing JSON into CSV format, which is also convenient for your team project!",
+           "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apisadvanced/api-advanced.ipynb"],
            "optional" : True
          }]},
-       {"category_name": "",
+       {"category_name": "3. Tutorial: Web scraping advanced",
         "id": 3,
         "description": "",
         "items" : [
            {
-             "name": "",
+             "name": "Work on part 1 of the tutorial",
              "id": "task_odcm_5_3_1",
-             "description": "",
-             "links": [""],
-             "optional" : False
-           }]},
-       {"category_name": "",
-        "id": 4,
-        "description": "",
-        "items" : [
+             "description": "This part introduces you to Selenium, which is capable of handling dynamic websites (i.e., websites of which the content changes when refreshing a page)",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscrapingadvanced/webscraping-advanced.ipynb"],
+             "optional" : True
+           },
            {
-             "name": "",
-             "id": "task_odcm_5_4_1",
-             "description": "",
-             "links": [""],
-             "optional" : False
+             "name": "Work on part 2 of the tutorial",
+             "id": "task_odcm_5_3_1",
+             "description": "The second part puts your fresh Selenium skills into practice for Instagram and teaches you how to scrape images from here, for example!",
+             "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscrapingadvanced/webscraping-advanced.ipynb"],
+             "optional" : True
            }]}],
 
           "modules": []
