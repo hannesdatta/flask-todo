@@ -13,6 +13,12 @@ __The platform is still under development.__
 
 # Launch of prototype
 
+## Login to server
+
+1. Modify permissions of `.pem` credentials file: `chmod 400 credentials.pem`
+2. Log on to the remote computer: `ssh -i ec2.pem ubuntu@ec2-XX-XX-XX-XXX.compute-1.amazonaws.com`
+
+
 ## Setup virtual environment
 
 ```
