@@ -696,7 +696,7 @@ course_odcm ={
     {
       "name": "Week 1",
       "description": "Getting started Python!",
-      "id": 1,
+      "id": 100,
       "order": 1,
       "deadline": "", #"2022-01-31",
       "items": [
@@ -819,7 +819,7 @@ course_odcm ={
   {
     "name": "Week 2",
     "description": "Learn how to scrape data!",
-    "id": 2,
+    "id": 102,
     "order": 1,
     "deadline": "",
     "items": [
@@ -915,7 +915,7 @@ course_odcm ={
    {
      "name": "Week 3",
      "description": "Improving your web scraping skills!",
-     "id": 3,
+     "id": 103,
      "order": 1,
      "deadline": "",
      "items": [
@@ -1007,7 +1007,7 @@ course_odcm ={
    {
      "name": "Week 4",
      "description": "Extracting data using APIs",
-     "id": 4,
+     "id": 104,
      "order": 1,
      "deadline": "",
      "items": [
@@ -1085,7 +1085,7 @@ course_odcm ={
    {
    "name": "Week 5",
    "description": "Developing a prototype for your team project!",
-   "id": 5,
+   "id": 105,
    "order": 1,
    "deadline": "",
    "items": [
@@ -1142,7 +1142,7 @@ course_odcm ={
     {
     "name": "Week 6-7",
     "description": "Course and project wrap-up",
-    "id": 6,
+    "id": 106,
     "order": 1,
     "deadline": "",
     "items": [
@@ -1218,9 +1218,11 @@ course_odcm ={
 
 
 db = TinyDB('db.json')
-db.drop_tables()
+
+#db.drop_tables()
+db.drop_table('courses')
 table = db.table('courses')
-users = db.table('users')
+#users = db.table('users')
 
 table.insert(course_dprep)
 table.insert(course_odcm)
