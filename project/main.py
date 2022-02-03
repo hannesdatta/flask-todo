@@ -228,6 +228,26 @@ def del_message():
     return redirect(request.referrer)
 
 
+@main.route('/gif/')
+@login_required
+def show_gifs():
+
+    gifs = ['https://giphy.com/gifs/thumbs-up-elon-musk-OxrQAuM5kKMKHn14ls',
+    'https://giphy.com/gifs/americasgottalent-thumbs-up-agt-simon-cowell-3o72FcJmLzIdYJdmDe']
+
+    import random
+
+    random.choice(gif)
+
+    #w/ 20% chance of getting a gif
+
+    # extract everything after last -
+
+    #<iframe src="https://giphy.com/embed/BgWGTu2TgdP44" width="480" height="270" frameBorder="0"
+
+
+    #class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dance-rap-rave-BgWGTu2TgdP44">via GIPHY</a></p>
+
 @main.route('/submit_comment/', methods=['POST'])
 @login_required
 def submit_message():

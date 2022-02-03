@@ -20,7 +20,8 @@ course ={
               "name": "Install R & RStudio",
               "id": "task_dprep_1_1_1",
               "description": "R & R Studio are the workhorses in this course - make sure to install them right away!",
-              "links": ["https://tilburgsciencehub.com/get/r"]
+              "links": ["https://tilburgsciencehub.com/get/r"],
+              "optional": True
             },
             {
               "name": "Install Git and make an account on GitHub",
