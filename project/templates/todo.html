@@ -29,7 +29,17 @@
 
     <div class="ui basic segment">
       <div class="ui grid">
-  <div class="fourteen wide column"><a href = "/comments?module_id={{tasks.id}}&task_id={{task.id}}" >{{task.name}} <i class="caret right icon grey"></i></a>
+  <div class="fourteen wide column"><a href = "/comments?module_id={{tasks.id}}&task_id={{task.id}}" >{{task.name}} </a>
+
+    {% if task['stats']['stat_comments'] > 0 %}
+
+    <small>
+      <i class="comment outline icon"></i> {{task['stats']['stat_comments']}}
+    </small>
+
+{% endif %}
+
+
     <p><small>{{task.description}}</small></p>
 </div>
   <div class="two wide column">

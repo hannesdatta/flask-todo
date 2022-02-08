@@ -194,9 +194,9 @@ def profile():
 @main.route('/todo/<module_id>')
 @login_required
 def todo(module_id):
-
-    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)).json()
-    print(res)
+    url=current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
+    res=requests.get(url).json()
+    print(url)
     return render_template('todo.html', tasks=res)
 
 @main.route("/todo-update/")

@@ -281,17 +281,37 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
     events.type = max_user.type AND events.timestamp = max_user.max_timestamp"""
 
     results = await database.fetch_all(query=query)
+
+    query2 = """SELECT task_id, COUNT(*) AS count, max(timestamp) as max_timestamp FROM comments WHERE
+    task_id IN (""" + ','.join(task_ids) + """) GROUP BY task_id;"""
+
+    results_comments = await database.fetch_all(query=query2)
+    print(results_comments)
+
+
+    #    query2 = """SELECT max(timestamp) FROM events WHERE
+    #task_id IN (""" + ','.join(task_ids) + """)"""
+
+    #    results_timestamp = await database.fetch(query=query2)
+
     #return(results)
     import json
     #out=json.loads(res)
     #return(results)
 
+    # build statistics (completed, explain, etc.)
     for r in results:
         if r['type'] in ['completed','explain','example','practice','givehelp']:
             if r['status']==1:
                 stats_dic[r['task_id']]['stat_'+r['type']]=stats_dic[r['task_id']]['stat_'+r['type']]+1
                 if r['user_id']==user_id:
                     stats_dic[r['task_id']][r['type']]=True
+
+    # build statistics (comments)
+    for r in results_comments:
+        stats_dic[r['task_id']]['stat_comments'] = r['count']
+        stats_dic[r['task_id']]['updated_comments'] = r['max_timestamp']
+
 
     for i in range(len(mod['items'])):
         for j in range(len(mod['items'][i]['items'])):
