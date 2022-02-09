@@ -158,7 +158,7 @@ def get_comments():
         res['timestamp_printable'] = ts_date + ' at ' + ts_time
         if (datetime.utcnow().strftime('%d-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Today at ' + ts_time
         if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Yesterday at ' + ts_time
-        res['show_delete'] = res['user_id']==current_user.id
+        res['show_delete'] = (res['user_id']==current_user.id) | (current_user.email=='h.datta@tilburguniversity.edu')
 
         url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.info/' + str(res['user_id'])
         nickname=requests.get(url).json()['nickname']
