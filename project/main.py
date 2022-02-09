@@ -9,6 +9,7 @@ from sqlalchemy.sql import text
 import requests
 from .emailtool import send_mail
 from flask import Markup
+import json
 
 main = Blueprint('main', __name__)
 
@@ -166,6 +167,8 @@ def get_comments():
     #    return redirect(request.referrer)
     #session['url'] = url_for('comments')
 
+    log_event(user_id=current_user.id, task_id=task_id, type='view')
+
     return render_template('comments.html', task=task, comments=comment_dic)
 
 
@@ -194,10 +197,12 @@ def profile():
 @main.route('/todo/<module_id>')
 @login_required
 def todo(module_id):
+
+    # get tasks
     url=current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
-    res=requests.get(url).json()
-    print(url)
-    return render_template('todo.html', tasks=res)
+    tasks=requests.get(url).json()
+
+    return render_template('todo.html', tasks=tasks)
 
 @main.route("/todo-update/")
 @login_required
@@ -247,6 +252,15 @@ def show_gifs():
 
 
     #class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dance-rap-rave-BgWGTu2TgdP44">via GIPHY</a></p>
+
+def log_event(user_id, task_id, type):
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/logging'
+    requests.post(url, data = json.dumps({'type':type,
+                                         'user_id': user_id,
+                                         'task_id': task_id
+                                         }))
+
+
 
 @main.route('/submit_comment/', methods=['POST'])
 @login_required

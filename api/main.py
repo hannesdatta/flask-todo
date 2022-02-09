@@ -102,8 +102,34 @@ async def create_data2():
                                     text TEXT)"""
     query2 = """CREATE INDEX task_index ON comments (task_id);"""
 
-    await database.execute(query=query)
-    await database.execute(query=query2)
+    try:
+        await database.execute(query=query)
+    except:
+        print('cannot create comments')
+    try:
+        await database.execute(query=query2)
+    except:
+        print('cannot create index on comments')
+
+@app.get("/create_logs")
+async def create_data3():
+    # Create a table.
+
+    query = """CREATE TABLE logs (id INTEGER PRIMARY KEY,
+                                    user_id NOT NULL,
+                                    timestamp INTEGER NOT NULL,
+                                    task_id VARCHAR(24),
+                                    type TEXT)"""
+    query2 = """CREATE INDEX log_index ON logs (task_id);"""
+
+    try:
+        await database.execute(query=query)
+    except:
+        print('cannot create logs')
+    try:
+        await database.execute(query=query2)
+    except:
+        print('cannot create index on logs')
 
 @app.get("/")
 def read_root():
@@ -159,7 +185,25 @@ async def user_setinfo(request: Request):
 
     return {'status':200}
 
+@app.post("/logging/")
+async def logging(request: Request):
+    obj = await request.json()
 
+    timest = get_timestamp()
+    user_id = obj.get('user_id')
+    task_id = obj.get('task_id')
+    type = obj.get('type')
+
+    query = "INSERT INTO logs(user_id, task_id, timestamp, type) VALUES (:user_id, :task_id, :timestamp, :type)"
+
+    values = [
+            {"user_id": user_id, "task_id": task_id,
+            'timestamp': timest, "type": type}
+        ]
+
+    await database.execute_many(query=query, values=values)
+
+    return {'status':200}
 
 
 @app.get("/user.get_courses/{user_id}")
@@ -177,6 +221,8 @@ def user_getmodules(user_id,course_id):
 #    results = await database.fetch_all(query=query)
 #
 #    return  results
+
+
 @app.get("/comments/show/")
 async def show_comments(request: Request, task_id: str=None, user_id: int=None):
     if task_id is None:
@@ -232,11 +278,16 @@ async def create_item(request: Request):
 
     return {'status':200}
 
-@app.get("/user.get_tasks/")
-async def user_gettoken(user_id: int, module_id: int, request: Request):
-    course = courses.all()
-    print(course)
-    # module id
+@app.get("/user.get_module_completition/")
+async def user_module_completition(user_id: int, course_id: int, request: Request):
+    course = courses.search(where('id') == int(course_id))
+
+    # user_id
+    # course_id
+
+    return(course[0])
+
+
     # retrieve module
     mod = {}
     for c in course:
@@ -247,10 +298,8 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
                     mod['course_id'] = c.get('id')
                     mod['course_name'] = c.get('name')
                     #return(m)
-    # check for task completeness
-    #print(mod['items'][0])
-    #return(mod)
 
+    # check for task completeness
     task_ids = []
     stats_dic = {}
     for cat in mod.get('items'):
@@ -267,12 +316,12 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
                                           'practice': False,
                                           'givehelp': False,
                                           'comments': False,
+                                          'updated_comments': 0,
+                                          'user_viewed': 0
                                           }
             task_ids.append("'"+task.get('id')+"'")
 
-    # select all most recent user-specific events
-
-    #query = "SELECT * FROM events WHERE user_id=" + str(user_id) + " AND task_id IN (" + ','.join(task_ids) + ")"
+    # select all most recent user-specific events (e.g., completitions)
 
     query = """SELECT * FROM events, (SELECT user_id, task_id, type, max(timestamp) as max_timestamp
     FROM events WHERE
@@ -282,22 +331,19 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
 
     results = await database.fetch_all(query=query)
 
+    # select timestamp of most recent comment
     query2 = """SELECT task_id, COUNT(*) AS count, max(timestamp) as max_timestamp FROM comments WHERE
     task_id IN (""" + ','.join(task_ids) + """) GROUP BY task_id;"""
 
     results_comments = await database.fetch_all(query=query2)
-    print(results_comments)
+    #print(results_comments)
 
+    # select timestamp of most recent view event
+    query3 = """SELECT task_id, max(timestamp) as max_timestamp FROM logs WHERE
+    task_id IN (""" + ','.join(task_ids) + """) AND user_id = """ + str(user_id) + """ GROUP BY task_id;"""
 
-    #    query2 = """SELECT max(timestamp) FROM events WHERE
-    #task_id IN (""" + ','.join(task_ids) + """)"""
-
-    #    results_timestamp = await database.fetch(query=query2)
-
-    #return(results)
-    import json
-    #out=json.loads(res)
-    #return(results)
+    results_logging = await database.fetch_all(query=query3)
+    print(results_logging)
 
     # build statistics (completed, explain, etc.)
     for r in results:
@@ -312,6 +358,10 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
         stats_dic[r['task_id']]['stat_comments'] = r['count']
         stats_dic[r['task_id']]['updated_comments'] = r['max_timestamp']
 
+    # build statistics (comments)
+    for r in results_logging:
+        stats_dic[r['task_id']]['user_viewed'] = r['max_timestamp']
+
 
     for i in range(len(mod['items'])):
         for j in range(len(mod['items'][i]['items'])):
@@ -320,10 +370,10 @@ async def user_gettoken(user_id: int, module_id: int, request: Request):
     return(mod)
 
 
-def OLDuser_getmodules(user_id,module_id):
+@app.get("/user.get_tasks/")
+async def user_gettoken(user_id: int, module_id: int, request: Request):
     course = courses.all()
-    print(course)
-    # module id
+
     # retrieve module
     mod = {}
     for c in course:
@@ -332,20 +382,79 @@ def OLDuser_getmodules(user_id,module_id):
                 if m.get('id')==int(module_id):
                     mod = m
                     mod['course_id'] = c.get('id')
+                    mod['course_name'] = c.get('name')
                     #return(m)
+
     # check for task completeness
+    task_ids = []
+    stats_dic = {}
+    for cat in mod.get('items'):
+        for task in cat.get('items'):
+            stats_dic[task.get('id')] = {'stat_completed': 0,
+                                         'stat_explain': 0,
+                                         'stat_example':0,
+                                         'stat_practice': 0,
+                                         'stat_givehelp': 0,
+                                         'stat_comments': 0,
+                                         'completed': False,
+                                          'explain': False,
+                                          'example':False,
+                                          'practice': False,
+                                          'givehelp': False,
+                                          'comments': False,
+                                          'updated_comments': 0,
+                                          'user_viewed': 0
+                                          }
+            task_ids.append("'"+task.get('id')+"'")
+
+    # select all most recent user-specific events (e.g., completitions)
+
+    query = """SELECT * FROM events, (SELECT user_id, task_id, type, max(timestamp) as max_timestamp
+    FROM events WHERE
+    task_id IN (""" + ','.join(task_ids) + """) GROUP BY user_id, task_id, type) max_user WHERE
+    events.user_id=max_user.user_id AND events.task_id = max_user.task_ID AND
+    events.type = max_user.type AND events.timestamp = max_user.max_timestamp"""
+
+    results = await database.fetch_all(query=query)
+
+    # select timestamp of most recent comment
+    query2 = """SELECT task_id, COUNT(*) AS count, max(timestamp) as max_timestamp FROM comments WHERE
+    task_id IN (""" + ','.join(task_ids) + """) GROUP BY task_id;"""
+
+    results_comments = await database.fetch_all(query=query2)
+    #print(results_comments)
+
+    # select timestamp of most recent view event
+    query3 = """SELECT task_id, max(timestamp) as max_timestamp FROM logs WHERE
+    task_id IN (""" + ','.join(task_ids) + """) AND user_id = """ + str(user_id) + """ GROUP BY task_id;"""
+
+    results_logging = await database.fetch_all(query=query3)
+    print(results_logging)
+
+    # build statistics (completed, explain, etc.)
+    for r in results:
+        if r['type'] in ['completed','explain','example','practice','givehelp']:
+            if r['status']==1:
+                stats_dic[r['task_id']]['stat_'+r['type']]=stats_dic[r['task_id']]['stat_'+r['type']]+1
+                if r['user_id']==user_id:
+                    stats_dic[r['task_id']][r['type']]=True
+
+    # build statistics (comments)
+    for r in results_comments:
+        stats_dic[r['task_id']]['stat_comments'] = r['count']
+        stats_dic[r['task_id']]['updated_comments'] = r['max_timestamp']
+
+    # build statistics (comments)
+    for r in results_logging:
+        stats_dic[r['task_id']]['user_viewed'] = r['max_timestamp']
+
+
+    for i in range(len(mod['items'])):
+        for j in range(len(mod['items'][i]['items'])):
+            mod['items'][i]['items'][j]['stats']=stats_dic[mod['items'][i]['items'][j]['id']]
+
     return(mod)
 
-    for cat in mod.get('items'):
-        for it in cat.get('items'):
-            db.table('status').search(where('task_id')=='x1')[-1]
-
-            stat = status.search(where('task_id')==it['id'])
-            if len(stat)>0:
-                stat=stat[-1]
-
-    #else:
-    #    return({})
 
 @app.get("/user.gettoken/")
 async def user_gettoken(email: str, request: Request):

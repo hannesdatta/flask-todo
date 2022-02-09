@@ -33,12 +33,21 @@
 
     {% if task['stats']['stat_comments'] > 0 %}
 
-    <small>
-      <i class="comment outline icon"></i> {{task['stats']['stat_comments']}}
-    </small>
+        {% if task['stats']['updated_comments'] >= task['stats']['user_viewed'] %}
 
-{% endif %}
+          <small>
+            <i class="comment red icon"></i> {{task['stats']['stat_comments']}}
+          </small>
 
+        {% else %}
+
+        <small>
+          <i class="comment outline icon"></i> {{task['stats']['stat_comments']}}
+        </small>
+
+        {% endif %}
+
+    {% endif %}
 
     <p><small>{{task.description}}</small></p>
 </div>
