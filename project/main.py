@@ -198,14 +198,18 @@ def profile():
     user=current_user)
 
 @main.route('/todo/<module_id>')
+@main.route('/todo/<module_id>/<effect>')
 @login_required
-def todo(module_id):
+def todo(module_id, effect = ""):
+
+    play_effect = 'False'
+    if (effect=='confetti'): play_effect = 'True'
 
     # get tasks
     url=current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
     tasks=requests.get(url).json()
 
-    return render_template('todo.html', tasks=tasks)
+    return render_template('todo.html', tasks=tasks, flash_message= play_effect)
 
 @main.route("/todo-update/")
 @login_required
@@ -220,7 +224,13 @@ def update_task():
     res=requests.get(url).json()
     #print(res)
 
-    return redirect(request.referrer)
+    initial_url = request.referrer.replace('/confetti', '')
+
+    if status=='1':
+        return redirect(initial_url+'/confetti')
+
+    return redirect(initial_url)
+
     #return redirect(url_for("main.todo", module_id=module))
 
 

@@ -448,7 +448,7 @@ def user_checktoken(token):
 async def get_module_data(user_id: int, course_id: int):
     course = courses.search(where('id') == int(course_id))
 
-    c=course[0] #return(course[0])
+    c=course[0]
 
     # retrieve module
     if c.get('modules') is None: return(c)
@@ -460,6 +460,11 @@ async def get_module_data(user_id: int, course_id: int):
         tmp_tasks = []
         for cat in c['modules'][m].get('items'):
             for task in cat.get('items'):
+                 try:
+                     is_optional = task.get('optional')
+                 except:
+                     is_optional = False
+                 if (is_optional==True): continue
                  all_task_ids.append('"'+task.get('id')+'"')
                  tmp_tasks.append('"'+task.get('id')+'"')
         mod_tasks[c['modules'][m]['id']] = tmp_tasks
