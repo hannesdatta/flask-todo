@@ -1224,9 +1224,11 @@ db.drop_table('courses')
 table = db.table('courses')
 #users = db.table('users')
 
+print('inserting new courses')
 table.insert(course_dprep)
 table.insert(course_odcm)
 
+print('done inserting')
 #users.insert({'email': 'h.datta@tilburguniversity.edu',
 #              'name': 'Hannes Datta',
 #              'nickname': 'Haynce',
