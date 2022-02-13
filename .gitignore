@@ -141,4 +141,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+db.json
+events_comments.db
+
+**myenv**
+
 ec2.pem

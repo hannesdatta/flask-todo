@@ -21,7 +21,7 @@
 
   <div class="card">
     <div class="content">
-      <div class="header">{{module.name}}</div>
+      <a class="header" href="/todo/{{module.id}}">{{module.name}}</a>
       <div class="description">
         {{module.description}}
       </div>
@@ -30,18 +30,37 @@
       <i class="angle right icon"></i>
       View goals
     </a>
+
+    <div class="ui tiny active progress" id="progress_{{module.id}}">
+      <div class="bar"></div>
+      <div class="label">You have completed {{module.stats.sharecompleted}}%</div>
+    </div>
+
     <div class="extra content">
       <span class="right floated">
-        Joined in 2021
+
+        {% if module.stats.has_new_comments == True %}
+
+            <i class="comment red icon"></i> {{module.stats.comment_count}}
+
+            {% else %}
+
+            <i class="comment outline icon"></i> {{module.stats.comment_count}}
+
+        {% endif %}
+
+
       </span>
       <span>
         <i class="user icon"></i>
-        75 members
+        {{module.stats.users}} learners
       </span>
 
     </div>
 
+
   </div>
+
 
   {% endfor %}
 
@@ -57,5 +76,17 @@
   <p></p>
 </div>
 
+
+{% for module in modules %}
+
+<script>
+
+  $('#progress_{{module.id}}').progress({
+    percent: {{module.stats.sharecompleted}}
+  });
+
+</script>
+
+{% endfor %}
 
 {% endblock %}
