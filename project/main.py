@@ -20,7 +20,7 @@ def index():
 
     if current_user.is_authenticated:
          #courses = Course.query.filter(Course.users.any(id=current_user.id)).all()
-         res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_courses/' + str(current_user.id))
+         res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_courses/?user_id=' + str(current_user.id))
          courses=res.json()
          course_list=[]
          for c in courses:
@@ -177,8 +177,8 @@ def get_comments():
 def get_modules(course_id):
 
 
-    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_modules/' + str(current_user.id) + '/' + str(course_id))
-    #res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_module_completition/?user_id=' + str(current_user.id) + '&course_id=' + str(course_id))
+    #res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_modules/' + str(current_user.id) + '/' + str(course_id))
+    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_module_completition/?user_id=' + str(current_user.id) + '&course_id=' + str(course_id))
 
     modules = res.json().get('modules')
     course = res.json()
