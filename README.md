@@ -152,3 +152,4 @@ The platform has been inspired and built upon the fantastic open source contribu
 - [Simple Flask Todo App using SQLAlchemy and SQLite database](https://github.com/python-engineer/flask-todo)
 - Styling by [semantic-ui](https://semantic-ui.com/)
 - [Flask Authentication Flow](https://github.com/do-community/flask_auth_scotch) and [this blog post](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login)
+- Amazing [Confetti Effects](https://github.com/catdad/canvas-confetti) when completing to do items
