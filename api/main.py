@@ -487,8 +487,16 @@ async def get_module_data(user_id: int, course_id: int):
         print(task_ids)
         # If value satisfies the condition, then store it in new_dict
         # Query for learners
-        query = """SELECT COUNT(DISTINCT user_id) as users, SUM(user_id == """+str(user_id)+""") as user_completion FROM events WHERE
-        task_id IN (""" + ','.join(task_ids) + """) AND status = 1 AND type = "completed";"""
+
+        query = """SELECT COUNT(DISTINCT events.user_id) as users, SUM(events.user_id == """+str(user_id)+""") as user_completion FROM
+        (SELECT user_id, task_id, MAX(timestamp) AS created_at FROM events WHERE
+        task_id IN (""" + ','.join(task_ids) + """) AND type = "completed"
+        GROUP BY user_id, task_id) AS latest_data INNER JOIN
+        events ON events.user_id = latest_data.user_id AND
+        events.task_id = latest_data.task_id AND
+        events.timestamp = latest_data.created_at WHERE status = 1;
+        """
+
         queries.append(query)
         #print(query)
 
