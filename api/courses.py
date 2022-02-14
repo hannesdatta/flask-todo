@@ -69,7 +69,7 @@ course_dprep ={
             },
             {
             "name": "Understand what the benefits are of using the scrum framework",
-            "id": "task_dprep_1_2_1",
+            "id": "task_dprep_1_2_2",
             "description": "Scrum is a very flexible way to work in teams, so get acquainted with it and use it with your project group later on!",
             "links": ["https://tilburgsciencehub.com/learn/scrum"],
             "optional" : False
@@ -359,21 +359,21 @@ course_dprep ={
           "items" : [
              {
                "name": "Understand the benefits of using an Rmarkdown file when writing documents with code",
-               "id": "task_dprep_2_3_1",
+               "id": "task_dprep_3_3_1",
                "description": "The main benefit of using an RMarkdown file is reproducability. Moreover, it supports various output formats (e.g., pdf and html)",
                "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
                "optional" : False
              },
              {
                "name": "Know how to use chunks within an R-markdown file",
-               "id": "task_dprep_2_3_2",
+               "id": "task_dprep_3_3_2",
                "description": "Chunks are used to show code (output) within the document, so users can either see what is going on in the code, what the output looks like or both!",
                "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
                "optional" : False
              },
              {
                "name": "Able to knit an RMD file to pdf and html",
-               "id": "task_dprep_2_3_2",
+               "id": "task_dprep_3_3_3",
                "description": "To export your report and share it with others, you will need to knit the file. In order to knit to pdf, you need to install tinytex, so make sure you are able to do this!",
                "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
                "optional" : False
@@ -384,28 +384,28 @@ course_dprep ={
           "items" : [
              {
                "name": "Inspect the dataset by filtering the regional and city level out",
-               "id": "task_dprep_2_4_1",
+               "id": "task_dprep_3_4_1",
                "description": "To inspect the data on a national level, the other levels are filtered out. Were you able to perform exercise 2 and, if not, do you understand the solution?",
                "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
                "optional" : False
              },
              {
                "name": "Drop unnecessary columns from the datase",
-               "id": "task_dprep_2_4_2",
+               "id": "task_dprep_3_4_2",
                "description": "When analyzing data, you will often have columns in your data that you do not need or use (this could be an identifier in survey data for example)",
                "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
                "optional" : False
              },
              {
                "name": "Write a function that inspects the data",
-               "id": "task_dprep_2_4_3",
+               "id": "task_dprep_3_4_3",
                "description": "Writing a function here allows you to make your code more efficient. Refresh your knowledge on functions and try making one yourself (exercise 9)!",
                "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
                "optional" : False
              },
              {
                "name": "Visualize the dataset by making plots",
-               "id": "task_dprep_2_4_4",
+               "id": "task_dprep_3_4_4",
                "description": "Use the plot() function that is built into R to (re)create the plots shown. Try out some other variations and see how this affects your plot! For you project, you could use ggplot2 to acquire more functionalities when plotting!",
                "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
                "optional" : False
@@ -1131,7 +1131,7 @@ course_odcm ={
            },
            {
              "name": "Work on part 2 of the tutorial",
-             "id": "task_odcm_5_3_1",
+             "id": "task_odcm_5_3_2",
              "description": "The second part puts your fresh Selenium skills into practice for Instagram and teaches you how to scrape images from here, for example!",
              "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscrapingadvanced/webscraping-advanced.ipynb"],
              "optional" : True
