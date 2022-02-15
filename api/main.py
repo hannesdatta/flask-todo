@@ -155,6 +155,11 @@ def user_getinfo(user_id):
     if (len(user)>0):
         out = user[0]
         out['success'] = True
+
+        try:
+            out['use_leaderboard']
+        except:
+            out['use_leaderboard'] = True
         return(out)
     else:
         return({'success': False})
