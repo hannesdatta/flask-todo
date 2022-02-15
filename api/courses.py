@@ -831,7 +831,7 @@ course_odcm ={
             "name": "Watch the energizer for this week",
             "id": "task_odcm_2_1_1",
             "description": "To get acquainted with this week's course material, watch the energizer!",
-            "links": ["TBA"],
+            "links": ["https://youtu.be/m1yCf09wSa4"],
             "optional" : False
           }]},
       {"category_name": "2. Reading",
@@ -927,7 +927,7 @@ course_odcm ={
              "name": "Watch the energizer for this week",
              "id": "task_odcm_3_1_1",
              "description": "To get acquainted with this week's course material, watch the energizer!",
-             "links": ["TBA"],
+             "links": ["https://youtu.be/j8DqkHBPuic"],
              "optional" : False
            }]},
        {"category_name": "2. Finalize your team",
