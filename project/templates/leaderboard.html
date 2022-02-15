@@ -1,0 +1,85 @@
+<!-- templates/profile.html -->
+
+{% extends "base2.html" %}
+
+
+</div>
+
+
+{% block content %}
+
+
+<div class="ui breadcrumb tiny">
+  <a class="section" href = "/">Home</a>
+  <div class="divider"> / </div>
+  <a class="section" href = "/modules/{{course.id}}">{{course.name}}</a>
+  <div class="divider"> / </div>
+  <a class="active section">Leaderboard</a>
+
+</div>
+
+
+<table class="ui very basic collapsing celled table">
+
+  <thead>
+    <tr><th>Rank</th>
+    <th>Name</th>
+    <th>XP</th>
+    <th>Last activity</th>
+
+  </tr></thead>
+
+  <tbody>
+
+    {% for item in experience %}
+
+    <tr>
+      <td>
+        {{item.rank}}
+      </td>
+
+      <td>
+        <h4 class="ui image header">
+          <i class="user icon"></i>
+          <!--<img src="/images/avatar2/small/lena.png" class="ui mini rounded image">-->
+          <div class="content">
+            {{item.nickname}}
+            <div class="sub header">{{item.leaderboard_message}}
+          </div>
+        </div>
+      </h4></td>
+      <td>
+        {{item.xp}}
+      </td>
+      <td>
+        {{item.last_activity}}
+      </td>
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+
+<div class="ui message">
+  <i class="close icon"></i>
+  <div class="header">
+    Work in progress...
+  </div>
+  <p>Our leaderboard is still in early beta... so... XPs and ranks are likely to change as we're adding more features.
+  Don't want to appear on this leaderboard? Or want to personalize your status message? Go to <a href='/me'>your settings</a> to turn it off!</p>
+
+</div>
+
+<script>
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+</script>
+
+{% endblock %}

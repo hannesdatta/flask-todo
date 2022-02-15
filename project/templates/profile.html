@@ -26,7 +26,7 @@
 
   E-mail address (you can't change this)
   <div class="ui input disabled">
-    <input type="text" placeholder="{{user.email}} ">
+    <input type="text" value="{{user.email}} ">
   </div>
 
   <br>
@@ -34,10 +34,29 @@
 
   Which nickname would you like to use?
   <div class="ui input">
-    <input name = 'nickname' type="text" placeholder="{{user.nickname}}">
+    <input name = 'nickname' type="text" placeholder="Provide a nickname" value = "{{user.nickname}}">
   </div>
 
   <br>
+
+  <div class="ui checkbox">
+  <input type="checkbox" name="leaderboard" {{leaderboard}}>
+  <label>Appear on leaderboard</label>
+  </div>
+
+  <br>
+
+  <div class="ui input">
+    <label>Short message to appear on leaderboard</label>
+      <input name = 'message' type="text" placeholder="Enter a short message here" value = "{{msg}}">
+  </div>
+
+
+
+
+  <br>
+    <br>
+      <br>
 <!--
   <div class="ui slider checkbox">
     <input type="checkbox" name="newsletter" checked="checked">

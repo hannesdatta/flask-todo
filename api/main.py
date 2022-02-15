@@ -11,6 +11,7 @@ import time
 from starlette.requests import Request
 from databases import Database
 import asyncio
+import pandas as pd
 
 # Open databases
 
@@ -170,10 +171,22 @@ async def user_setinfo(request: Request):
     if (len(user)>0):
         # exists
         nickname = obj['nickname']
+        use_leader = True
+        try:
+            use_leader = obj['use_leaderboard']
+        except:
+            1+1
 
-        print('user exists')
+        msg = ''
+        try:
+            msg = obj['leaderboard_message']
+        except:
+            1+1
+
         users.update({'nickname': nickname,
-                      'changed': get_timestamp()},
+                      'changed': get_timestamp(),
+                      'use_leaderboard': use_leader,
+                      'leaderboard_message': msg},
                      where('id') == user_id)
 
     else:
@@ -608,3 +621,295 @@ async def user_get_module_completition(user_id: int, course_id: int):
         c['modules'][number]['stats']=newlist[number]
 
     return(c)
+
+# cycles through a JSON course object and returns a list of
+# to do IDs
+def get_tasks(c):
+    # all_task_ids
+    all_task_ids = []
+    mod_tasks = []
+    for m in range(len(c['modules'])):
+        tmp_tasks = []
+        for cat in c['modules'][m].get('items'):
+            for task in cat.get('items'):
+                 try:
+                     is_optional = task.get('optional')
+                 except:
+                     is_optional = False
+                 if (is_optional==True): continue
+                 all_task_ids.append('"'+task.get('id')+'"')
+                 tmp_tasks.append('"'+task.get('id')+'"')
+                 mod_tasks.append({'task_id': task.get('id'),
+                                   'task_id_str': '"'+task.get('id')+'"',
+
+                                   'module_id': c['modules'][m].get('id'),
+                                   'course_id': c.get('id'),
+                                   'optional': is_optional})
+
+    return({'all_tasks': all_task_ids,
+            'tasks_by_module' : mod_tasks})
+
+@app.get("/course.get_experience/")
+async def experience(course_id: int):
+    course = courses.search(where('id') == int(course_id))
+
+    c=course[0]
+
+    # gather relevant task IDs
+    call = get_tasks(c)
+
+    all_tasks = call['all_tasks']
+
+    task_modules = pd.DataFrame.from_dict(call['tasks_by_module'])
+
+    #print(df)
+    # needs to be like an event table
+    # timestamp | activity | type | relations | points
+
+    exp = []
+
+    # initialize experience dict
+    my_users = []
+    for u in users.all():
+        my_users.append(u['id']) #exp[str(u['id'])] = []
+
+    #######################################
+    # entire history of to dos with dates #
+    #######################################
+
+    query = """SELECT events.*, DATE(timestamp, 'unixepoch') AS isodate FROM
+    (SELECT user_id, task_id, MAX(timestamp) AS created_at FROM events WHERE
+    task_id IN (""" + ','.join(all_tasks) + """)
+    GROUP BY user_id, task_id) AS latest_data INNER JOIN
+    events ON events.user_id = latest_data.user_id AND
+    events.task_id = latest_data.task_id AND
+    events.timestamp = latest_data.created_at WHERE status = 1;
+    """
+
+    db_results = await database.fetch_all(query=query)
+    #return(results_comments)
+    # implement LIKES on comments
+
+    tmp = pd.DataFrame(db_results)
+    df=tmp.set_axis(['user_id','task_id','type','unix','status','date'], 'columns')
+
+    df['rank'] = df.groupby("task_id")['unix'].rank("dense", ascending=True)
+
+
+    ntasks=task_modules.groupby('module_id').agg(
+        ntasks_all = ('task_id', 'nunique'))
+    ntasks_mandatory=task_modules[task_modules['optional']==False].groupby('module_id').agg(
+        ntasks_mandatory = ('task_id', 'nunique'))
+
+    #print(ntasks)
+    #ntasks= task_modules.groupby('module_id')['task_id'].nunique()
+
+
+    df = pd.merge(df, task_modules, on = 'task_id', how = 'left')
+    df = pd.merge(df, ntasks, on = 'module_id', how = 'left')
+    df = pd.merge(df, ntasks_mandatory, on = 'module_id', how = 'left')
+
+    # user completition
+    usercompl=df[(df['type']=='completed') & (df['optional']==False)].groupby(['course_id', 'module_id', 'user_id']).agg(
+        completed = ('task_id', 'nunique'),
+        completion_time = ('unix', 'max'))
+
+    df = pd.merge(df, usercompl, on = ['course_id', 'module_id', 'user_id'], how = 'left')
+
+    completion_rank=df[(df['completed']==df['ntasks_mandatory'])].groupby(['course_id', 'module_id', 'user_id']).agg(
+        unix = ('unix', 'max'),
+        date = ('date', 'max'))
+
+    completion_rank['rank'] = completion_rank.groupby(['course_id', 'module_id'])['unix'].rank("dense", ascending=True)
+    completion_rank['status'] = 1
+    completion_rank['task_id'] = 'module'
+    #df = pd.merge(df, completion_rank, on = ['course_id', 'module_id', 'user_id'], how = 'left')
+
+    # help others
+    #userhelp=df[(df['type']=='givehelp') & (df['optional']==False) & (df['status']==1)].groupby(['course_id', 'module_id', 'user_id']).agg(
+    #    nhelpothers = ('task_id', 'nunique'),
+    #    unix = ('unix', 'max'),
+    #    date = ('date', 'max'))
+
+    #print(userhelp)
+    #c#ompletion_rank['module_completion'] = completion_rank.groupby(['course_id', 'module_id']).agg(
+    #    module_completion_rank = ('unix', 'rank'))
+
+
+#agg_data.sort_values(by=['xp'], inplace=True, ascending = False)
+
+    print(completion_rank)
+
+#    print(df)
+    #print(test)
+
+    ##########################
+    # SUMMARY OF COMMENTS    #
+    ##########################
+
+    query = """SELECT user_id, task_id, MIN(timestamp), DATE(MIN(timestamp), 'unixepoch'), COUNT(*) as ncomments FROM
+    comments WHERE
+    task_id IN (""" + ','.join(all_tasks) + """) GROUP BY user_id, task_id;
+    """
+
+    db_results2 = await database.fetch_all(query=query)
+    #return(results_comments)
+    # implement LIKES on comments
+
+    tmp = pd.DataFrame(db_results2)
+    tmp=tmp.set_axis(['user_id', 'task_id','unix','date', 'count'], 'columns')
+
+    df_comments = pd.merge(tmp, task_modules, on = 'task_id', how = 'left')
+    df_comments['status'] = 1
+    #df['rank'] = df.groupby("task_id")['unix'].rank("dense", ascending=True)
+
+    #print(df_comments)
+    # merge modules
+
+
+    def combine_ids(x):
+        return(';'.join(list(set(x))))
+
+    def calc_experience(df, type, xp, multiplied=True):
+        agg_data = df.groupby(['user_id', 'date']).agg(
+            unix_min = ('unix', 'min'),
+            status_count = ('status', 'sum'),
+            tasks = ('task_id', combine_ids))
+
+        for index, row in agg_data.iterrows():
+            uid=index[0]
+            #if uid not in my_users: continue
+            if (multiplied==False): tot_xp = xp
+            if (multiplied==True): tot_xp = int(row['status_count']) * xp
+
+            exp.append({'date': index[1],
+                        'user_id': uid,
+                                             'unix': int(row['unix_min']),
+                                             'type': type,
+                                             'value': int(row['status_count']),
+                                             'xp': tot_xp})
+    # daily activity
+    calc_experience(df, type = 'daily_activity', xp = 50)
+
+    # mark to do as complete
+    calc_experience(df[df['type']=='completed'], type = 'complete_to_do', xp = 30)
+
+    # among first 3 to complete
+    calc_experience(df[(df['type']=='completed') & (df['rank']<=3)],
+                    type = 'complete_to_do_top3',
+                    xp = 30)
+
+    # among first 10 to complete
+    calc_experience(df[(df['type']=='completed') & (df['rank']>3) & (df['rank']<=10)],
+                    type = 'complete_to_do_top10',
+                    xp = 15)
+
+    # receiving likes on a comment
+
+
+    # mark to do with "can help others"
+    calc_experience(df[(df['type']=='givehelp')],
+                    type = 'help_others',
+                    xp = 10)
+
+    # complete all to dos from a given week
+    calc_experience(completion_rank,
+                    type = 'complete_module',
+                    xp = 50)
+
+    # among first 3 to complete all to dos from a given week
+    calc_experience(completion_rank[completion_rank['rank']<=3],
+                    type = 'complete_module_top3',
+                    xp = 100)
+
+    # among first 10 to complete all to dos from a given week
+    calc_experience(completion_rank[(completion_rank['rank']<=10) & (completion_rank['rank']>3)],
+                    type = 'complete_module_top10',
+                    xp = 50)
+
+    # receive 5 or more likes on a comment
+
+
+    # mark 3 or more to dos from one week with "can help others"
+
+
+    # write comment on a to do
+    calc_experience(df_comments[df_comments['count']>0],
+                    type = 'write_comment',
+                    xp = 20)
+
+    # mark 10 or more to dos with can help others in total
+
+
+    #print(df_comments)
+    return(exp)
+
+    # experience logs
+
+
+@app.get("/course.get_leaderboard/")
+async def leaderboard(course_id: int, timestamp: int = get_timestamp()):
+    exp_data = await experience(course_id)
+    df = pd.DataFrame.from_dict(exp_data)
+
+    agg_data = df.groupby(['user_id']).agg(
+        xp = ('xp', 'sum'),
+        last_activity = ('unix', 'max'))
+
+    agg_data.sort_values(by=['xp'], inplace=True, ascending = False)
+
+    leaderboard = []
+
+    course = courses.search(where('id') == course_id)
+
+    rank=1
+    for index, row in agg_data.iterrows():
+        uid=index
+
+        user = users.search(where('id') == uid)
+        print(user)
+
+        try:
+            use_leaderboard = user[0]['use_leaderboard']
+        except:
+            use_leaderboard = True
+
+        if (use_leaderboard==False): continue
+
+        try:
+            nickname = user[0]['nickname']
+        except:
+            nickname = 'Anonymous user'
+
+        try:
+            leaderboard_message = user[0]['leaderboard_message']
+        except:
+            leaderboard_message = 'No status message'
+
+        leaderboard.append({'rank': rank,
+                            'user_id': uid,
+                            'nickname': nickname,
+                            'xp': int(row['xp']),
+                            'last_activity': friendly_time(int(row['last_activity'])),
+                            'leaderboard_message': leaderboard_message})
+        rank+=1
+
+
+    # populate nicknames
+
+    return({'leaderboard': leaderboard,
+            'course': {'name': course[0]['name'],
+            'id': course[0]['id']}})
+
+
+def friendly_time(unix):
+    from datetime import datetime
+
+    ts_date=datetime.utcfromtimestamp(unix).strftime('%d-%m-%Y')
+    ts_time=datetime.utcfromtimestamp(unix).strftime('%H:%M')
+
+    timestamp_printable = ts_date + ' at ' + ts_time
+    if (datetime.utcnow().strftime('%d-%m-%Y'))==ts_date: timestamp_printable = 'Today at ' + ts_time
+    if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date: timestamp_printable = 'Yesterday at ' + ts_time
+
+    return(timestamp_printable)

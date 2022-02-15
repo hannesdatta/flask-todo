@@ -194,8 +194,22 @@ def updatepage():
 @main.route('/me')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name,
-    user=current_user)
+
+    leaderboard = 'checked="checked"'
+    print(current_user.use_leaderboard)
+    try:
+
+        if current_user.use_leaderboard==False:
+            leaderboard = ''
+    except:
+        leaderboard = 'checked="checked"'
+
+    try:
+        msg = current_user.leaderboard_message
+    except:
+        msg =''
+
+    return render_template('profile.html', name=current_user.name, user=current_user, leaderboard=leaderboard, msg=msg)
 
 @main.route('/todo/<module_id>')
 @main.route('/todo/<module_id>/<effect>')
@@ -294,8 +308,36 @@ def saveuser():
 
     url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.setinfo'
     import json
+
+    try:
+        if 'on' in request.form.get('leaderboard'):
+            leaderboard = True
+        else:
+            leaderboard = False
+    except:
+        leaderboard = False
+
     requests.post(url, data = json.dumps({'nickname':request.form.get('nickname'),
-                                         'user_id': current_user.id
+                                         'user_id': current_user.id,
+                                         'use_leaderboard': leaderboard,
+                                         'leaderboard_message': request.form.get('message')
                                          }))
 
     return redirect(request.referrer)
+
+
+
+@main.route('/leaderboard/<course_id>')
+@login_required
+def get_leaderboard(course_id):
+
+
+    #res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_modules/' + str(current_user.id) + '/' + str(course_id))
+    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/course.get_leaderboard/?course_id=' + str(course_id))
+
+    xp = res.json()
+
+    #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
+    #course = Course.query.filter(Course.id==course_id).first()
+    return render_template("leaderboard.html", experience = xp['leaderboard'],
+            course = xp['course'])
