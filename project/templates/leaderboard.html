@@ -40,7 +40,12 @@
 
       <td>
         <h4 class="ui image header">
-          <i class="user icon"></i>
+          {% if item['is_user'] == True %}
+            <i class="user icon red"></i>
+          {% else %}
+            <i class="user icon"></i>
+          {% endif %}
+
           <!--<img src="/images/avatar2/small/lena.png" class="ui mini rounded image">-->
           <div class="content">
             {{item.nickname}}

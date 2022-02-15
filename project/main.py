@@ -337,7 +337,13 @@ def get_leaderboard(course_id):
 
     xp = res.json()
 
+    experience2 = []
+    for ex in xp['leaderboard']:
+        res = ex
+        res['is_user'] = current_user.id == res['user_id']
+        experience2.append(res)
+
     #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
     #course = Course.query.filter(Course.id==course_id).first()
-    return render_template("leaderboard.html", experience = xp['leaderboard'],
+    return render_template("leaderboard.html", experience = experience2,
             course = xp['course'])
