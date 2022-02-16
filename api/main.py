@@ -164,6 +164,15 @@ def user_getinfo(user_id):
     else:
         return({'success': False})
 
+@app.get("/user.search/")
+async def user_getinfo(query: str):
+    import re
+    print(query)
+    query = query.replace('"','')
+    query = '.*'+query+ '.*'
+    User = Query()
+    return(users.search(User.email.matches(query, flags=re.IGNORECASE)))
+
 
 @app.post("/user.setinfo/")
 async def user_setinfo(request: Request):
