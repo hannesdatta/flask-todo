@@ -951,6 +951,7 @@ def friendly_time(unix):
 
     if (unix_now.strftime('%d-%m-%Y'))==ts_date:
         if minute_diff <= 1: return('Now')
+        if minute_diff < 2: return(str(math.floor(minute_diff)) + ' minute ago')
         if minute_diff <= 60: return(str(math.floor(minute_diff)) + ' minutes ago')
         if (minute_diff > 60) & (minute_diff < 120): return('1 hour ago')
         if (minute_diff >= 120) & (minute_diff <= 60 * 4): return(str(math.floor(minute_diff/60)) + ' hours ago')
