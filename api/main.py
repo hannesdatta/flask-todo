@@ -485,9 +485,12 @@ async def get_module_data(user_id: int, course_id: int):
     # all_task_ids
     all_task_ids = []
     mod_tasks = {}
+
     for m in range(len(c['modules'])):
+        #print(m)
         tmp_tasks = []
         for cat in c['modules'][m].get('items'):
+            #print(cat)
             for task in cat.get('items'):
                  try:
                      is_optional = task.get('optional')
@@ -496,6 +499,7 @@ async def get_module_data(user_id: int, course_id: int):
                  if (is_optional==True): continue
                  all_task_ids.append('"'+task.get('id')+'"')
                  tmp_tasks.append('"'+task.get('id')+'"')
+                 #print(task.get('id'))
         mod_tasks[c['modules'][m]['id']] = tmp_tasks
 
     # Query for most recent comments by task
@@ -525,7 +529,7 @@ async def get_module_data(user_id: int, course_id: int):
         events.task_id = latest_data.task_id AND
         events.timestamp = latest_data.created_at WHERE status = 1;
         """
-
+        #print(query)
         queries.append(query)
         #print(query)
 
@@ -570,12 +574,18 @@ async def user_get_module_completition(user_id: int, course_id: int):
     # populate json for website
     def analyze_modules(m):
         modid = m.get('id')
-        print(modid)
-        # Collect all task ids belonging to the module
+        #print(modid)
+
+        # Collect all task ids belonging to the module [not the optional ones]
         task_ids = []
 
         for cat in m.get('items'):
             for task in cat.get('items'):
+                try:
+                    is_optional = task.get('optional')
+                except:
+                    is_optional = False
+                if (is_optional==True): continue
                 task_ids.append('"'+task.get('id')+'"')
 
         # Query for learners
