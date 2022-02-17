@@ -289,7 +289,9 @@ async def show_comments(request: Request, task_id: str=None, user_id: int=None):
 
         out=dict(resu)
         out['user_nickname'] = 'hannes'
+        out['timestamp_printable'] = friendly_time(out['timestamp'])
         res.append(out)
+
 
     return(res)
 
@@ -915,15 +917,42 @@ async def leaderboard(course_id: int, timestamp: int = get_timestamp()):
             'course': {'name': course[0]['name'],
             'id': course[0]['id']}})
 
+@app.get("/time/")
+async def get_unix(timestamp: int = get_timestamp()):
+    return({friendly_time(timestamp)})
 
 def friendly_time(unix):
     from datetime import datetime
+    from datetime import timedelta
+    import math
 
-    ts_date=datetime.utcfromtimestamp(unix).strftime('%d-%m-%Y')
-    ts_time=datetime.utcfromtimestamp(unix).strftime('%H:%M')
+    unix_query = datetime.utcfromtimestamp(unix)
+    unix_now = datetime.utcnow()
 
+    ts_date=unix_query.strftime('%d-%m-%Y')
+    ts_time=unix_query.strftime('%H:%M')
+
+    minute_diff = ((unix_now - unix_query).total_seconds()) / 60
+
+    #datetime.fromtimestamp(ep/1000).strftime("%A")
+
+    # Today
     timestamp_printable = ts_date + ' at ' + ts_time
-    if (datetime.utcnow().strftime('%d-%m-%Y'))==ts_date: timestamp_printable = 'Today at ' + ts_time
-    if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date: timestamp_printable = 'Yesterday at ' + ts_time
+
+    if (unix_now.strftime('%d-%m-%Y'))==ts_date:
+        if minute_diff <= 1: return('Now')
+        if minute_diff <= 60: return(str(math.floor(minute_diff)) + ' minutes ago')
+        if (minute_diff > 60) & (minute_diff < 120): return('1 hour ago')
+        if (minute_diff >= 120) & (minute_diff <= 60 * 4): return(str(math.floor(minute_diff/60)) + ' hours ago')
+
+        return('Today at ' + ts_time)
+
+    # Yesterday
+    if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date:
+        return('Yesterday at ' + ts_time)
+
+    # Anywhere between now and six days ago
+    if (minute_diff/(24*60))<=7:
+        return(unix_query.strftime('%A') + ' at ' + ts_time)
 
     return(timestamp_printable)

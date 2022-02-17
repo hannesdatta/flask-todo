@@ -152,12 +152,7 @@ def get_comments():
 
     for comment in comments:
         res=comment
-        ts_date=datetime.utcfromtimestamp(res['timestamp']).strftime('%d-%m-%Y')
-        ts_time=datetime.utcfromtimestamp(res['timestamp']).strftime('%H:%M')
 
-        res['timestamp_printable'] = ts_date + ' at ' + ts_time
-        if (datetime.utcnow().strftime('%d-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Today at ' + ts_time
-        if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date: res['timestamp_printable'] = 'Yesterday at ' + ts_time
         res['show_delete'] = (res['user_id']==current_user.id) | (current_user.email=='h.datta@tilburguniversity.edu')
 
         url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.info/' + str(res['user_id'])
@@ -347,3 +342,39 @@ def get_leaderboard(course_id):
     #course = Course.query.filter(Course.id==course_id).first()
     return render_template("leaderboard.html", experience = experience2,
             course = xp['course'])
+
+def friendly_time(unix):
+    from datetime import datetime
+    from datetime import timedelta
+    import math
+
+    unix_query = datetime.utcfromtimestamp(unix)
+    unix_now = datetime.utcnow()
+
+    ts_date=unix_query.strftime('%d-%m-%Y')
+    ts_time=unix_query.strftime('%H:%M')
+
+    minute_diff = ((unix_now - unix_query).total_seconds()) / 60
+
+    #datetime.fromtimestamp(ep/1000).strftime("%A")
+
+    # Today
+    timestamp_printable = ts_date + ' at ' + ts_time
+
+    if (unix_now.strftime('%d-%m-%Y'))==ts_date:
+        if minute_diff <= 1: return('Now')
+        if minute_diff <= 60: return(str(math.floor(minute_diff)) + ' minutes ago')
+        if (minute_diff > 60) & (minute_diff < 120): return('1 hour ago')
+        if (minute_diff >= 120) & (minute_diff <= 60 * 4): return(str(math.floor(minute_diff/60)) + ' hours ago')
+
+        return('Today at ' + ts_time)
+
+    # Yesterday
+    if str(int((datetime.utcnow().strftime('%d')))-1)+(datetime.utcnow().strftime('-%m-%Y'))==ts_date:
+        return('Yesterday at ' + ts_time)
+
+    # Anywhere between now and six days ago
+    if (minute_diff/(24*60))<=7:
+        return(unix_query.strftime('%A') + ' at ' + ts_time)
+
+    return(timestamp_printable)
