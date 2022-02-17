@@ -124,6 +124,11 @@ def launch(token):
 def get_comments():
     task_id = request.args.get('task_id')
     module_id = request.args.get('module_id')
+    confetti_effect = request.args.get('confetti')
+    print(confetti_effect)
+    play_effect = 'False'
+
+    if (confetti_effect=='1'): play_effect = 'True'
 
     # retrieve stats for all tasks
     url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_tasks/?user_id=' + str(current_user.id) + '&module_id=' + str(module_id)
@@ -164,7 +169,7 @@ def get_comments():
 
     log_event(user_id=current_user.id, task_id=task_id, type='view')
 
-    return render_template('comments.html', task=task, comments=comment_dic)
+    return render_template('comments.html', task=task, comments=comment_dic, flash_message= play_effect)
 
 
 @main.route('/modules/<course_id>')
@@ -234,9 +239,13 @@ def update_task():
     #print(res)
 
     initial_url = request.referrer.replace('/confetti', '')
+    initial_url = initial_url.replace('&confetti=1', '')
+    initial_url = initial_url.replace('&confetti=0', '')
+
 
     if status=='1':
-        return redirect(initial_url+'/confetti')
+        if ('comment' not in initial_url): return redirect(initial_url+'/confetti')
+        if ('comment' in initial_url): return redirect(initial_url+'&confetti=1')
 
     return redirect(initial_url)
 
