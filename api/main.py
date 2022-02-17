@@ -880,9 +880,24 @@ async def experience(course_id: int):
 
 
 @app.get("/course.get_leaderboard/")
-async def leaderboard(course_id: int, timestamp: int = get_timestamp()):
+async def leaderboard(course_id: int, timestamp: int = get_timestamp(), user_id = None):
     exp_data = await experience(course_id)
     df = pd.DataFrame.from_dict(exp_data)
+
+    # personal experience
+    ach = achievements.all()
+
+    personal_exp = []
+    if (user_id is not None):
+        for ex in exp_data:
+            if ex['user_id']==int(user_id):
+                res=ex
+                res['timestamp'] = friendly_time(res['unix'])
+                res2 = next((sub for sub in ach if sub['id'] == res['type']), None)
+                res['activity'] = res2
+                personal_exp.append(res)
+
+        personal_exp = sorted(personal_exp, key=lambda d: d['unix'], reverse = True)
 
     agg_data = df.groupby(['user_id']).agg(
         xp = ('xp', 'sum'),
@@ -930,6 +945,7 @@ async def leaderboard(course_id: int, timestamp: int = get_timestamp()):
     # populate nicknames
 
     return({'leaderboard': leaderboard,
+            'personal_xp': personal_exp,
             'course': {'name': course[0]['name'],
             'id': course[0]['id']}})
 

@@ -328,7 +328,7 @@ def get_leaderboard(course_id):
 
 
     #res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_modules/' + str(current_user.id) + '/' + str(course_id))
-    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/course.get_leaderboard/?course_id=' + str(course_id))
+    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/course.get_leaderboard/?course_id=' + str(course_id)+'&user_id='+str(current_user.id))
 
     xp = res.json()
 
@@ -339,11 +339,12 @@ def get_leaderboard(course_id):
         experience2.append(res)
 
     achievements = requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/get_achievements').json()
-
+    print(xp['personal_xp'])
     #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
     #course = Course.query.filter(Course.id==course_id).first()
     return render_template("leaderboard.html", experience = experience2,
-            course = xp['course'], achievements = achievements)
+            course = xp['course'], achievements = achievements,
+            own_xp =xp['personal_xp'])
 
 def friendly_time(unix):
     from datetime import datetime

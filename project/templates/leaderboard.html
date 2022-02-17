@@ -21,13 +21,17 @@
 <br>
 
 <h2>Leaderboard</h2>
-
 <button class="ui basic button" onclick="myFunction()">
   <span><i class="birthday cake icon"></i>
   View how to score experience points and earn badges!</span>
 
 </button>
 
+<button class="ui basic button" onclick="myFunction2()">
+  <span><i class="birthday cake icon"></i>
+  View own scores!</span>
+
+</button>
 
 <table class="ui very basic collapsing celled table">
 
@@ -99,7 +103,7 @@ $('.message .close')
 </script>
 
 
-<div class="ui basic modal" id = "myModal">
+<div class="ui basic modal v1" id = "myModal">
   <div class="ui icon header">
     <i class="birthday cake icon"></i>
     Achievements
@@ -141,9 +145,58 @@ $('.message .close')
 
 
 
+<div class="ui basic modal v2">
+  <div class="ui icon header">
+    <i class="birthday cake icon"></i>
+    My Achievements
+  </div>
+  <div class="content">
+    <p>Find out how you scored experience points (XP) and earned badges!</p>
+
+
+    <div class="scrolling content">
+
+    <div class="ui inverted segment">
+      <div class="ui inverted relaxed divided list">
+
+        {% for oxp in own_xp %}
+        <div class="item">
+          <div class="content">
+            <div class="header">{{oxp.timestamp}} ({{oxp.xp}} XP)</div>
+            {{oxp.activity.task_short_name}}
+            {% if oxp.value>1 %}
+              ({{oxp.value}}x)
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+
+</div>
+
+  </div>
+  <div class="actions">
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Close
+    </div>
+  </div>
+</div>
+
+
+
 <script>
 function myFunction() {
-  $('.ui.basic.modal')
+  $('.ui.basic.modal.v1')
+  .modal('show')
+;
+}
+
+function myFunction2() {
+  $('.ui.basic.modal.v2')
   .modal('show')
 ;
 }
