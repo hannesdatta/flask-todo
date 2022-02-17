@@ -72,8 +72,16 @@
 
 
 
+
 <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
+
+  {% if comments|length==0 %}
+  <div class="ui mini message">
+    Be the first to share your experience or ask questions.
+  </div>
+  {% endif %}
+
 
   {% for comment in comments %}
   <div class="comment">
