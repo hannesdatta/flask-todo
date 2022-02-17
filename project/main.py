@@ -338,10 +338,12 @@ def get_leaderboard(course_id):
         res['is_user'] = current_user.id == res['user_id']
         experience2.append(res)
 
+    achievements = requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/get_achievements').json()
+
     #modules = Course.query.filter(Course.id==course_id).filter(Course.users.any(id=current_user.id)).first().modules
     #course = Course.query.filter(Course.id==course_id).first()
     return render_template("leaderboard.html", experience = experience2,
-            course = xp['course'])
+            course = xp['course'], achievements = achievements)
 
 def friendly_time(unix):
     from datetime import datetime
@@ -378,3 +380,10 @@ def friendly_time(unix):
         return(unix_query.strftime('%A') + ' at ' + ts_time)
 
     return(timestamp_printable)
+
+
+@main.route('/achievements')
+def display_achievements():
+    res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/get_achievements')
+
+    return render_template("achievements.html", achievements = res.json())

@@ -18,6 +18,16 @@
 
 </div>
 
+<br>
+
+<h2>Leaderboard</h2>
+
+<button class="ui basic button" onclick="myFunction()">
+  <span><i class="birthday cake icon"></i>
+  View how to score experience points and earn badges!</span>
+
+</button>
+
 
 <table class="ui very basic collapsing celled table">
 
@@ -66,6 +76,7 @@
   </tbody>
 </table>
 
+
 <div class="ui message">
   <i class="close icon"></i>
   <div class="header">
@@ -87,4 +98,59 @@ $('.message .close')
 ;
 </script>
 
+
+<div class="ui basic modal" id = "myModal">
+  <div class="ui icon header">
+    <i class="birthday cake icon"></i>
+    Achievements
+  </div>
+  <div class="content">
+    <p>Find out how you can boost your experience points (XP) and earn badges!</p>
+
+
+<table class="ui celled inverted table">
+  <thead>
+    <tr><th>No.</th>
+      <th>Achievement</th>
+    <th>Description</th>
+    <th>XP</th>
+
+  </tr></thead>
+  <tbody>
+    {% for achievement in achievements %}
+    <tr>
+      <td data-label="Achievement">{{achievement.order}}</td>
+      <td data-label="Achievement">{{achievement.task_short_name}}</td>
+      <td data-label="Description">{{achievement.task_description}}</td>
+      <td data-label="XP">{{achievement.xp_earned}}</td>
+      </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+  </div>
+  <div class="actions">
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Close
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function myFunction() {
+  $('.ui.basic.modal')
+  .modal('show')
+;
+}
+</script>
+
+
+<script>
+
+</script>
 {% endblock %}

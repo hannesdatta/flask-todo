@@ -22,6 +22,7 @@ courses = db.table('courses')
 users = db.table('users')
 conversations = db.table('conversations')
 status = db.table('status')
+achievements = db.table('achievements')
 
 # SQL
 database = Database('sqlite:///events_comments.db')
@@ -674,6 +675,11 @@ def get_tasks(c):
 
     return({'all_tasks': all_task_ids,
             'tasks_by_module' : mod_tasks})
+
+
+@app.get("/get_achievements/")
+async def get_achievements():
+    return(achievements.all())
 
 @app.get("/course.get_experience/")
 async def experience(course_id: int):
