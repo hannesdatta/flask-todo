@@ -83,7 +83,7 @@ def main_login_post():
             flash('Boom! Check your email and use your magic login link!') #'<br>'+ link)
             send_mail(email, "Log in to *Pulse* now!", "Thanks for requesting your MAGIC LINK to log in back to *Pulse*. " + link)
         else:
-            flash('Amazing that you join! CHeck your email now and use your magic link to log in!') #'<br>'+link)
+            flash('Amazing that you join! Check your email now and use your magic link to log in!') #'<br>'+link)
             send_mail(email, "Welcome to Pulse!", "Thanks for using PULSE, Tilburg's tool to help you keep on track with your course work. Please use this MAGIC LINK to login now: " + link)
     return redirect(url_for('main.index'))
 
