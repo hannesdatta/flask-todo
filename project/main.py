@@ -251,6 +251,26 @@ def update_task():
 
     #return redirect(url_for("main.todo", module_id=module))
 
+from flask import jsonify
+
+@main.route("/post-todo-update", methods=['POST'])
+@login_required
+def update_taskAJAX():
+    te=request.form.to_dict()
+    jsono = json.loads(te['o'])
+    print(jsono)
+    task_id = jsono.get('task_id')
+    type = jsono.get('type')
+    status = jsono.get('status')
+
+    new_status = 0
+    if (status=='0'): new_status=1
+
+    url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.set_tasks/?user_id=' + str(current_user.id) + '&task_id=' + str(task_id)+ '&type=' + str(type)+ '&status=' + str(new_status)
+    res=requests.get(url).json()
+
+    return json.dumps({'status':'ok', 'status': status, 'task_id': task_id, 'new_status':new_status })
+
 
 @main.route('/delete_comment/')
 @login_required

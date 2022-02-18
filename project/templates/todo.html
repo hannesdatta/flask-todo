@@ -64,49 +64,46 @@
     <p><small>{{task.description}}</small></p>
 </div>
   <div class="two wide column">
-
-    {% if task['stats']['completed'] == False %}
-      <a class="ui small label" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{tasks.id}}"><small>Mark as complete</a>
-    {% else %}
+  <!--  <a id = "1" onClick="status_click(this.id)" class="ui small label" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=1&module={{tasks.id}}"><small>Mark as complete</a>
       <a class="ui small green label" href = "/todo-update/?task_id={{task['id']}}&type=completed&status=0&module={{tasks.id}}"><small>Completed</a>
+-->
+    {% if task['stats']['completed'] == False %}
+      <a id = "completed_{{task['id']}}" task_id = "{{task['id']}}" type = "completed" status = "0" onClick="status_click(this.id)" class="ui small label"><small>Mark as complete</small></a>
+    {% else %}
+      <a id = "completed_{{task['id']}}" task_id = "{{task['id']}}" type = "completed" status = "1" onClick="status_click(this.id)" class="ui small green label"><small>Completed</small></a>
     {% endif %}
 
     <div class="ui simple dropdown">
       <input type="hidden" name="gender">
       <i class="dropdown icon"></i>
-      <div class="default text"  data-tooltip="Request support that will be addressed during the live streams">
+      <div id = "req_{{task['id']}}" class="default text"  data-tooltip="Request support that will be addressed during the live streams">
       {% if task['stats']['explain'] == True or task['stats']['practice'] == True or task['stats']['givehelp'] == True %}
-          Support requested
+          <small>Support requested</small>
       {% else %}
-          Support
+          <small>Support</small>
       {% endif %}
       </div>
       <div class="menu">
         {% if task['stats']['explain'] == True %}
-        <a class="active item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=0&module={{tasks.id}}"><i class="icon check"></i>Need explanation</a>
+        <a id = "explain_{{task['id']}}" task_id = "{{task['id']}}" type = "explain" status = "1" onClick="status_click(this.id)" class="active item"><i class="icon check"></i>Need explanation</a>
         {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=explain&status=1&module={{tasks.id}}">Need explanation</a>
+        <a id = "explain_{{task['id']}}" task_id = "{{task['id']}}" type = "explain" status = "0" onClick="status_click(this.id)" class="item">Need explanation</a>
         {% endif %}
         {% if task['stats']['practice'] == True %}
-        <a class="active item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=0&module={{tasks.id}}"><i class="icon check"></i>Need practice</a>
+        <a id = "practice_{{task['id']}}" task_id = "{{task['id']}}" type = "practice" status = "1" onClick="status_click(this.id)" class="active item"><i class="icon check"></i>Need practice</a>
         {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=practice&status=1&module={{tasks.id}}">Need practice</a>
+        <a id = "practice_{{task['id']}}" task_id = "{{task['id']}}" type = "practice" status = "0" onClick="status_click(this.id)" class="item">Need practice</a>
         {% endif %}
         {% if task['stats']['givehelp'] == True %}
-        <a class="active item" href = "/todo-update/?task_id={{task['id']}}&type=givehelp&status=0&module={{tasks.id}}"><i class="icon check"></i>Can help others</a>
+        <a id = "givehelp_{{task['id']}}" task_id = "{{task['id']}}" type = "givehelp" status = "1" onClick="status_click(this.id)" class="active item"><i class="icon check"></i>Can help others</a>
         {% else %}
-        <a class="item" href = "/todo-update/?task_id={{task['id']}}&type=givehelp&status=1&module={{tasks.id}}">Can help others</a>
+        <a id = "givehelp_{{task['id']}}" task_id = "{{task['id']}}" type = "givehelp" status = "0" onClick="status_click(this.id)" class="item">Can help others</a>
         {% endif %}
       </div>
     </div>
 
-
-
-
   </div>
   </div>
-
-
 
     </div>
 
@@ -115,5 +112,80 @@
 
 {% endfor %}
 
+
+
+<script>
+
+  function status_click(id)
+  {
+    var btn = document.getElementById(id)
+
+    var objectData = {
+      "status": btn.getAttribute('status'),
+      "task_id": btn.getAttribute('task_id'),
+      "type": btn.getAttribute('type')
+
+    };
+
+    console.log(btn.getAttribute('type'));
+
+		$.ajax({
+			url: '/post-todo-update',
+      dataType: "json",
+			data: {o: JSON.stringify(objectData)},
+			type: 'POST',
+			success: function(response){
+				console.log(response);
+        btn.setAttribute("status", response.new_status)
+
+        if (btn.getAttribute("type")=="completed") {
+          if (response.new_status==0) {
+            btn.setAttribute("class", "ui small label")
+            btn.innerHTML= "<small>Mark as complete</small>"
+          } else {
+            btn.setAttribute("class", "ui small green label")
+            btn.innerHTML ="<small>Completed</small>"
+            confetti()
+
+          }
+        } else {
+          /* help buttons */
+          var btnexplain = document.getElementById('explain_'+btn.getAttribute('task_id'))
+          var btnpractice = document.getElementById('practice_'+btn.getAttribute('task_id'))
+          var btnhelp = document.getElementById('givehelp_'+btn.getAttribute('task_id'))
+
+          if (response.new_status==0) {
+            btn.setAttribute("class", "item")
+            if (btn.getAttribute('type')=='explain') btn.innerHTML = "Need explanation"
+            if (btn.getAttribute('type')=='practice') btn.innerHTML = "Need practice"
+            if (btn.getAttribute('type')=='givehelp') btn.innerHTML = "Can explain others"
+
+
+
+          } else {
+            btn.setAttribute("class", "active item")
+            if (btn.getAttribute('type')=='explain')  btn.innerHTML = '<i class="icon check"></i>Need explanation'
+            if (btn.getAttribute('type')=='practice')  btn.innerHTML = '<i class="icon check"></i>Need practice'
+            if (btn.getAttribute('type')=='givehelp') btn.innerHTML =  '<i class="icon check"></i>Can explain others'
+
+
+          }
+
+          if (parseInt(btnexplain.getAttribute('status'))+parseInt(btnpractice.getAttribute('status'))+parseInt(btnhelp.getAttribute('status'))>0) {
+            document.getElementById('req_'+btn.getAttribute('task_id')).innerHTML="<small>Support requested</small>"
+          } else {
+            document.getElementById('req_'+btn.getAttribute('task_id')).innerHTML="<small>Support</small>"
+          }
+        }
+
+
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	};
+
+</script>
 
 {% endblock %}
