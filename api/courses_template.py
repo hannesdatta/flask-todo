@@ -1,4 +1,25 @@
 
+xp = [{'order': 1,
+       'type': 'myprogramming_code',
+       'short_title': 'Kurz und knapp',
+       'description': 'Longer description on how to get points',
+       'xps': 50,
+       'badges': ''},
+       {'order': 1,
+              'type': 'myprogramming_code',
+              'short_title': 'Kurz und knapp',
+              'description': 'Longer description on how to get points',
+              'xps': 50,
+              'badges': ''},
+
+      {'order': 1,
+             'type': 'myprogramming_code',
+             'short_title': 'Kurz und knapp',
+             'description': 'Longer description on how to get points',
+             'xps': 50,
+             'badges': ''}
+                     ]
+
 course_dprep ={
   "name": "Data Preparation and Workflow Management",
   "description": "Learn how to efficiently manage empirical research projects!",

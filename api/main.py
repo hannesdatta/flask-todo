@@ -651,7 +651,7 @@ async def user_get_module_completition(user_id: int, course_id: int):
 
 # cycles through a JSON course object and returns a list of
 # to do IDs
-def get_tasks(c):
+def get_tasks(c, keep_optional = False):
     # all_task_ids
     all_task_ids = []
     mod_tasks = []
@@ -663,14 +663,15 @@ def get_tasks(c):
                      is_optional = task.get('optional')
                  except:
                      is_optional = False
-                 if (is_optional==True): continue
+                 if (is_optional==True & keep_optional == False): continue
                  all_task_ids.append('"'+task.get('id')+'"')
                  tmp_tasks.append('"'+task.get('id')+'"')
                  mod_tasks.append({'task_id': task.get('id'),
                                    'task_id_str': '"'+task.get('id')+'"',
-
                                    'module_id': c['modules'][m].get('id'),
                                    'course_id': c.get('id'),
+                                   'course_name': c.get('name'),
+                                   'task_name': task.get('name'),
                                    'optional': is_optional})
 
     return({'all_tasks': all_task_ids,
@@ -989,3 +990,72 @@ def friendly_time(unix):
         return(unix_query.strftime('%A') + ' at ' + ts_time)
 
     return(timestamp_printable)
+
+########
+# FEED #
+########
+
+@app.get("/feed.get_sidebar")
+async def feed_trends():
+
+    ##### TRENDS
+
+    # The one w/ most views in past day
+    ts_query = get_timestamp() - 24*60*60
+    query = """SELECT task_id, COUNT(*) as total_views, COUNT(DISTINCT user_id) as total_users FROM logs WHERE timestamp > """ + str(ts_query) + """ GROUP BY task_id ORDER BY total_views DESC;"""
+
+    results = await database.fetch_all(query=query)
+
+    if (len(results)<3):
+        ts_query = get_timestamp() - 48*60*60
+        query = """SELECT task_id, COUNT(*) as total_views, COUNT(DISTINCT user_id) as total_users FROM logs WHERE timestamp > """ + str(ts_query) + """ GROUP BY task_id ORDER BY total_views DESC;"""
+        results = await database.fetch_all(query=query)
+
+    if (len(results)<3):
+        ts_query = get_timestamp() - 72*60*60
+        query = """SELECT task_id, COUNT(*) as total_views, COUNT(DISTINCT user_id) as total_users FROM logs WHERE timestamp > """ + str(ts_query) + """ GROUP BY task_id ORDER BY total_views DESC;"""
+        results = await database.fetch_all(query=query)
+
+
+    all_tasks = [get_tasks(c, keep_optional = True)['tasks_by_module'] for c in courses.all()]
+
+    tasks = []
+    for t in all_tasks:
+        for tt in t:
+            tasks.append(tt)
+
+    res = []
+    cnt=0
+    for resu in results:
+        cnt+=1
+        if (cnt>3): break
+        out=dict(resu)
+        r2=next((item for item in tasks if item["task_id"] == resu['task_id']), None)
+        out['desc']=r2
+        res.append(out)
+
+
+
+    # COMMENTS
+
+    query = """SELECT * FROM comments ORDER BY timestamp DESC LIMIT 3;"""
+    tmp = await database.fetch_all(query=query)
+
+    comment_results = []
+    for r in tmp:
+        out=dict(r)
+
+        print(out)
+
+        user = users.search(where('id') == out['user_id'])
+        print(user)
+        if (len(user)>0):
+            out['nickname'] = user[0]['nickname']
+        else:
+            out['nickname'] = 'Someone'
+        r2=next((item for item in tasks if item["task_id"] == out['task_id']), None)
+        out['desc']=r2
+        out['pretty_timestamp'] = friendly_time(out['timestamp'])
+        comment_results.append(out)
+
+    return ({'trending': res, 'comments': comment_results, 'tasks': all_tasks})

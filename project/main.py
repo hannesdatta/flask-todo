@@ -14,8 +14,42 @@ import json
 main = Blueprint('main', __name__)
 
 
+@main.context_processor
+def inject_user():
+    feed=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/feed.get_sidebar').json()
+
+    return dict(feed=feed)
+
 @main.route('/')
 def index():
+    #db.create_all()
+
+    if current_user.is_authenticated:
+         #courses = Course.query.filter(Course.users.any(id=current_user.id)).all()
+         res=requests.get(current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.get_courses/?user_id=' + str(current_user.id))
+         courses=res.json()
+         course_list=[]
+         for c in courses:
+             c['has_modules'] = False
+             try:
+                 len(c.get('modules'))>0
+                 c['has_modules'] = True
+             except:
+                 1
+             course_list.append(c)
+
+         if current_user.created==current_user.changed:
+            flash(Markup('Uhh... we picked a random nickname for you! Head over to your <a href="/me" class = "alert-link">settings</a> to change it!<br>You can make this message go away by changing your settings once...'))
+            #flash(')
+
+
+         #courses = Course.query.filter_by(User.id==current_user.id).all()
+         return render_template('feed.html', courses=course_list, user=current_user)
+    else:
+         return render_template("index.html")
+
+@main.route('/courses')
+def see_courses():
     #db.create_all()
 
     if current_user.is_authenticated:
@@ -161,8 +195,12 @@ def get_comments():
         res['show_delete'] = (res['user_id']==current_user.id) | (current_user.email=='h.datta@tilburguniversity.edu')
 
         url = current_app.config["API_URL"]+':' +current_app.config["API_PORT"] + '/user.info/' + str(res['user_id'])
-        nickname=requests.get(url).json()['nickname']
-        res['nickname'] = nickname
+
+        try:
+            nickname=requests.get(url).json()['nickname']
+            res['nickname'] = nickname
+        except:
+            res['nickname'] = "Someone"
         comment_dic.append(res)
     #    return redirect(request.referrer)
     #session['url'] = url_for('comments')

@@ -21,28 +21,112 @@
 
   <div class="ui container">
 
-<div class="ui secondary small menu">
+<div class="ui secondary menu">
 
   <div class="item">
   <a href="{{ url_for('main.index') }}" class="item"><img src="/static/logo.png"></a>
   </div>
 
+
   <div class="right menu">
   {% if current_user.is_authenticated %}
-  <a href="{{ url_for('main.profile') }}" class="item"><i class="settings icon"></i>Me</a>
+
+  <div class="ui category search item">
+      <div class="ui transparent icon input">
+        <input class="prompt" type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+  <a href="{{ url_for('main.profile') }}" class="item"><i class="user icon"></i></a>
   <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
   {% endif %}
   </div>
 </div>
 
-
 <div class="ui divider"></div>
 
 
-            <div class="container has-text-centered">
-               {% block content %}
-               {% endblock %}
+<div class="ui grid">
+  <div class="two column row">
+    <div class="computer only four wide column">
+      <div class="ui basic segment">
+        <!--Computer-->
+        <div class="ui fluid vertical menu">
+          <a class="item" href="/"><i class="home icon"></i>For You</a>
+          <a class="item" href="/courses"><i class="book icon"></i>Courses</a>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div class="ui medium header">Trending</div>
+          <p></p>
+          <div class="ui link list">
+            {% for f in feed.trending %}
+            <a class="item" href = "/comments?module_id={{f.desc.module_id}}&task_id={{f.desc.task_id}}">{{f.desc.task_name}} ({{f.desc.course_name}})</a>
+            {% endfor %}
+          </div>
+
+        <div class="ui medium header">Recent Comments</div>
+            <p></p>
+
+            <div class="ui link list">
+              {% for c in feed.comments %}
+              <a class="item" href = "/comments?module_id={{c.desc.module_id}}&task_id={{c.desc.task_id}}">{{c.nickname}} commented on "{{c.desc.task_name}}" ({{c.desc.course_name}}) - {{c.pretty_timestamp}}</a>
+              {% endfor %}
             </div>
+<!--
+        <div class="ui medium header">Discover</div>
+                <p></p>
+
+                <div class="ui link list">
+                  <a class="item">1</a>
+                  <a class="item">2</a>
+                  <a class="item">3</a>
+                </div>
+-->
+        <br>
+
+        <div class="ui divider"></div>
+
+        <a>About</a>
+        <a>Terms</a>
+        <a>Privacy</a>
+
+
+      </div>
+    </div>
+    <div class="tablet mobile only four wide column">
+      <div class="ui basic segment">
+        <!--Tablet and Mobile-->
+        <div class="ui vertical labeled icon menu">
+          <a class="item">
+            <i class="home icon"></i>
+            For You
+          </a>
+          <a class="item">
+            <i class="book icon"></i>
+            Courses
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="twelve wide column">
+      <div class="ui basic segment">
+        <!--All Sizes-->
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
 </div>
 
 </body>
