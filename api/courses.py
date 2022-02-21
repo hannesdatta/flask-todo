@@ -428,7 +428,7 @@ course_dprep ={
              "name": "Watch the energizer for this week",
              "id": "task_dprep_4_1_1",
              "description": "To get acquainted with this week's course material, watch the energizer!",
-             "links": ["TBA"],
+             "links": ["https://youtu.be/z_Hh1jlL1Ac"],
              "optional" : False
            }]},
        {"category_name": "2. Datacamp course: “Introduction to Tidyverse”",
