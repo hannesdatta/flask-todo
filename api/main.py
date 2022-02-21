@@ -655,24 +655,25 @@ def get_tasks(c, keep_optional = False):
     # all_task_ids
     all_task_ids = []
     mod_tasks = []
-    for m in range(len(c['modules'])):
+
+    for m in c['modules']:
         tmp_tasks = []
-        for cat in c['modules'][m].get('items'):
+        for cat in m.get('items'):
             for task in cat.get('items'):
-                 try:
-                     is_optional = task.get('optional')
-                 except:
-                     is_optional = False
-                 if (is_optional==True & keep_optional == False): continue
-                 all_task_ids.append('"'+task.get('id')+'"')
-                 tmp_tasks.append('"'+task.get('id')+'"')
-                 mod_tasks.append({'task_id': task.get('id'),
-                                   'task_id_str': '"'+task.get('id')+'"',
-                                   'module_id': c['modules'][m].get('id'),
-                                   'course_id': c.get('id'),
-                                   'course_name': c.get('name'),
-                                   'task_name': task.get('name'),
-                                   'optional': is_optional})
+                 print(task.get('id'))
+                 is_optional = bool(task.get('optional'))
+
+                 if (is_optional==False or keep_optional == True):
+                     all_task_ids.append('"'+task.get('id')+'"')
+                     tmp_tasks.append('"'+task.get('id')+'"')
+                     mod_tasks.append({'task_id': task.get('id'),
+                                           'task_id_str': '"'+task.get('id')+'"',
+                                           'module_id': m.get('id'),
+                                           'module_name': m.get('name'),
+                                           'course_id': c.get('id'),
+                                           'course_name': c.get('name'),
+                                           'task_name': task.get('name'),
+                                           'optional': is_optional})
 
     return({'all_tasks': all_task_ids,
             'tasks_by_module' : mod_tasks})

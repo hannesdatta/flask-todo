@@ -31,6 +31,7 @@
   <div class="right menu">
   {% if current_user.is_authenticated %}
 
+  <!--
   <div class="ui category search item">
       <div class="ui transparent icon input">
         <input class="prompt" type="text" placeholder="Search...">
@@ -38,6 +39,7 @@
       </div>
       <div class="results"></div>
     </div>
+  -->
   <a href="{{ url_for('main.profile') }}" class="item"><i class="user icon"></i></a>
   <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
   {% endif %}
@@ -63,7 +65,7 @@
           <p></p>
           <div class="ui link list">
             {% for f in feed.trending %}
-            <a class="item" href = "/comments?module_id={{f.desc.module_id}}&task_id={{f.desc.task_id}}">{{f.desc.task_name}} ({{f.desc.course_name}})</a>
+            <a class="item" href = "/comments?module_id={{f.desc.module_id}}&task_id={{f.desc.task_id}}">{{f.desc.task_name}} ({{f.desc.module_name}} - {{f.desc.course_name}} | {{f.total_views}} views in last 24h)</a>
             {% endfor %}
           </div>
 
@@ -104,10 +106,11 @@
             <i class="home icon"></i>
             For You
           </a>
-          <a class="item">
+        <!--  <a class="item">
             <i class="book icon"></i>
             Courses
           </a>
+        -->
         </div>
 
       </div>
