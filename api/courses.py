@@ -152,7 +152,7 @@ course_dprep ={
             "name": "Watch the energizer for this week",
             "id": "task_dprep_2_1_1",
             "description": "To get acquainted with this week's course material, watch the energizer!",
-            "links": ["TBA"],
+            "links": ["https://youtu.be/kL-s7XHWiWI"],
             "optional" : False
           }]},
       {"category_name": "2. Readings on workflow management",
@@ -531,7 +531,7 @@ course_dprep ={
            "name": "Watch the energizer for this week",
            "id": "task_dprep_5_1_1",
            "description": "To get acquainted with this week's course material, watch the energizer!",
-           "links": ["TBA"],
+           "links": ["https://youtu.be/PdWZ1s8XXiU"],
            "optional" : False
          }]},
      {"category_name": "2. Automating and reproducing your research project",
@@ -1097,7 +1097,7 @@ course_odcm ={
            "name": "Watch the energizer for this week",
            "id": "task_odcm_5_1_1",
            "description": "To get acquainted with this week's course material, watch the energizer!",
-           "links": ["TBA"],
+           "links": ["https://youtu.be/u4TD4i_hsl0"],
            "optional" : False
          }]},
      {"category_name": "2. Tutorial: APIs advanced",
