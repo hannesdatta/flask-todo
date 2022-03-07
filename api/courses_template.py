@@ -604,72 +604,76 @@ course_dprep ={
     {
     "name": "Week 6-7",
     "description": "Course and project wrap-up",
-    "id": 6,
+    "id": 106,
     "order": 1,
     "deadline": "",
     "items": [
-      {"category_name": "1. Course evaluation",
+      {"category_name": "Project - Github repository",
        "id": 1,
        "description": "",
        "items" : [
           {
-            "name": "My programming skills have improved significantly since the start of this course",
-            "id": "task_dprep_6_1_1",
+            "name": "The choices for the way of deployment and research method are elaborated on and the research question is clearly formulated",
+            "id": "task_odcm_6_1_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I enjoyed the format of this course (i.e., external website instead of Canvas to stimulate open education)",
-            "id": "task_dprep_6_1_2",
+            "name": "The repository includes a properly structured readme.md file",
+            "id": "task_odcm_6_1_2",
             "description": "",
-            "links": [""],
-            "optional" : False
-          },
-          {
-            "name": "I liked the concept of Pulse and it has helped me with keeping track of what must be done each week",
-            "id": "task_dprep_6_1_3",
-            "description": "",
-            "links": [""],
-            "optional" : False
-          },
-          {
-            "name": "The things i have learned in this class w.r.t. automation, reproducability and programming are skills that I will apply in the future",
-            "id": "task_dprep_6_1_4",
-            "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]},
-      {"category_name": "2. Project evaluation",
+      {"category_name": "Project - Data preparation & analysis",
        "id": 2,
        "description": "",
        "items" : [
           {
-            "name": "The project helped me to further improve my (programming) skills",
-            "id": "task_dprep_6_2_1",
+            "name": "The data files are programmatically downloaded from the internet",
+            "id": "task_odcm_6_2_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The project aligned well with the other course material",
-            "id": "task_dprep_6_2_2",
+            "name": "When downloaded, the data is cleaned using packages such as dplyr and tidyverse",
+            "id": "task_odcm_6_2_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The coaching sessions provided enough feedback to continue working on the project",
-            "id": "task_dprep_6_2_3",
+            "name": "The cleaned data is analyzed and the results are deployed in a PDF document and/or Shiny App etc.",
+            "id": "task_odcm_6_2_3",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          }]},
+      {"category_name": "Project - Source code and automation",
+       "id": 3,
+       "description": "",
+       "items" : [
+          {
+            "name": "A proper directory structure is integrated (e.g., code in src folder, plots in output folder)",
+            "id": "task_odcm_6_3_1",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I enjoyed working on the project",
-            "id": "task_dprep_6_2_4",
+            "name": "A makefile is present that automatically builds the project when typing make",
+            "id": "task_odcm_6_3_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          },
+          {
+            "name": "A gitignore file is included, ensuring that Git does not track unnecessary files",
+            "id": "task_odcm_6_3_3",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]}],
 
@@ -680,7 +684,6 @@ course_dprep ={
 
 
 print(course_dprep)
-
 
 
 course_odcm ={
@@ -1138,72 +1141,83 @@ course_odcm ={
     {
     "name": "Week 6-7",
     "description": "Course and project wrap-up",
-    "id": 6,
+    "id": 106,
     "order": 1,
     "deadline": "",
     "items": [
-      {"category_name": "1. Course evaluation",
+      {"category_name": "Project - Documentation",
        "id": 1,
        "description": "",
        "items" : [
           {
-            "name": "My programming skills have improved significantly since the start of this course",
+            "name": "The motivation for choosing the website/API used is elaborated on and clear.",
             "id": "task_odcm_6_1_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I enjoyed the format of this course (i.e., external website instead of Canvas to stimulate open education)",
+            "name": "The concerns that arise during the extraction design (seed selection, frequency at which data is collected) are taken into account and dealt with",
             "id": "task_odcm_6_1_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I liked the concept of Pulse and it has helped me with keeping track of what must be done each week",
+            "name": "Legal and ethical risks are mentioned and a tradeoff is made between these and the research validity and technical feasibility",
             "id": "task_odcm_6_1_3",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "",
+            "name": "If applicable, variables are accompanied with summary statistics. Any errors or missingness/deviations are identified and described",
             "id": "task_odcm_6_1_4",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          },
+          {
+            "name": "The collection of data is clearly described. If necessary, screenshots or additional recordings are provided to improve reproducability of the project",
+            "id": "task_odcm_6_1_5",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]},
-      {"category_name": "2. Project evaluation",
+      {"category_name": "Project - Source Code for the Data Collection",
        "id": 2,
        "description": "",
        "items" : [
           {
-            "name": "The project helped me to further improve my (programming) skills",
+            "name": "Code is well structured and comments are provided where necessary. Unncessary code is not included",
             "id": "task_odcm_6_2_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The project aligned well with the other course material",
+            "name": "The code runs from top to bottom without any issues (see if running on a different computer works too)",
             "id": "task_odcm_6_2_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          }]},
+      {"category_name": "Project - Data package",
+       "id": 3,
+       "description": "",
+       "items" : [
+          {
+            "name": "The data is submitted as a zip file and follows the directory structure presented on the grading page (see link)",
+            "id": "task_odcm_6_3_1",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The coaching sessions provided enough feedback to continue working on the project",
-            "id": "task_odcm_6_2_3",
+            "name": "The documents are all publication-ready (i.e., no more template text or unncessary files) and look neat",
+            "id": "task_odcm_6_3_2",
             "description": "",
-            "links": [""],
-            "optional" : False
-          },
-          {
-            "name": "I enjoyed working on the project",
-            "id": "task_odcm_6_2_4",
-            "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]}],
 
