@@ -59,6 +59,7 @@
         <!--  <a class="item" href="/courses"><i class="book icon"></i>Courses</a>-->
         </div>
 
+        {% if current_user.is_authenticated %}
         <div class="ui divider"></div>
 
         <div class="ui medium header">Trending</div>
@@ -88,7 +89,7 @@
                 </div>
 -->
         <br>
-
+        {% endif %}
         <div class="ui divider"></div>
 
         <a href="/about">About</a>
