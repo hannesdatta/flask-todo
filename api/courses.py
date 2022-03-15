@@ -1146,79 +1146,68 @@ course_odcm ={
     "order": 1,
     "deadline": "",
     "items": [
-      {"category_name": "Project - Documentation",
+      {"category_name": "1. Course evaluation",
        "id": 1,
        "description": "",
        "items" : [
           {
-            "name": "The motivation for choosing the website/API used is elaborated on and clear.",
+            "name": "My programming skills have improved significantly since the start of this course",
             "id": "task_odcm_6_1_1",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           },
           {
-            "name": "The concerns that arise during the extraction design (seed selection, frequency at which data is collected) are taken into account and dealt with",
+            "name": "I enjoyed the format of this course (i.e., external website instead of Canvas to stimulate open education)",
             "id": "task_odcm_6_1_2",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           },
           {
-            "name": "Legal and ethical risks are mentioned and a tradeoff is made between these and the research validity and technical feasibility",
+            "name": "I liked the concept of Pulse and it has helped me with keeping track of what must be done each week",
             "id": "task_odcm_6_1_3",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           },
           {
-            "name": "If applicable, variables are accompanied with summary statistics. Any errors or missingness/deviations are identified and described",
+            "name": "",
             "id": "task_odcm_6_1_4",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
-            "optional" : False
-          },
-          {
-            "name": "The collection of data is clearly described. If necessary, screenshots or additional recordings are provided to improve reproducability of the project",
-            "id": "task_odcm_6_1_5",
-            "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           }]},
-      {"category_name": "Project - Source Code for the Data Collection",
+      {"category_name": "2. Project evaluation",
        "id": 2,
        "description": "",
        "items" : [
           {
-            "name": "Code is well structured and comments are provided where necessary. Unncessary code is not included",
+            "name": "The project helped me to further improve my (programming) skills",
             "id": "task_odcm_6_2_1",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           },
           {
-            "name": "The code runs from top to bottom without any issues (see if running on a different computer works too)",
+            "name": "The project aligned well with the other course material",
             "id": "task_odcm_6_2_2",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
-            "optional" : False
-          }]},
-      {"category_name": "Project - Data package",
-       "id": 3,
-       "description": "",
-       "items" : [
-          {
-            "name": "The data is submitted as a zip file and follows the directory structure presented on the grading page (see link)",
-            "id": "task_odcm_6_3_1",
-            "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
             "optional" : False
           },
           {
-            "name": "The documents are all publication-ready (i.e., no more template text or unncessary files) and look neat",
-            "id": "task_odcm_6_3_2",
+            "name": "The coaching sessions provided enough feedback to continue working on the project",
+            "id": "task_odcm_6_2_3",
             "description": "",
-            "links": ["https://odcm.hannesdatta.com/docs/course/project/grading/"],
+            "links": [""],
+            "optional" : False
+          },
+          {
+            "name": "I enjoyed working on the project",
+            "id": "task_odcm_6_2_4",
+            "description": "",
+            "links": [""],
             "optional" : False
           }]}],
 
@@ -1226,7 +1215,6 @@ course_odcm ={
    }
  ]
 }
-
 
 leaderboard = [
     {
