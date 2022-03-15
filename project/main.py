@@ -124,10 +124,10 @@ def main_login_post():
 
         if (res.json().get('new')=='False'):
             flash('Boom! Check your email and use your magic login link!') #'<br>'+ link)
-            send_mail(email, "Log in to *Pulse* now!", "Thanks for requesting your MAGIC LINK to log in back to *Pulse*. " + link)
+            send_mail(email, "Log in to *Pulse* now!", "Thanks for requesting your MAGIC LINK to log in back to *Pulse*. By proceeding, you agree to the Terms of Service and Privacy Notice (see http://pulse.tilburg-digital.com/terms)... Here is your login link, which expires in 10 minutes: " + link)
         else:
             flash('Amazing that you join! Check your email now and use your magic link to log in!') #'<br>'+link)
-            send_mail(email, "Welcome to Pulse!", "Thanks for using PULSE, Tilburg's tool to help you keep on track with your course work. Please use this MAGIC LINK to login now: " + link)
+            send_mail(email, "Welcome to Pulse!", "Thanks for using PULSE, Tilburg's tool to help you keep on track with your course work. By proceeding, you agree to the Terms of Service and Privacy Notice (see http://pulse.tilburg-digital.com/terms). Please use this MAGIC LINK to login now: " + link)
     return redirect(url_for('main.index'))
 
 class AppUser(UserMixin, object):
