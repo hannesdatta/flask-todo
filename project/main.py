@@ -48,6 +48,15 @@ def index():
     else:
          return render_template("index.html")
 
+@main.route('/about')
+def show_about():
+    return render_template("about.html")
+
+@main.route('/terms')
+def show_terms():
+    return render_template("terms.html")
+
+
 @main.route('/courses')
 def see_courses():
     #db.create_all()
