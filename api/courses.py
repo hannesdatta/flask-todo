@@ -25,7 +25,7 @@ course_dprep ={
               "id": "task_dprep_1_1_1",
               "description": "R & R Studio are the workhorses in this course - make sure to install them right away!",
               "links": ["https://tilburgsciencehub.com/get/r"],
-              "optional": True
+              "optional": False
             },
             {
               "name": "Install Git and make an account on GitHub",
@@ -612,68 +612,72 @@ course_dprep ={
     "order": 1,
     "deadline": "",
     "items": [
-      {"category_name": "1. Course evaluation",
+      {"category_name": "Project - Github repository",
        "id": 1,
        "description": "",
        "items" : [
           {
-            "name": "My programming skills have improved significantly since the start of this course",
+            "name": "The choices for the way of deployment and research method are elaborated on and the research question is clearly formulated",
             "id": "task_dprep_6_1_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I enjoyed the format of this course (i.e., external website instead of Canvas to stimulate open education)",
+            "name": "The repository includes a properly structured readme.md file",
             "id": "task_dprep_6_1_2",
             "description": "",
-            "links": [""],
-            "optional" : False
-          },
-          {
-            "name": "I liked the concept of Pulse and it has helped me with keeping track of what must be done each week",
-            "id": "task_dprep_6_1_3",
-            "description": "",
-            "links": [""],
-            "optional" : False
-          },
-          {
-            "name": "The things i have learned in this class w.r.t. automation, reproducability and programming are skills that I will apply in the future",
-            "id": "task_dprep_6_1_4",
-            "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]},
-      {"category_name": "2. Project evaluation",
+      {"category_name": "Project - Data preparation & analysis",
        "id": 2,
        "description": "",
        "items" : [
           {
-            "name": "The project helped me to further improve my (programming) skills",
+            "name": "The data files are programmatically downloaded from the internet",
             "id": "task_dprep_6_2_1",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The project aligned well with the other course material",
+            "name": "When downloaded, the data is cleaned using packages such as dplyr and tidyverse",
             "id": "task_dprep_6_2_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "The coaching sessions provided enough feedback to continue working on the project",
+            "name": "The cleaned data is analyzed and the results are deployed in a PDF document and/or Shiny App etc.",
             "id": "task_dprep_6_2_3",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          }]},
+      {"category_name": "Project - Source code and automation",
+       "id": 3,
+       "description": "",
+       "items" : [
+          {
+            "name": "A proper directory structure is integrated (e.g., code in src folder, plots in output folder)",
+            "id": "task_dprep_6_3_1",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           },
           {
-            "name": "I enjoyed working on the project",
-            "id": "task_dprep_6_2_4",
+            "name": "A makefile is present that automatically builds the project when typing make",
+            "id": "task_dprep_6_3_2",
             "description": "",
-            "links": [""],
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
+            "optional" : False
+          },
+          {
+            "name": "A gitignore file is included, ensuring that Git does not track unnecessary files",
+            "id": "task_dprep_6_3_3",
+            "description": "",
+            "links": ["https://dprep.hannesdatta.com/docs/course/project/grading_details/"],
             "optional" : False
           }]}],
 
@@ -681,7 +685,6 @@ course_dprep ={
    }
  ]
 }
-
 
 print(course_dprep)
 
