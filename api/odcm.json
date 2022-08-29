@@ -1,0 +1,263 @@
+{
+    "name": "Online Data Collection and Management",
+    "description": "Learn how to scrape the web!",
+    "id": 1001,
+    "users": [], 
+    "modules": [
+        {
+            "name": "Week 1",
+            "description": "Getting started Python!",
+            "id": 100,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_1_1_1",
+                            "description": "To follow this course and work on your team project, you need to install software! Make sure to complete this part right away!",
+                            "links": [
+                                "https://youtu.be/6lGyBkvl0JY"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Get started installing software!",
+                    "id": 2,
+                    "description": "To follow this course and work on your team project, you need to install software! Make sure to complete this part right away!",
+                    "items": [
+                        
+                       {
+                            "name": "Install Anaconda",
+                            "id": "task_odcm_1_2_1",
+                            "description": "Anaconda is a Python distribution and set you up with everything that you need to work with Python!",
+                            "links": [
+                                "https://odcm.hannesdatta.com/docs/tutorials/software/"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Verify that you have a premium account at Datacamp",
+                            "id": "task_odcm_1_2_2",
+                            "description": "We use Datacamp in this class, but you need to go through a quite cumbersome onboarding procedure with the University library. Do this soon so you can enjoy premium content without having to pay for it!",
+                            "links": [
+                                "https://odcm.hannesdatta.com/docs/course/support/datacamp/"
+                            ],
+                            "optional": false
+                        }
+                        
+                    ]
+                },
+              
+                {
+                    "category_name": "2. Python Bootcamp tutorial",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Launch Jupyter Notebook",
+                            "id": "task_odcm_1_3_1",
+                            "description": "Know how to launch Jupyter Notebook -- both locally on your computer, and in your browser via Google Colab.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Get familiar with Jupyter Notebook",
+                            "id": "task_odcm_1_3_2",
+                            "description": "Get comfortable using Jupyter Notebook, by completing exercises 2.1-2.5 from the in-class tutorial independently.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Crawl data from Reddit.com",
+                            "id": "task_odcm_1_3_3",
+                            "description": "Complete exercises 3.1 and 3.2 from the tutorial independently! ",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Wrap code in functions, and store data from Reddit.com",
+                            "id": "task_odcm_1_3_4",
+                            "description": "Learn why wrapping code in functions makes sense (plus makes your code look more beautiful); then, proceed to store your data in the JSON format. Please complete exercises 3.3 and 3.4 from the tutorial independently.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Repeatedly execute your code using loops",
+                            "id": "task_odcm_1_3_5",
+                            "description": "Collecting web data is all about re-running collection code over and over again - complete exercises 3.5-3.7 independently to save data in files.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Complete the final exercise of the tutorial - your first API data collection!",
+                            "id": "task_odcm_1_3_6",
+                            "description": "Try working on the task in section 3.9 -- your first complete data collection using all of the concepts you've learnt in the tutorial so far.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/pythonbootcamp/python-bootcamp-in-class.ipynb"
+                            ],
+                            "optional": false
+                        },
+
+                        {
+                            "name": "Work through the Datacamp.com tutorial",
+                            "id": "task_odcm_1_3_7",
+                            "description": "After class, you can deepen your Python knowledge by completing a tutorial at Datacamp.com. Please work on the first three chapters only.",
+                            "links": [
+                                "https://learn.datacamp.com/courses/intro-to-python-for-data-science"
+                            ],
+                            "optional": false
+                        }
+                        
+                        
+                    ]
+                }
+            ]
+        },
+
+        {
+            "name": "Week 2",
+            "description": "Learn how to scrape data!",
+            "id": 102,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_2_1_1",
+                            "description": "To get acquainted with this week's course material, watch the energizer!",
+                            "links": [
+                                "https://youtu.be/m1yCf09wSa4"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Reading",
+                    "id": 2,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Thoroughly read the Fields of Gold paper",
+                            "id": "task_odcm_2_2_1",
+                            "description": "This paper discusses opportunities and challenges of using web data in research projects. You will use the framework presented in this paper for this course, so make sure to fully read and understand the contents!",
+                            "links": [
+                                "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3820666"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "3. Tutorial: Web data for dummies - Web scraping",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Understand the definition of web scraping and how this differs from using APIs",
+                            "id": "task_odcm_2_3_1",
+                            "description": "We can use web scraping to extract information from a given website, which we can then save or analyze, for example. This way, we do not lose valuable information when a site is updated!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand the html structure of the book presented in the tutorial (A Light in the Attic)!",
+                            "id": "task_odcm_2_3_2",
+                            "description": "Inspect the web page and look at the structure at which the page is setup. You will see that information such as the title and price is surrounded by corresponding tags, which we later on use to extract this data!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Use the requests library to extract the book title or product description!",
+                            "id": "task_odcm_2_3_3",
+                            "description": "By using the requests library, we load the source code of the website into Python, allowing us to extract our preferred data from the web page!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Simplify your search by using the BeautifulSoup library to get your desired piece of data!",
+                            "id": "task_odcm_2_3_4",
+                            "description": "As you most likely noticed, the BeautifulSoup library is a much more convenient way to scrape the data. Use the .find() or .get_text() methods and combine these with indices to capture the website's content!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "4. Tutorial: Web data for dummies - API",
+                    "id": 4,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Understand the definition of APIs and how this differs from using web scraping",
+                            "id": "task_odcm_2_4_1",
+                            "description": "Contrary to web scraping (which you use software for extract data), APIs are designed to extract data from a website and give you access to it. They are, therefore, a more legit way to retrieve data - but are also limited in providing the data",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand the structure of a JSON tree and how data is stored within these trees",
+                            "id": "task_odcm_2_4_2",
+                            "description": "The JSON tree is basically the backend of what the output shows. Lists and dictionaries are used to store the data. Navigate through the tree to get a grasp of how the data is structured and to what parent each piece belongs to!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Print out a random joke from the presented website by following the steps for using an API!",
+                            "id": "task_odcm_2_4_3",
+                            "description": "By providing Python with a URL and the proper headers, we can extract the data from the website (which is a random joke each time). Tip: Make sure you imported the requests library!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Rather then simply printing out a random joke, try saving multiple ones within an empty list by using a for-loop",
+                            "id": "task_odcm_2_4_4",
+                            "description": "When collecting data, you most likely want to store it (temporarily). Therefore, try collecting a few jokes within an empty list!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                }
+            ],
+            "modules": []
+        }
+    ]
+}
