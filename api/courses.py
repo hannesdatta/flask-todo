@@ -1,7 +1,7 @@
 from tinydb import TinyDB, Query
 from flask_login import UserMixin
 from datetime import datetime
-
+import json
 f = open("odcm.json", "r")
 con = f.read()
 
@@ -91,10 +91,10 @@ db.drop_table('courses')
 table = db.table('courses')
 #users = db.table('users')
 
-print('inserting new courses')
-table.insert(course_odcm)
-
-print('done inserting')
+for course in courses:
+    table.insert(course)
+    
+print('done inserting courses')
 
 try:
     db.drop_table('achievements')
