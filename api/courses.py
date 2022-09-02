@@ -5,7 +5,10 @@ from datetime import datetime
 f = open("odcm.json", "r")
 con = f.read()
 
-courses = [json.loads(con)]
+f = open("dprep.json", "r")
+con2 = f.read()
+
+courses = [json.loads(con), json.loads(con2)]
 
 leaderboard = [
     {
