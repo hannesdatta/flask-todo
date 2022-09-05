@@ -166,173 +166,132 @@
                         }
                     ]
                 },
+        
                 {
-                    "category_name": "2. Readings on workflow management",
+                    "category_name": "2. Preparation before the in-class tutorial",
                     "id": 2,
                     "description": "",
                     "items": [
-                        {
-                            "name": "Read the readings on managing your workflow and its importance on TilburgScienceHub",
-                            "id": "task_dprep_2_2_1",
-                            "description": "Managing your workflow is an important way to bring structure to your project and improve reproducability!",
-                            "links": [
-                                "https://tilburgsciencehub.com/learn/project-setup"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Read the optional reading on best practices for data projects",
-                            "id": "task_dprep_2_2_2",
-                            "description": "These optional readings will elaborate on the data analysis workflow and the version control of your project. Read through these to further improve your understanding of these concepts!",
-                            "links": [
-                                "https://www.shirokuriwaki.com/programming/project-organization.html"
-                            ],
-                            "optional": true
-                        },
-                        {
-                            "name": "Read the optional reading on code and data for Social Sciences",
-                            "id": "task_dprep_2_2_3",
-                            "description": "These optional readings will elaborate on the data analysis workflow and the version control of your project. Read through these to further improve your understanding of these concepts!",
-                            "links": [
-                                "https://www.brown.edu/Research/Shapiro/pdfs/CodeAndData.pdf"
-                            ],
-                            "optional": true
-                        },
-                        {
-                            "name": "Read the optional reading on data analysis workflow",
-                            "id": "task_dprep_2_2_4",
-                            "description": "These optional readings will elaborate on the data analysis workflow and the version control of your project. Read through these to further improve your understanding of these concepts!",
-                            "links": [
-                                "http://www.coordinationtoolkit.org/wp-content/uploads/130907-Data-flow.pdf"
-                            ],
-                            "optional": true
-                        },
-                        {
-                            "name": "Look through this paper to further familiarize yourself with this week’s content",
-                            "id": "task_dprep_2_2_5",
-                            "description": "These optional readings will elaborate on the data analysis workflow and the version control of your project. Read through these to further improve your understanding of these concepts!",
-                            "links": [
-                                "https://www.tse-fr.eu/sites/default/files/TSE/documents/doc/wp/2018/wp_tse_933.pdf"
-                            ],
-                            "optional": true
-                        }
-                    ]
-                },
-                {
-                    "category_name": "3. Command line skills",
-                    "id": 3,
-                    "description": "",
-                    "items": [
-                        {
-                            "name": "Get an understanding of what the command line/terminal is by looking through the slides",
-                            "id": "task_dprep_2_3_1",
-                            "description": "These slides are especially beneficial for students that are using a Mac, but also gives you a good overall understanding of the command line and how we use it!",
-                            "links": [
-                                "https://generalassembly.github.io/prework/cl"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Complete the first chapter of the Introduction to Shell on Datacamp",
-                            "id": "task_dprep_2_3_2",
-                            "description": "Navigating through directories is a task you will often do when using Git Bash for example, so make sure to complete this tutorial!",
-                            "links": [
-                                "https://learn.datacamp.com/courses/introduction-to-shell"
-                            ],
-                            "optional": false
-                        }
-                    ]
-                },
-                {
-                    "category_name": "4. Git & Github",
-                    "id": 4,
-                    "description": "",
-                    "items": [
-                        {
+                           {
                             "name": "Follow the short Github introduction on issues, pull requests and commits",
-                            "id": "task_dprep_2_4_1",
-                            "description": "This Github introduction will walk you through the basics of using Git and Github for your project!",
+                            "id": "task_dprep_2_2_10",
+                            "description": "This GitHub introduction will walk you through the basics of using Git and Github for your project!",
                             "links": [
                                 "https://lab.github.com/githubtraining/introduction-to-github"
                             ],
                             "optional": false
                         },
                         {
-                            "name": "Understand why we use Git over Google drive when working on code with others",
-                            "id": "task_dprep_2_4_2",
-                            "description": "Git is a very effective way to collaborate on projects with code. Do you understand the benefits of Git over Google Drive?",
+                            "name": "Get to know the shell on Datacamp",
+                            "id": "task_dprep_2_2_11",
+                            "description": "Follow this Datacamp.com tutorial to understand how to use the command line / terminal (follow chapter 1 only!)",
                             "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                "https://www.datacamp.com/courses/introduction-to-shell"
                             ],
                             "optional": false
                         },
                         {
-                            "name": "Create the version-control-exercises repository on Github and clone it",
-                            "id": "task_dprep_2_4_3",
-                            "description": "To get a repository from Github to your local computer, you will need to use git clone!",
+                            "name": "Principles of Project Setup and Workflow Management",
+                            "id": "task_dprep_2_2_12",
+                            "description": "Why are we doing all this? Read this blog post on the principles of project setup and workflow management to see where we're heading.",
                             "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                "https://tilburgsciencehub.com/learn/project-setup"
                             ],
                             "optional": false
-                        },
-                        {
-                            "name": "Understand the process of making changes to files and pushing these using Git (git add, commit etc.)",
-                            "id": "task_dprep_2_4_4",
-                            "description": "This is an iterative process that you will be performing often, so make sure you fully understand this!",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Be able to clone a repository, make changes to this repository and then push these changes to Github",
-                            "id": "task_dprep2_4_5",
-                            "description": "When you made changes on your local computer, you want this to be transferred to the main repository on Github. For that, we use git push!",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Know how to find the history of a project and know how to roll back to a previous version of a project on Github using a hash",
-                            "id": "task_dprep_2_4_6",
-                            "description": "Everyone makes mistakes. Luckily, Git and Github allow you to easily roll back to previous versions of a project, should this be necessary",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Understand what a gitignore file is used for and why this is used",
-                            "id": "task_dprep_2_4_7",
-                            "description": "You don't always want Git to track every file that you create or make a change to (take large csv files for example). Using gitignore, Git will stop tracking these files!",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Know how to work on a branch of a project and the concept of merging branches with each other",
-                            "id": "task_dprep_2_4_8",
-                            "description": "Branches are ways to work on different parts of a project simultaneously with team members. These branches can be merged after being pushed",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
-                        },
-                        {
-                            "name": "Know how to fork an existing repository of someone else",
-                            "id": "task_dprep_2_4_9",
-                            "description": "Forking allows you to propose changes to projects of others and is useful for open-source collaboration!",
-                            "links": [
-                                "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
-                            ],
-                            "optional": false
+                        }]
+                },
+               
+                {
+                    "category_name": "3. After-class exercises",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                                {
+                                    "name": "Check out how to use Git from within R",
+                                    "id": "task_dprep_2_3_1",
+                                    "description": "Git works on the command prompt - but also has fantastic graphical user interfaces. Try some of them!",
+                                    "links": [
+                                        "https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/",
+                                        "https://www.sourcetreeapp.com/"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Understand why we use Git over Google drive when working on code with others",
+                                    "id": "task_dprep_2_3_2",
+                                    "description": "Git is a very effective way to collaborate on projects with code. Do you understand the benefits of Git over Google Drive?",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Create the version-control-exercises repository on Github and clone it",
+                                    "id": "task_dprep_2_3_3",
+                                    "description": "To get a repository from Github to your local computer, you will need to use git clone!",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Understand the process of making changes to files and pushing these using Git (git add, commit etc.)",
+                                    "id": "task_dprep_2_3_4",
+                                    "description": "This is an iterative process that you will be performing often, so make sure you fully understand this!",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Be able to clone a repository, make changes to this repository and then push these changes to Github",
+                                    "id": "task_dprep2_3_5",
+                                    "description": "When you made changes on your local computer, you want this to be transferred to the main repository on Github. For that, we use git push!",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Know how to find the history of a project and know how to roll back to a previous version of a project on Github using a hash",
+                                    "id": "task_dprep_2_3_6",
+                                    "description": "Everyone makes mistakes. Luckily, Git and Github allow you to easily roll back to previous versions of a project, should this be necessary",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Understand what a gitignore file is used for and why this is used",
+                                    "id": "task_dprep_2_3_7",
+                                    "description": "You don't always want Git to track every file that you create or make a change to (take large csv files for example). Using gitignore, Git will stop tracking these files!",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Know how to work on a branch of a project and the concept of merging branches with each other",
+                                    "id": "task_dprep_2_3_8",
+                                    "description": "Branches are ways to work on different parts of a project simultaneously with team members. These branches can be merged after being pushed",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                },
+                                {
+                                    "name": "Know how to fork an existing repository of someone else",
+                                    "id": "task_dprep_2_3_9",
+                                    "description": "Forking allows you to propose changes to projects of others and is useful for open-source collaboration!",
+                                    "links": [
+                                        "https://dprep.hannesdatta.com/docs/tutorials/version-control/version-control.html"
+                                    ],
+                                    "optional": false
+                                }
+                            ]
                         }
-                    ]
-                }
-            ],
-            "modules": []
+                    ],
+                    "modules": []
         }
     ]
 }

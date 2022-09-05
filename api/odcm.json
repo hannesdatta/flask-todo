@@ -133,7 +133,7 @@
 
         {
             "name": "Week 2",
-            "description": "Learn how to scrape data!",
+            "description": "Workflow & learning how to scrape!",
             "id": 102,
             "order": 1,
             "deadline": "",
@@ -155,23 +155,41 @@
                     ]
                 },
                 {
-                    "category_name": "2. Reading",
+                    "category_name": "2. Workflow for web scraping",
                     "id": 2,
                     "description": "",
                     "items": [
                         {
+                            "name": "Watch the video on what web scraping and APIs are",
+                            "id": "task_odcm_2_2_2",
+                            "description": "This 30-minute video explains the differences between web scraping and APIs, and is a good way to get started.",
+                            "links": [
+                                "https://videocollege.uvt.nl/Mediasite/Play/41afff385bd74db2af5fb8507350ea521d"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Watch the webinar",
+                            "id": "task_odcm_2_2_3",
+                            "description": "This 60-minute webinar gives you the main highlights of the Fields of Gold paper. Pay attention to (a) potential research ideas and (b) understanding the main challenges when scraping data.",
+                            "links": [
+                                "https://youtu.be/KiyFyLEkqNk"
+                            ],
+                            "optional": false
+                        },
+                        {
                             "name": "Thoroughly read the Fields of Gold paper",
                             "id": "task_odcm_2_2_1",
-                            "description": "This paper discusses opportunities and challenges of using web data in research projects. You will use the framework presented in this paper for this course, so make sure to fully read and understand the contents!",
+                            "description": "It's time to get into the details: thoroughly read the paper, providing you a framework for this class.",
                             "links": [
-                                "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3820666"
+                                "https://journals.sagepub.com/doi/abs/10.1177/00222429221100750?journalCode=jmxa"
                             ],
                             "optional": false
                         }
                     ]
                 },
                 {
-                    "category_name": "3. Tutorial: Web data for dummies - Web scraping",
+                    "category_name": "3. Tutorial: Web data for dummies (web scraping, after-class exercises)",
                     "id": 3,
                     "description": "",
                     "items": [
@@ -214,7 +232,7 @@
                     ]
                 },
                 {
-                    "category_name": "4. Tutorial: Web data for dummies - API",
+                    "category_name": "4. Tutorial: Web data for dummies (APIs, after-class exercises)",
                     "id": 4,
                     "description": "",
                     "items": [
