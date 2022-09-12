@@ -144,7 +144,7 @@
             ]
         },
         {
-            "name": "Week 2 -test",
+            "name": "Week 2",
             "description": "Versioning projects with Git and GitHub!",
             "id": 2,
             "order": 1,
@@ -290,8 +290,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "modules": []
+                    ]
         },
         {
             "name": "Week 3",
