@@ -57,7 +57,7 @@
                             "id": "task_dprep_1_1_5",
                             "description": "We use Datacamp in this class, but you need to go through a quite cumbersome onboarding procedure with the University library. Do this soon so you can enjoy premium content without having to pay for it!",
                             "links": [
-                                "https://dprep.hannesdatta.com/docs/course/support/datacamp/"
+                                "https://dprep.hannesdatta.com/docs/course/support/Datacamp/"
                             ],
                             "optional":  false
                         }
@@ -292,6 +292,130 @@
                         }
                     ],
                     "modules": []
-        }
+        },
+        {
+            "name": "Week 3",
+            "description": "Improving your R skills and introducing RMarkdown!",
+            "id": 3,
+            "order": 1,
+            "deadline": "2022-01-31",
+            "items": [
+              {"category_name": "1. Kick-starting the week",
+               "id": 1,
+               "description": "",
+               "items" : [
+                  {
+                    "name": "Watch the energizer for this week",
+                    "id": "task_dprep_3_1_1",
+                    "description": "To get acquainted with this week's course material, watch the energizer!",
+                    "links": ["TBA"],
+                    "optional": false
+                  }]},
+              {"category_name": "2. Datacamp course: “Intermediate R”",
+               "id": 2,
+               "description": "",
+               "items" : [
+                  {
+                    "name": "Able to use the common operators in R (&, |, > etc.)",
+                    "id": "task_dprep_3_2_1",
+                    "description": "R has a set of common operators built in, which you will use a lot when cleaning a dataset for example!",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  },
+                  {
+                    "name": "Know how to implement ifelse statements and when to use these",
+                    "id": "task_dprep_3_2_2",
+                    "description": "Ifelse statements are commonly used when you have certain conditions a specific code should adhere to. You can use these when creating dummy variables, for example!",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  },
+                  {
+                    "name": "Understand the concepts of using loops",
+                    "id": "task_dprep_3_2_3",
+                    "description": "Looping is used to go through a statement a certain amount of times until a condition is met. Loops are an amazing way to simplify your code!",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  },
+                  {
+                    "name": "Write a basic for-loop and while loop",
+                    "id": "task_dprep_3_2_4",
+                    "description": "For and while loops are two types of loops in R to repeat a chunk of code multiple times",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  },
+                  {
+                    "name": "Understand the benefits of using functions in R",
+                    "id": "task_dprep_3_2_5",
+                    "description": "Functions are used to perform a specific task. R has lots of built-in functions, but you can also create functions yourself to make your code more efficient",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  },
+                  {
+                    "name": "Know how to create a simple function in R",
+                    "id": "task_dprep_3_2_6",
+                    "description": "Try creating a basic function yourself! An example could be a function that requires two input parameters that are multiplied by each other",
+                    "links": ["https://www.datacamp.com/courses/intermediate-r"],
+                    "optional": false
+                  }]},
+                {"category_name": "3. RMarkdown",
+                 "id": 3,
+                 "description": "",
+                 "items" : [
+                    {
+                      "name": "Understand the benefits of using an Rmarkdown file when writing documents with code",
+                      "id": "task_dprep_3_3_1",
+                      "description": "The main benefit of using an RMarkdown file is reproducability. Moreover, it supports various output formats (e.g., pdf and html)",
+                      "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
+                      "optional": false
+                    },
+                    {
+                      "name": "Know how to use chunks within an R-markdown file",
+                      "id": "task_dprep_3_3_2",
+                      "description": "Chunks are used to show code (output) within the document, so users can either see what is going on in the code, what the output looks like or both!",
+                      "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
+                      "optional": false
+                    },
+                    {
+                      "name": "Able to knit an RMD file to pdf and html",
+                      "id": "task_dprep_3_3_3",
+                      "description": "To export your report and share it with others, you will need to knit the file. In order to knit to pdf, you need to install tinytex, so make sure you are able to do this!",
+                      "links": ["https://datacarpentry.org/r-socialsci/05-rmarkdown/index.html"],
+                      "optional": false
+                    }]},
+                {"category_name": "4. Data exploration in R",
+                 "id": 4,
+                 "description": "",
+                 "items" : [
+                    {
+                      "name": "Inspect the dataset by filtering the regional and city level out",
+                      "id": "task_dprep_3_4_1",
+                      "description": "To inspect the data on a national level, the other levels are filtered out. Were you able to perform exercise 2 and, if not, do you understand the solution?",
+                      "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
+                      "optional": false
+                    },
+                    {
+                      "name": "Drop unnecessary columns from the dataset",
+                      "id": "task_dprep_3_4_2",
+                      "description": "When analyzing data, you will often have columns in your data that you do not need or use (this could be an identifier in survey data for example)",
+                      "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
+                      "optional": false
+                    },
+                    {
+                      "name": "Write a function that inspects the data",
+                      "id": "task_dprep_3_4_3",
+                      "description": "Writing a function here allows you to make your code more efficient. Refresh your knowledge on functions and try making one yourself (exercise 9)!",
+                      "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
+                      "optional": false
+                    },
+                    {
+                      "name": "Visualize the dataset by making plots",
+                      "id": "task_dprep_3_4_4",
+                      "description": "Use the plot() function that is built into R to (re)create the plots shown. Try out some other variations and see how this affects your plot! For you project, you could use ggplot2 to acquire more functionalities when plotting!",
+                      "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
+                      "optional": false
+                    }]}],
+       
+                "modules": []
+          }
     ]
 }
