@@ -2,7 +2,7 @@
     "name": "Online Data Collection and Management",
     "description": "Learn how to scrape the web!",
     "id": 1001,
-    "users": [], 
+    "users": [],
     "modules": [
         {
             "name": "Week 1",
@@ -32,7 +32,7 @@
                     "id": 2,
                     "description": "To follow this course and work on your team project, you need to install software! Make sure to complete this part right away!",
                     "items": [
-                        
+
                        {
                             "name": "Install Anaconda",
                             "id": "task_odcm_1_2_1",
@@ -51,10 +51,10 @@
                             ],
                             "optional": false
                         }
-                        
+
                     ]
                 },
-              
+
                 {
                     "category_name": "2. Python Bootcamp tutorial",
                     "id": 3,
@@ -124,13 +124,12 @@
                             ],
                             "optional": false
                         }
-                        
-                        
+
+
                     ]
                 }
             ]
         },
-
         {
             "name": "Week 2",
             "description": "Workflow & learning how to scrape!",
@@ -334,7 +333,7 @@
                         "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
                         "optional": false
                       },
-                      
+
                     {
                       "name": "Interactively navigate a website by clicking on buttons (exercise 3.3)",
                       "id": "task_odcm_3_3_6",
@@ -370,16 +369,15 @@
                         "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
                         "optional": false
                       },
-                    
+
                     {
                       "name": "Understand the differences between Jupyter Notebook and Spyder or PyCharm",
                       "id": "task_odcm_3_3_11",
                       "description": "Jupyter Notebook is a great for people who are new to programming. As your skills improve, you may prefer an IDE such as Spyder or PyCharm over Notebook! You can run the code in Spyder to see how this differs from Notebook yourself.",
                       "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
                       "optional": true
-                    }]}],
-       
-                "modules": []
+                    }]}]
+
           }
     ]
 }

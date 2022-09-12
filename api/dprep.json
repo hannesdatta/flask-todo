@@ -79,7 +79,7 @@
                         }
                     ]
                 },
-                
+
                 {
                     "category_name": "4. R Bootcamp Tutorial",
                     "id": 4,
@@ -166,7 +166,7 @@
                         }
                     ]
                 },
-        
+
                 {
                     "category_name": "2. Preparation before the in-class tutorial",
                     "id": 2,
@@ -200,7 +200,7 @@
                             "optional": false
                         }]
                 },
-               
+
                 {
                     "category_name": "3. After-class exercises",
                     "id": 3,
@@ -298,7 +298,7 @@
             "description": "Improving your R skills and introducing RMarkdown!",
             "id": 3,
             "order": 1,
-            "deadline": "2022-01-31",
+            "deadline": "",
             "items": [
               {"category_name": "1. Kick-starting the week",
                "id": 1,
@@ -413,9 +413,7 @@
                       "description": "Use the plot() function that is built into R to (re)create the plots shown. Try out some other variations and see how this affects your plot! For you project, you could use ggplot2 to acquire more functionalities when plotting!",
                       "links": ["https://dprep.hannesdatta.com/docs/tutorials/data-exploration-in-r/intro-to-r.html"],
                       "optional": false
-                    }]}],
-       
-                "modules": []
+                    }]}]
           }
     ]
 }
