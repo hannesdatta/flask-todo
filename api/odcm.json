@@ -270,6 +270,151 @@
             ]
         },
         {
+            "name": "Week 2",
+            "description": "Workflow & learning how to scrape!",
+            "id": 102,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_2_1_1",
+                            "description": "To get acquainted with this week's course material, watch the energizer!",
+                            "links": [
+                                "https://youtu.be/m1yCf09wSa4"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Workflow for web scraping",
+                    "id": 2,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the video on what web scraping and APIs are",
+                            "id": "task_odcm_2_2_2",
+                            "description": "This 30-minute video explains the differences between web scraping and APIs, and is a good way to get started.",
+                            "links": [
+                                "https://videocollege.uvt.nl/Mediasite/Play/41afff385bd74db2af5fb8507350ea521d"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Watch the webinar",
+                            "id": "task_odcm_2_2_3",
+                            "description": "This 60-minute webinar gives you the main highlights of the Fields of Gold paper. Pay attention to (a) potential research ideas and (b) understanding the main challenges when scraping data.",
+                            "links": [
+                                "https://youtu.be/KiyFyLEkqNk"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Thoroughly read the Fields of Gold paper",
+                            "id": "task_odcm_2_2_1",
+                            "description": "It's time to get into the details: thoroughly read the paper, providing you a framework for this class.",
+                            "links": [
+                                "https://journals.sagepub.com/doi/abs/10.1177/00222429221100750?journalCode=jmxa"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "3. Tutorial: Web data for dummies (web scraping, after-class exercises)",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Understand the definition of web scraping and how this differs from using APIs",
+                            "id": "task_odcm_2_3_1",
+                            "description": "We can use web scraping to extract information from a given website, which we can then save or analyze, for example. This way, we do not lose valuable information when a site is updated!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand the html structure of the book presented in the tutorial (A Light in the Attic)!",
+                            "id": "task_odcm_2_3_2",
+                            "description": "Inspect the web page and look at the structure at which the page is setup. You will see that information such as the title and price is surrounded by corresponding tags, which we later on use to extract this data!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Use the requests library to extract the book title or product description!",
+                            "id": "task_odcm_2_3_3",
+                            "description": "By using the requests library, we load the source code of the website into Python, allowing us to extract our preferred data from the web page!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Simplify your search by using the BeautifulSoup library to get your desired piece of data!",
+                            "id": "task_odcm_2_3_4",
+                            "description": "As you most likely noticed, the BeautifulSoup library is a much more convenient way to scrape the data. Use the .find() or .get_text() methods and combine these with indices to capture the website's content!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "4. Tutorial: Web data for dummies (APIs, after-class exercises)",
+                    "id": 4,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Understand the definition of APIs and how this differs from using web scraping",
+                            "id": "task_odcm_2_4_1",
+                            "description": "Contrary to web scraping (which you use software for extract data), APIs are designed to extract data from a website and give you access to it. They are, therefore, a more legit way to retrieve data - but are also limited in providing the data",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand the structure of a JSON tree and how data is stored within these trees",
+                            "id": "task_odcm_2_4_2",
+                            "description": "The JSON tree is basically the backend of what the output shows. Lists and dictionaries are used to store the data. Navigate through the tree to get a grasp of how the data is structured and to what parent each piece belongs to!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Print out a random joke from the presented website by following the steps for using an API!",
+                            "id": "task_odcm_2_4_3",
+                            "description": "By providing Python with a URL and the proper headers, we can extract the data from the website (which is a random joke each time). Tip: Make sure you imported the requests library!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Rather then simply printing out a random joke, try saving multiple ones within an empty list by using a for-loop",
+                            "id": "task_odcm_2_4_4",
+                            "description": "When collecting data, you most likely want to store it (temporarily). Therefore, try collecting a few jokes within an empty list!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webdata-for-dummies/webdata-for-dummies.ipynb"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Week 3",
             "description": "Improving your web scraping skills!",
             "id": 103,
