@@ -32,8 +32,7 @@
                     "id": 2,
                     "description": "To follow this course and work on your team project, you need to install software! Make sure to complete this part right away!",
                     "items": [
-
-                       {
+                        {
                             "name": "Install Anaconda",
                             "id": "task_odcm_1_2_1",
                             "description": "Anaconda is a Python distribution and set you up with everything that you need to work with Python!",
@@ -51,10 +50,8 @@
                             ],
                             "optional": false
                         }
-
                     ]
                 },
-
                 {
                     "category_name": "2. Python Bootcamp tutorial",
                     "id": 3,
@@ -114,7 +111,6 @@
                             ],
                             "optional": false
                         },
-
                         {
                             "name": "Work through the Datacamp.com tutorial",
                             "id": "task_odcm_1_3_7",
@@ -124,8 +120,6 @@
                             ],
                             "optional": false
                         }
-
-
                     ]
                 }
             ]
@@ -282,101 +276,368 @@
             "order": 1,
             "deadline": "",
             "items": [
-              {"category_name": "1. Kick-starting the week",
-               "id": 1,
-               "description": "",
-               "items" : [
-                  {
-                    "name": "Watch the energizer for this week",
-                    "id": "task_odcm_3_1_1",
-                    "description": "To get acquainted with this week's course material, watch the energizer!",
-                    "links": ["https://youtu.be/j8DqkHBPuic"],
-                    "optional": false
-                  }]},
-              {"category_name": "2. Tutorial: Web scraping 101",
-                 "id": 3,
-                 "description": "",
-                 "items" : [
-                    {
-                        "name": "Install selenium and chromedriver, and launch the automated browser on your computer",
-                        "id": "task_odcm_3_3_1",
-                        "description": "In this tutorial, you learn a new way of retrieving web data using an automated browser that you can view while the scraping takes place. This will not work in Colab, but you must use your own computers.",
-                        "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                        "optional": false
-                      },
-                    {
-                      "name": "Understand when to make website requests using `requests` vs `selenium`",
-                      "id": "task_odcm_3_3_2",
-                      "description": "Some websites are not accessible when using the simple requests library. Learn hear how to still conduct scraping by simulating browsing behavior you can follow on your screen.",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": false
-                    },
-                    {
-                      "name": "Collect titles / urls using selenium and requests (exercise 1.1)",
-                      "id": "task_odcm_3_3_3",
-                      "description": "Apply two technologies to extract web data.",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": false
-                    },
-                    {
-                      "name": "Run and understand a function that extracts all the book titles and URLs (exercise 2.2)",
-                      "id": "task_odcm_3_3_4",
-                      "description": "Often times, websites get updated with new information (e.g., new books are added). Therefore, we automate our scraper, such that it still works and collects all the data when the website is updated!",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": false
-                    },
-                    {
-                        "name": "Navigate on a website using URLs (exercises 3.1 and 3.2)",
-                        "id": "task_odcm_3_3_5",
-                        "description": "When scraping, we often want extract information from multiple pages. Here, you learn how to navigate to these pages using URLs.",
-                        "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                        "optional": false
-                      },
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_3_1_1",
+                            "description": "To get acquainted with this week's course material, watch the energizer!",
+                            "links": [
+                                "https://youtu.be/j8DqkHBPuic"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Tutorial: Web scraping 101",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Install selenium and chromedriver, and launch the automated browser on your computer",
+                            "id": "task_odcm_3_3_1",
+                            "description": "In this tutorial, you learn a new way of retrieving web data using an automated browser that you can view while the scraping takes place. This will not work in Colab, but you must use your own computers.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand when to make website requests using `requests` vs `selenium`",
+                            "id": "task_odcm_3_3_2",
+                            "description": "Some websites are not accessible when using the simple requests library. Learn hear how to still conduct scraping by simulating browsing behavior you can follow on your screen.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Collect titles / urls using selenium and requests (exercise 1.1)",
+                            "id": "task_odcm_3_3_3",
+                            "description": "Apply two technologies to extract web data.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Run and understand a function that extracts all the book titles and URLs (exercise 2.2)",
+                            "id": "task_odcm_3_3_4",
+                            "description": "Often times, websites get updated with new information (e.g., new books are added). Therefore, we automate our scraper, such that it still works and collects all the data when the website is updated!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Navigate on a website using URLs (exercises 3.1 and 3.2)",
+                            "id": "task_odcm_3_3_5",
+                            "description": "When scraping, we often want extract information from multiple pages. Here, you learn how to navigate to these pages using URLs.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Interactively navigate a website by clicking on buttons (exercise 3.3)",
+                            "id": "task_odcm_3_3_6",
+                            "description": "Dynamic websites require users to click buttons or keep on scrolling before some information is reveiled. Apply selenium to do so!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Extract all seeds (for your sample) from books.toscrape.com (exercise 3.4)",
+                            "id": "task_odcm_3_3_7",
+                            "description": "Apply your skills now to extracts product URLs from the book category at books.toscrape.com, and stores them in a list of dictionaries.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Modularize your code (exercise 4.2)",
+                            "id": "task_odcm_3_3_8",
+                            "description": "When moving your code into production, you need to 'clean it up' and modularize it.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Open a JSON file and parse some information (exercise 4.3)",
+                            "id": "task_odcm_3_3_9",
+                            "description": "After obtaining some raw data (e.g., seeds), you need to be able to open such information again in Python.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Completed after-class exercises",
+                            "id": "task_odcm_3_3_10",
+                            "description": "At the end of the notebook, you will find some after-class exercises. Are you able to complete them?",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Understand the differences between Jupyter Notebook and Spyder or PyCharm",
+                            "id": "task_odcm_3_3_11",
+                            "description": "Jupyter Notebook is a great for people who are new to programming. As your skills improve, you may prefer an IDE such as Spyder or PyCharm over Notebook! You can run the code in Spyder to see how this differs from Notebook yourself.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"
+                            ],
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Week 4",
+            "description": "Learn how to extract data from APIs",
+            "id": 104,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_4_1_1",
+                            "description": "To get acquainted with this week's course material, watch the energizer!",
+                            "links": [
+                                "Not this week ;)"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
 
-                    {
-                      "name": "Interactively navigate a website by clicking on buttons (exercise 3.3)",
-                      "id": "task_odcm_3_3_6",
-                      "description": "Dynamic websites require users to click buttons or keep on scrolling before some information is reveiled. Apply selenium to do so!",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": false
-                    },
-                    {
-                      "name": "Extract all seeds (for your sample) from books.toscrape.com (exercise 3.4)",
-                      "id": "task_odcm_3_3_7",
-                      "description": "Apply your skills now to extracts product URLs from the book category at books.toscrape.com, and stores them in a list of dictionaries.",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": false
-                    },
-                    {
-                        "name": "Modularize your code (exercise 4.2)",
-                        "id": "task_odcm_3_3_8",
-                        "description": "When moving your code into production, you need to 'clean it up' and modularize it.",
-                        "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                        "optional": false
-                      },
-                      {
-                        "name": "Open a JSON file and parse some information (exercise 4.3)",
-                        "id": "task_odcm_3_3_9",
-                        "description": "After obtaining some raw data (e.g., seeds), you need to be able to open such information again in Python.",
-                        "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                        "optional": false
-                      },
-                      {
-                        "name": "Completed after-class exercises",
-                        "id": "task_odcm_3_3_10",
-                        "description": "At the end of the notebook, you will find some after-class exercises. Are you able to complete them?",
-                        "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                        "optional": false
-                      },
-
-                    {
-                      "name": "Understand the differences between Jupyter Notebook and Spyder or PyCharm",
-                      "id": "task_odcm_3_3_11",
-                      "description": "Jupyter Notebook is a great for people who are new to programming. As your skills improve, you may prefer an IDE such as Spyder or PyCharm over Notebook! You can run the code in Spyder to see how this differs from Notebook yourself.",
-                      "links": ["https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscraping101/webscraping-101.ipynb"],
-                      "optional": true
-                    }]}]
-
-          }
+                {
+                    "category_name": "2. Tutorial: API 101",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Create a function that shows the number of jokes that include a specific search term",
+                            "id": "task_odcm_4_3_1",
+                            "description": "This function is the equivalent of searching for that term in the search bar on a website and shows how many jokes include it!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Extend this function by making it loop over all pages!",
+                            "id": "task_odcm_4_3_2",
+                            "description": "This extension allows you to collect all the jokes on the website without being restricted the current page!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Create a function that extracts the numbers of total and active users of a given subreddit",
+                            "id": "task_odcm_4_3_3",
+                            "description": "For this task, look how the .json url corresponds to the source code to extract the number of (active) users!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Analyze the reddit activity by using the 'after' attribute to apply pagination",
+                            "id": "task_odcm_4_3_4",
+                            "description": "Contrary to the sites we have seen thus far, Reddit does not have a 'next' page. Therefore, we use the next key each time to get the next batch of 25 comments and posts!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Write and run a function that extracts all the data (e.g., username, time a post was created etc.) of the first few pages of a subreddit",
+                            "id": "task_odcm_4_3_5",
+                            "description": "Rather than collecting snippets of the web page, we may want to extract as much information as possible and analyze it at a later instance. This function allows us to do so!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Write the results of this function to a csv file and try opening it to see the results!",
+                            "id": "task_odcm_4_3_6",
+                            "description": "To save our data, we export the data to a csv file so we can access it later or open it in another software program, for example!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apis101/api-101.ipynb"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Week 5",
+            "description": "Developing a prototype for your team project!",
+            "id": 105,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Kick-starting the week",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Watch the energizer for this week",
+                            "id": "task_odcm_5_1_1",
+                            "description": "To get acquainted with this week's course material, watch the energizer!",
+                            "links": [
+                                "https://youtu.be/u4TD4i_hsl0"
+                            ],
+                            "optional": false
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Tutorial: APIs advanced",
+                    "id": 2,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Work on part 1 of the tutorial",
+                            "id": "task_odcm_5_2_1",
+                            "description": "The first part teaches you how to use an API that requires user authentication, which is useful if you use an API in your team project!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apisadvanced/api-advanced.ipynb"
+                            ],
+                            "optional": true
+                        },
+                        {
+                            "name": "Work on part 2 of the tutorial",
+                            "id": "task_odcm_5_2_2",
+                            "description": "The second part focuses on parsing JSON into CSV format, which is also convenient for your team project!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/apisadvanced/api-advanced.ipynb"
+                            ],
+                            "optional": true
+                        }
+                    ]
+                },
+                {
+                    "category_name": "3. Tutorial: Web scraping advanced",
+                    "id": 3,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "Work on part 1 of the tutorial",
+                            "id": "task_odcm_5_3_1",
+                            "description": "This part introduces you to more of Selenium so you can better handle dynamic websites.",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscrapingadvanced/webscraping-advanced.ipynb"
+                            ],
+                            "optional": true
+                        },
+                        {
+                            "name": "Work on part 2 of the tutorial",
+                            "id": "task_odcm_5_3_2",
+                            "description": "The second part puts your new Selenium skills into practice for Instagram and teaches you how to scrape images from here, for example!",
+                            "links": [
+                                "https://colab.research.google.com/github/hannesdatta/course-odcm/blob/master/content/docs/tutorials/webscrapingadvanced/webscraping-advanced.ipynb"
+                            ],
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Week 6-7",
+            "description": "Course and project wrap-up",
+            "id": 106,
+            "order": 1,
+            "deadline": "",
+            "items": [
+                {
+                    "category_name": "1. Starting to wrap up the course",
+                    "id": 1,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "By now, the course evaluation will become available. Please provide your feedback!",
+                            "id": "task_odcm_6_1_1",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "Take a look at the exam preparation material and prepare questions you can ask via WhatsApp or in class.",
+                            "id": "task_odcm_6_1_2",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": true
+                        }
+                    ]
+                },
+                {
+                    "category_name": "2. Project evaluation",
+                    "id": 2,
+                    "description": "",
+                    "items": [
+                        {
+                            "name": "The project helped me to further improve my (programming) skills",
+                            "id": "task_odcm_6_2_1",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "The project aligned well with the other course material",
+                            "id": "task_odcm_6_2_2",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "The coaching sessions provided enough feedback to continue working on the project",
+                            "id": "task_odcm_6_2_3",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": false
+                        },
+                        {
+                            "name": "I enjoyed working on the project",
+                            "id": "task_odcm_6_2_4",
+                            "description": "",
+                            "links": [
+                                ""
+                            ],
+                            "optional": false
+                        }
+                    ]
+                }
+            ]
+        }
     ]
 }
