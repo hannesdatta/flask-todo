@@ -257,7 +257,7 @@
                             "optional": false
                         },
                         {
-                            "name": "Rather then simply printing out a random joke, try saving multiple ones within an empty list by using a for-loop",
+                            "name": "Rather than simply printing out a random joke, try saving multiple ones within an empty list by using a for-loop",
                             "id": "task_odcm_2_4_4",
                             "description": "When collecting data, you most likely want to store it (temporarily). Therefore, try collecting a few jokes within an empty list!",
                             "links": [
