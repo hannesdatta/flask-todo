@@ -132,6 +132,17 @@ The app ideally should run via `gunicorn` for some proper load balancing in the 
 gunicorn main:app -w 1 -k uvicorn.workers.UvicornWorker &
 ```
 
+### Things to remember when starting a new semester
+
+Remember to wipe the events database, ideally via the `sqlite3` command on the VM.
+
+- `sqlite3`
+- `.open events_comments.db`
+
+Then, delete the events and logs tables for particular timestamps (say, before the beginning of the course). 
+
+That's it!
+
 
 ### Things to remember when starting out "fresh"
 
