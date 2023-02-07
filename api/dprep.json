@@ -175,7 +175,7 @@
                             "id": "task_dprep_2_2_10",
                             "description": "This GitHub introduction will walk you through the basics of using Git and Github for your project!",
                             "links": [
-                                "https://lab.github.com/githubtraining/introduction-to-github"
+                                "https://github.com/skills/introduction-to-github"
                             ],
                             "optional": false
                         },
